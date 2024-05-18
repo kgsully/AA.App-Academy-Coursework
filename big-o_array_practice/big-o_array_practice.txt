@@ -1,0 +1,85 @@
+arr.push()
+--------------------------------------------------------------------------
+Time complexity: O(1) Space complexity: O(1) 
+Justification: Adding a single element to the end of an existing array. 
+			   Does not have to iterate through the index.
+			   Modifies existing array.
+
+arr.pop()
+--------------------------------------------------------------------------
+Time complexity: O(1) Space complexity: O(1) 
+Justification: Remove a single element from the end of the existing array.
+			   Does not have to iterate through the index.
+			   Modifies existing array.
+
+arr.shift()
+--------------------------------------------------------------------------
+Time complexity: O(n) Space complexity: O(1) 
+Justification: Removes first element in the array.
+			   Must re-index all remaining values in the array so must iterate
+			   Modifies existing array and returns a single value
+			   
+
+arr.unshift()
+--------------------------------------------------------------------------
+Time complexity: O(n) Space complexity: O(1) 
+Justification: Inserts value as the first position in the array.
+			   Must iterate to re-index all subsequent values in the array
+			   Modifies existing array
+
+
+arr.splice()
+--------------------------------------------------------------------------
+Time complexity: O(n) Space complexity: O(?) 
+Justification: Fill this in
+
+
+arr.slice()
+--------------------------------------------------------------------------
+Time complexity: O(n) Space complexity: O(n) 
+Justification: Removes portion of the array and returns remainder as an array
+			   Must iterate through to determine cutoff, generate new returned array
+
+arr.indexOf()
+--------------------------------------------------------------------------
+Time complexity: O(n) Space complexity: O(1) 
+Justification: Iterates through array to find position of search item
+			   returns single integer value of index
+
+
+arr.map()
+--------------------------------------------------------------------------
+Time complexity: O(n*) Space complexity: O(n*) 
+Justification: Iterates through array and calls callback function for each element
+			   Returns a separate array based upon callback
+			   Time / Space complexity may depend on callback function
+
+
+arr.filter()
+--------------------------------------------------------------------------
+Time complexity: O(n) Space complexity: O(n) 
+Justification: Iterates through array to select values to push into a new array based upon filter criteria
+			   returns new array of filtered values
+
+
+arr.reduce()
+--------------------------------------------------------------------------
+Time complexity: O(n*) Space complexity: O(1*) 
+Justification: Iterates through each element of array to and returns a single accumulator value
+			   Time / space complexity may depend on callback function
+
+
+arr.reverse()
+--------------------------------------------------------------------------
+Time complexity: O(n2) Space complexity: O(1) 
+Justification: iterates through array and presumably buffers the last value,
+               pops it from the existing array, then performs an unshift operation...?
+			   thinking n2 due to having to iterate over the entire array, and perform
+			   and O(n) unshift operation...?
+
+
+[...arr]
+--------------------------------------------------------------------------
+Time complexity: O(n) Space complexity: O(n) 
+Justification: must iterate over array. will expand each element to n individual value.
+

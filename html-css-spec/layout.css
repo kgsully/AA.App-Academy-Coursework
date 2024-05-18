@@ -1,0 +1,108 @@
+html {
+    font-family: "Fira Sans", sans-serif;
+}
+
+h1 {
+    width: 550px;
+    padding: .5em;
+    border: 2px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+p {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#socialContainer {
+    width: 570px;
+    padding: .5em;
+    margin: 0 auto 5px ;
+}
+
+#socialSpan {
+    margin-left: 340px;
+}
+
+#moreInfoContainer {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+}
+
+#moreInfoContainer h2 {
+    margin: 5px auto 0 20px;
+}
+
+#moreInfoContainer div {
+    display: inline-block;
+
+}
+
+#moreInfoContainer div h2 {
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#mainImage {
+    width: 600px;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#aA_text {
+    display: inline-block;
+    width: 80px;
+    color: red;
+}
+
+#footerLinks a {
+    padding: 0 1em 0;
+}
+
+.topBanner {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.bannerLink {
+    padding: .3em .8em;
+    border: 2px solid black;
+}
+
+.navBar {
+    display: flex;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    justify-content: space-around;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+}
+
+.logo {
+    border: 2px solid black;
+}
+
+/*
+#socialContainer {
+    width: 570px;
+    padding: .5em;
+    margin: 0 auto 5px ;
+    border: 1px solid black;
+}
+
+*/

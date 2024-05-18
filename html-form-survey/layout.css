@@ -1,0 +1,55 @@
+body {
+    font: 1rem "Fira Sans", sans-serif;
+}
+
+input {
+    font: 1rem "Fira Sans", sans-serif;
+}
+
+select {
+    font: 1rem "Fira Sans", sans-serif;
+}
+
+textarea {
+    font: 0.8rem "Fira Sans", sans-serif;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+}
+
+fieldset {
+    text-align: center;
+    width: 600px;
+}
+
+legend {
+    border: 1px solid black;
+    padding: 0.2em 0.5em;
+}
+
+label {
+    display: inline-block;
+    padding: 3px 0;
+}
+
+button {
+    margin-top: 5px;
+}
+
+#fieldset_legend {
+    text-align: left;
+}
+
+#inp_status {
+    display: inline-block;
+}
+
+#inp_date {
+    display: inline-block;
+}
+
+#textarea_label {
+    padding-right: 23%;
+}

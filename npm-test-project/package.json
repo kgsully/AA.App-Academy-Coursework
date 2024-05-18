@@ -1,0 +1,17 @@
+{
+  "name": "npm-test-project",
+  "version": "0.1.0",
+  "description": "A simple project to explore using npm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0"
+  },
+  "devDependencies": {
+    "mocha": "^10.4.0"
+  }
+}

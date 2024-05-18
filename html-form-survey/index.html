@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Programming Language Survey</title>
+        <link rel="stylesheet" href="layout.css">
+    </head>
+
+    <body>
+        <h1>Favorite Programming Language Survey</h1>
+
+        <form action="form-handling-url" method="post">
+            <fieldset>
+                <legend id="fieldset_legend">Add User</legend>
+
+                <div>
+                    <label for="firstName">First Name:</label>
+                    <br>
+                    <input type="text" id="firstName" name="first_name">
+                </div>
+
+                <div>
+                    <label for="lastName">Last Name:</label>
+                    <br>
+                    <input type="text" id="lastName" name="last_name">
+                </div>
+
+                <div>
+                    <label for="email">Email:</label>
+                    <br>
+                    <input type="email" id="email" name="email_address">
+                </div>
+
+                <div id="inp_status">
+                    <label for="status">Status:</label>
+                    <br>
+                    <select id="status" name="user_status">
+                        <option value="student">Student</option>
+                        <option value="teacher">Teacher</option>
+                        <option value="guest">Guest</option>
+                    </select>
+
+                </div>
+
+                <div id="inp_date">
+                    <label for="date">Date:</label>
+                    <br>
+                    <input type="date" id="date" name="date">
+                </div>
+
+                <div>
+                    <p>Choose your favorite language:</p>
+
+                    <input type="radio" id="favLang_html" name="favorite_language">
+                    <label for="favLang_html">HTML</label>
+
+                    <input type="radio" id="favLang_css" name="favorite_language">
+                    <label for="favLang_css">CSS</label>
+
+                    <input type="radio" id="favLang_js" name="favorite_language">
+                    <label for="favLang_js">JS</label>
+                </div>
+
+                <div>
+                    <label id="textarea_label" for="comments">Comments:</label>
+                    <br>
+                    <textarea id="comments" name="comments" rows="5" cols="30" style="resize:none" placeholder="Add comments here..."></textarea>
+                </div>
+
+                <div class="cont_checkboxes">
+                    <label style="max-width: 100px; word-wrap: break-word">
+                        <input type="checkbox" id="newsletter" name="newsletter" checked>
+                        Sign up &nbsp &nbsp &nbsp &nbsp for news
+                    </label>
+                    <label style="max-width: 100px; word-wrap: break-word">
+                        <input type="checkbox" id="agree" name="agree_to_terms">
+                        Agree to &nbsp terms
+                    </label>
+                </div>
+
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+
+            </fieldset>
+        </form>
+    </body>
+</html>
