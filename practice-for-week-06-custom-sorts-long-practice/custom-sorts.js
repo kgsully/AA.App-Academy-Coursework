@@ -94,7 +94,33 @@ function reverseBaseSort(arr) {
 
 function frequencySort(arr) {
   // Your code here
+  let freqObj = {};
+  for (let item of arr) {         // store array element and frequency it occurs in an object for sorting
+    if (freqObj[item]) {
+      freqObj[item] += 1;
+    } else {
+      freqObj[item] = 1;
+    }
+
+  }
+
+  return arr.sort((a, b) => {
+    let freqCompare = freqObj[a] - freqObj[b];
+
+    if (freqCompare === 0) return b - a;
+
+    return freqCompare;
+  });
+
 }
+
+// const arr1 = [1, 1, 2, 2, 2, 3];
+// const arr2 = [2, 3, 1, 3, 2];
+// const arr3 = [-1, 1, -6, 4, 5, -6, 1, 4, 1]
+
+// console.log(frequencySort(arr1));        // => [3, 1, 1, 2, 2, 2]
+// console.log(frequencySort(arr2));        // => [1, 3, 3, 2, 2]
+// console.log(frequencySort(arr3));        // => [5, -1, 4, 4, -6, -6, 1, 1, 1]
 
 module.exports = [
   oddEvenSort,
