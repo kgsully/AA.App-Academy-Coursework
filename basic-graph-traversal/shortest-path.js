@@ -31,6 +31,10 @@ function aShortestPath(start, end) {
                 queue.push(copyPath);
             }
         });
+        console.log("current path");
+        console.log(currentPath);
+        console.log("queue");
+        console.log(queue);
     }
 
     return false;
