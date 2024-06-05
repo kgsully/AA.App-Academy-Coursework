@@ -31,55 +31,38 @@ function findNeighbors(node, matrix) {
 
 function bfsPath(matrix, startNode, endValue) {
     // Your code here
-    const queue = [];
+    const queue = [[startNode]];
     const visited = new Set();
 
-    queue.push(startNode);
-    let path = [];
+    const traversed = [];
 
     while (queue.length > 0) {
 
-        path.push(queue.shift());
-        // console.log("Path:");
-        // console.log(path);
-        // console.log("");
+        let path = queue.shift();
 
         let currentNode = path[path.length -1];
-        // console.log("Current Node:");
-        // console.log(currentNode);
-        // console.log("");
 
         let row = currentNode[0];
         let column = currentNode[1];
 
-        if(matrix[row][column] === endValue) return path;
-
         if(!visited.has(currentNode.toString())) {
+
             visited.add(currentNode.toString());
-            // console.log("Visited:");
-            // console.log(visited);
+            traversed.push(currentNode)
+
+            if(matrix[row][column] === endValue) return traversed;
+
             let neighbors = findNeighbors(currentNode, matrix);
-            // console.log("neighbors:");
-            // console.log(neighbors);
-            // console.log(neighbors.length);
-            // console.log("");
 
-            for (let i = 0; i < neighbors.length; i++) {
-                if(!visited.has(neighbors[i].toString())) {
-                    queue.push(neighbors[i]);
+            neighbors.forEach((item) => {
+                if(!visited.has(item.toString())) {
+                    let pathCopy = [...path];
+                    pathCopy.push(item);
+                    queue.push(pathCopy);
                 }
-            }
-
-            // console.log("Path:");
-            // console.log(path);
-            // console.log("New Queue:");
-            // console.log(queue);
+            });
 
         }
-
-
-
-
     }
     return false;
 }
@@ -87,12 +70,12 @@ function bfsPath(matrix, startNode, endValue) {
 
 // ***** UNCOMMENT FOR LOCAL TESTING *****
 
-const matrix1 = [
-    [  1,  2,  3,  4 ],
-    [  5,  6,  7,  8 ],
-    [  9, 10, 11, 12 ],
-    [ 13, 14, 15, 16 ]
-];
+// const matrix1 = [
+//     [  1,  2,  3,  4 ],
+//     [  5,  6,  7,  8 ],
+//     [  9, 10, 11, 12 ],
+//     [ 13, 14, 15, 16 ]
+// ];
 
 // // // EXAMPLE TESTS #1. Tests for findNeighbors function
 // console.log(findNeighbors([1,1], matrix1)) // Finds all 4 neighbors from an
@@ -108,7 +91,7 @@ const matrix1 = [
 
 // EXAMPLE TESTS #2. Tests for bfsPath function
 
-console.log(bfsPath(matrix1, [0,0], 16)); // can traverse the entire matrix
+// console.log(bfsPath(matrix1, [0,0], 16)); // can traverse the entire matrix
 // returns an array of coordinates with no duplicates:
 
 // [
