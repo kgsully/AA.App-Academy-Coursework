@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My HTML Cheat Sheet</title>
+    </head>
+
+    <body>
+        <h1>My HTML Cheat Sheet</h1>
+
+        <h2>Headings</h2>
+        <p>
+            Headings from 'h1' to 'h6' identify blocks and sections. Every page must have one and ONLY one 'h1'.
+        </p>
+
+        <h2>Paragraphs</h2>
+        <p>
+            paragraphs of long-form text containing complete sentences go in 'p' tags.
+        </p>
+
+        <h2>Lists</h2>
+        <h3>Unordered Lists</h3>
+        <p>
+            Unordered lists are marked with bullet points and go in 'ul' tags. Each list item goes in an 'li' tag.
+        </p>
+        <h4>Types of Lists:</h4>
+        <ul>
+            <li>Unordered Lists ('ul')</li>
+            <li>Ordered Lists ('ol')</li>
+        </ul>
+        <h4>Polya's Problem Solving Framework</h4>
+        <ol>
+            <li>Understand the problem</li>
+            <li>Come up with a plan</li>
+            <li>Carry out the plan</li>
+            <li>Go back and improve your solution</li>
+        </ol>
+
+        <h2>Anchors (i.e. links)</h2>
+        <p>
+            Anchor tags create links to other pages. The URL goes in the 'href' attribute. According to "HTML for Dummies" -
+            'An anchor element is called an anchor because web designers can use it to "anchor" a URL to some text on a web page.'
+        </p>
+        <a href="https://duckduckgo.com">
+            Go to DuckDuckGo to search for more information.
+        </a>
+        <p>
+            Setting `target="_blank"` will open the link in a new window. See
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" target="_blank">
+                MDN
+            </a>
+            for more details.
+        </p>
+        <section>
+            <h2>Images</h2>
+            <p>
+                You can use the img tag to add images to your page. `src="PATH TO IMAGE"` sets the image location and `alt=""` will provide a text description should the image fail to load (or for a screen reader to interpret to aid visually impared users).
+            </p>
+
+            <img src="http://images.freeimages.com/images/premium/large-thumbs/2582/25827620-itty-bitty-kitty.jpg" alt="a cute kitty">
+            <img src="https://www.babyanimalzoo.com/wp-content/uploads/2011/10/cute-baby-hippo-tortoise-friends-pic-150x150.jpg" alt="a cute hippo">
+            <img src="http://wanderlord.com/wp-content/uploads/2015/11/Lemur-5-150x150.jpg" alt="a cute lemur">
+        </section>
+
+        <section>
+            <h2>Tables</h2>
+
+            <p>
+                Tables in HTML are great for displaying tabluar data, such as an address book or a list of product descriptions / prices.
+                Although tables are good for keeping things organized, they should only be used for displaying data, not for defining page layout.
+            </p>
+            <p>
+                Create the table using the 'table' tag.<br>
+                If the table has a header (that is, rows that should be considered as the column headers), you add a 'thead' tag.<br>
+                Then you add a 'tbody' tag which should contain the data of your table. <br>
+                If your table has a footer (that is, rows that summarize the tabular data) then you ad a 'tfoot' also.
+            </p>
+            <p>
+                Rows are added between the table "sections" using the table row ('tr') tag. <br>
+                In the rows, put 'th' elements and signify that it is a column or row header using the "scope" attribute.<br>
+                Use 'td' tags to hold the data.
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Insect</th>
+                        <th scope="col">Family</th>
+                        <th scope="col">Fact</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <th scope="row">Ladybug</th>
+                        <td>Coccinellidae</td>
+                        <td>Can eat more than 5,000 insects!</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Fruit flies</th>
+                        <td>Drosophilidae</td>
+                        <td>First living creatures in outer space!</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Caterpillars</th>
+                        <td>Heterobathiidae</td>
+                        <td>Have 12 eyes!</td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td>I had no idea!</td>
+                        <td>Those are neat!</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <section>
+            <h2>Other content section tags</h2>
+            <p>Here are some additional tags that are definitely useful to use. See the links below for their respective MDN references</p>
+            <ul>
+                <li>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article" alt="MDN article contents element reference">Article</a> element
+                </li>
+                <li>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer" alt="MDN footer contents element reference">Footer</a> element
+                </li>
+                <li>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header" alt="MDN header contents element reference">Header</a> element
+                </li>
+                <li>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav" alt="MDN Nav contents element reference">Nav</a> element
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Forms</h2>
+            <p>
+                The following articles on Mozilla Developer Network give good exposure to forms
+            </p>
+            <ul>
+                <li>
+                    <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Your_first_form" alt="MDN your first form reference">
+                        Your first form
+                    </a>
+                </li>
+                <li>
+                    <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/How_to_structure_a_web_form" alt="MDN how to structure a web form reference">
+                        How to structure a web form
+                    </a>
+                </li>
+                <li>
+                    <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/HTML5_input_types" alt="MDN The HTML5 input types reference">
+                        The HTML5 input types
+                    </a>
+                </li>
+                <li>
+                    <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Other_form_controls" alt="MDN Other form controls reference">
+                        Other form controls
+                    </a>
+                </li>
+                <li>
+                    <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation" alt="MDN client-side form validation reference">
+                        Client-side form validation
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+
+
+
+    </body>
+</html>
