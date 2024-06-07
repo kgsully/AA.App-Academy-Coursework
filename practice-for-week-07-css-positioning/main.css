@@ -1,0 +1,71 @@
+html, body {
+    font-family: sans-serif;
+}
+
+.container {
+    background-color: #2b2d2f;
+    position: relative;
+}
+
+.element {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 100px;
+    height: 280px;
+    font-size: 36px;
+}
+
+#yellow-box {
+    background-color: #ffff00;
+    /* Fill these in */
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 5;
+}
+
+#pink-box {
+    background-color: #ff69b4;
+    /* Fill these in */
+    position: relative;
+    bottom: 0;
+    left: -20px;
+    right: 0;
+    top: 0;
+    z-index: 0;
+}
+
+#blue-box {
+    background-color: #00eeee;
+    /* Fill these in */
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+    right: 0;
+    top: 50px;
+    z-index: 6;
+}
+
+#red-box {
+    background-color: #ff0000;
+    /* Fill these in */
+    position: fixed;
+    bottom: 0;
+    left: 200px;
+    right: 0;
+    top: 200px;
+    z-index: 2;
+}
+
+#orange-box {
+    background-color: #ffa500;
+    /* Fill these in */
+    position: sticky;
+    bottom: 0;
+    left: 270px;
+    right: 0;
+    top: 270px;
+    z-index: 5;
+}
