@@ -1,0 +1,223 @@
+/* Your code here */
+body {
+  font-family: 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  margin: 0px;
+}
+
+.header-nav__container {
+  background-color: #026AA7;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 4px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-nav__group {
+  padding: 0 3px;
+}
+
+#alerts {
+  background-color: #CF513D;
+}
+
+/* Supplied CSS follows. */
+.header-nav__group{
+  display: flex;
+}
+
+.team__container {
+  background-color: #f4f5f7;
+  padding: 32px;
+}
+
+.team__info {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 650px;
+  text-align: center;
+}
+
+.team__info > a {
+  color: #172b4d;
+  line-height: 20px;
+  font-weight: normal;
+}
+
+.tabbed-nav__container {
+  background-color: #f4f5f7;
+}
+
+.tabbed-nav__group {
+  border-bottom: 1px solid #dfe1e6;
+  display: flex;
+  justify-content: center;
+}
+
+.tabbed-nav__link {
+  background-color: white;
+  border: 1px solid #dfe1e6;
+  border-bottom: 0;
+  border-radius: 2px;
+  font-weight: bold;
+  line-height: 20px;
+  padding: 10px;
+  margin: 0 5px;
+  color: #172b4d;
+}
+
+.boards__container {
+  margin: 0 auto;
+  padding: 32px;
+  max-width: 1400px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.boards__sidebar {
+  background-color: #6c547b;
+  border-radius: 3px;
+  margin: 0 32px 32px 0;
+  padding: 0 20px 32px 20px;
+  max-height: 130px;
+  max-width: 180px;
+  width: 20%;
+  flex: 0 0 220px;
+}
+
+.boards__sidebar-content .title, a {
+  color: white;
+}
+
+.boards__sidebar-content .description {
+  color: lightblue;
+}
+
+.boards__group {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.boards__board {
+  background-color: hotpink;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-weight: bold;
+  height: 100px;
+  margin: 0 8px 16px;
+  max-width: 250px;
+  padding: 4px 8px;
+  position: relative;
+  color: white;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+}
+
+.board-1 {
+  background-image: url("./board-backgrounds/board-1-background.jpg");
+  background-size: cover;
+}
+
+.board-2 {
+  background-image: url("./board-backgrounds/board-2-background.jpg");
+  background-size: cover;
+}
+
+.board-3 {
+  background-image: url("./board-backgrounds/board-3-background.jpg");
+  background-size: cover;
+}
+
+@media screen and (max-width: 730px) {
+  /* Hide the header search input field. */
+  /* Hide the "Boards" text, but leave the boards icon. */
+  #search {
+    display: none;
+  }
+  .boards-label {
+    display: none;
+
+  }
+}
+
+@media screen and (max-width: 500px) {
+  /* Hide the header search input field. */
+  /* Hide the "Boards" text, but leave the boards icon. */
+  .tabbed-nav__group {
+    display: block;
+  }
+  .tabbed-nav__link {
+    display: block;
+
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 1280px) {
+  /* Hide the header search input field. */
+  /* Hide the "Boards" text, but leave the boards icon. */
+  .boards__board {
+    width: 33%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  /* Hide the header search input field. */
+  /* Hide the "Boards" text, but leave the boards icon. */
+  .boards__board {
+    width: 100%;
+    max-width: none;
+
+  }
+}
+
+.header-nav__button {
+  display: inline-flex;
+  border-radius: 3px;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  align-items: center;
+  text-align: center;
+  background-color: hsla(0,0%,100%,.3);
+  box-shadow: none;
+  color: #fff;
+  line-height: 32px;
+  margin: 0 4px 0 0;
+  transition: .1s ease;
+  white-space: nowrap;
+  padding: 8px;
+  height: 20px;
+}
+
+.header-nav__button#search > input {
+  border-style: none;
+  border: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.header-nav__button > .boards-label {
+  font-weight: 700;
+  padding-left: 4px;
+}
+
+.header-nav__trello-logo {
+  opacity: 0.5;
+  display: block;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  top: 5px;
+}
+
+ .header-nav__button > i{
+  width: 24px;
+}
