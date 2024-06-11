@@ -1,0 +1,131 @@
+.main {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-areas:
+        "main-featured sidebar"
+        "main-other sidebar"
+}
+
+.main__featured {
+    grid-area: main-featured;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "header header"
+        "article video";
+    margin-bottom: 60px;
+}
+
+.main__featured > h1 {
+    grid-area: header;
+    font-size: 30px;
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.main__featured article {
+    padding-right: 20px;
+}
+
+.main__featured .article__title {
+    font-size: 20px;
+    font-style: italic;
+}
+
+.article__header {
+    padding-left: 0;
+}
+
+.article__title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.main__featured .article__title {
+    margin-bottom: 25px;
+}
+
+.article__byline {
+    font-family: georgia,"times new roman",times,serif;
+    font-size: 14px;
+    color: #6f6f6f; /* dark gray */
+}
+
+.main__featured .article__byline {
+    margin-bottom: 25px;
+}
+
+.article__ul {
+    list-style: disc;
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+.article__li {
+    font-size: 14px;
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+
+.article__comments {
+    font-size: 12px;
+    color: #326891;
+}
+
+.main__featured > article {
+    grid-area: article;
+}
+
+.main__featured > .article__video {
+    grid-area: video;
+}
+
+.main__other-articles {
+    grid-area: main-other;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.main__other-articles article {
+    padding: 15px 0 50px 0;
+}
+
+.main__other-articles .article__byline {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.article-right {
+    border-left: 1px solid #e2e2e2;
+    padding-left: 10px;
+}
+
+.main__sidebar {
+    grid-area: sidebar;
+    padding-left: 20px;
+}
+
+.main__sidebar h1 {
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.main__sidebar h2 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.main__sidebar p {
+    padding-bottom: 15px;
+}
+
+.main__sidebar hr {
+    width: 100%;
+    color: #e2e2e2;; /* light gray */
+}

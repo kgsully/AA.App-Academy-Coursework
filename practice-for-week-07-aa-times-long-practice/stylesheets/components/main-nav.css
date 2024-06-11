@@ -1,0 +1,18 @@
+.main__nav {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+.main__nav__ul {
+    display: flex;
+}
+
+.main__nav__li {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.main__nav__li a {
+    font-weight: bold;
+}
