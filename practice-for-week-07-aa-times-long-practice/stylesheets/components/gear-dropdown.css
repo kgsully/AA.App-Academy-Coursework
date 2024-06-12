@@ -7,10 +7,14 @@
   padding: 0.5em;
   position: absolute;
   right: 5px;
-  top: 2.5em;
+  top: 3.5em;
+  z-index: 2;
   width: 200px;
 }
 
+.pref--hidden {
+  display:none;
+}
 
 .pref__section {
   border-top: 1px solid #dedede;

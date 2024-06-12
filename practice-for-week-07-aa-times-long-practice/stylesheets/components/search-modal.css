@@ -2,6 +2,9 @@
   margin-left: 10px;
 }
 
+.search-modal--hidden {
+  display: none;
+}
 
 .search-modal__input {
   border: 1px solid #dedede;

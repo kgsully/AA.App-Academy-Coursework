@@ -2,12 +2,17 @@
     display: grid;
     grid-template-columns: 70% 30%;
     grid-template-areas:
-        "main-featured sidebar"
-        "main-other sidebar"
+        "main sidebar";
+        /* "main-other sidebar" */
 }
 
+.main__left-col {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+}
 .main__featured {
-    grid-area: main-featured;
+
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
@@ -83,7 +88,7 @@
 }
 
 .main__other-articles {
-    grid-area: main-other;
+    /* grid-area: main-other; */
     display: grid;
     grid-template-columns: 40% 60%;
     border-top: 2px solid black;
@@ -107,6 +112,8 @@
 .main__sidebar {
     grid-area: sidebar;
     padding-left: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .main__sidebar h1 {
@@ -115,8 +122,11 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
-
-.main__sidebar h2 {
+.main__sidebar__operations {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.ops {
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -127,5 +137,58 @@
 
 .main__sidebar hr {
     width: 100%;
-    color: #e2e2e2;; /* light gray */
+    color: #e2e2e2; /* light gray */
+    margin-top: 10px;
 }
+
+.article__title__other {
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+.article__title__other {
+    padding-top: 0px;
+    padding-bottom: 5px;
+}
+
+.main__Sidebar__additional {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid #e2e2e2; /* light gray */
+}
+
+.main__Sidebar_additional1 {
+    border-right: 1px solid #e2e2e2; /* light gray */
+}
+
+.main__Sidebar_additional2 {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.main__Sidebar_additional2 article {
+    padding-left: 10px;
+
+}
+
+.article__byline__additional {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+@media screen and (max-width: 1200px) {
+    /* Hide the header search input field. */
+    /* Hide the "Boards" text, but leave the boards icon. */
+    .main {
+        grid-template-columns: 100%;
+        grid-template-areas: "main";
+    }
+
+    .main__sidebar {
+        display: none;
+    }
+  }

@@ -90,3 +90,19 @@
     color: #6f6f6f; /* dark gray */
     margin: 0 10px;
 }
+
+@media screen and (max-width: 1200px) {
+    /* Hide the header search input field. */
+    /* Hide the "Boards" text, but leave the boards icon. */
+    .main__nav {
+        display: none;
+    }
+  }
+
+@media screen and (max-width: 1000px) {
+    /* Hide the header search input field. */
+    /* Hide the "Boards" text, but leave the boards icon. */
+    .interests-bar {
+        display: none;
+    }
+}

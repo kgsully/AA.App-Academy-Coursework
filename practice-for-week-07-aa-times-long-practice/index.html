@@ -6,6 +6,7 @@
     <title>App Academy Times</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css">
     <link rel="stylesheet" href="./stylesheets/main-styles.css">
+    <script src="./scripts/event-handling.js"></script>
 </head>
 <body>
     <header>
@@ -17,6 +18,10 @@
                 <div class="masthead__menu-and-search__buttons">
                     <i class="fa fa-search"></i>
                 </div>
+                <div class="search-modal search-modal--hidden">
+                    <input type="search" class="search-modal__input" placeholder="Search">
+                    <button class="search-model__go">Go</button>
+                  </div>
             </div>
 
             <div class="masthead__actions">
@@ -24,6 +29,25 @@
                 <button>LOG IN</button>
                 <div class="masthead__actions__buttons">
                     <i class="fas fa-cog"></i>
+                </div>
+            </div>
+
+            <div class="pref pref--hidden">
+                <div class="pref__section">
+                  <div class="pref__section-header">Edition</div>
+                  <ul>
+                    <li class="pref__section-link"><a href="#">CSS</a></li>
+                    <li class="pref__section-link"><a href="#">HTML</a></li>
+                    <li class="pref__section-link"><a href="#">JavaScript</a></li>
+                    <li class="pref__section-link"><a href="#">Python</a></li>
+                  </ul>
+                </div>
+                <div class="pref__section">
+                  <div class="pref__section-header">Help</div>
+                  <ul>
+                    <li class="pref__section-link"><a href="#">FAQ</a></li>
+                    <li class="pref__section-link"><a href="#">Contact Us</a></li>
+                  </ul>
                 </div>
             </div>
 
@@ -119,22 +143,24 @@
     </header>
     <main>
         <div class="main">
-         <div class="main__featured">
-             <h1>How App Academy Students Change Their Lives</h1>
+        <div class="main__left-col">
+
+            <div class="main__featured">
+                <h1>How App Academy Students Change Their Lives</h1>
              <article class="article">
                  <header class="article__header">
                      <h1 class="article__title">App Academy Instructors on React & Redux</h1>
                      <h2 class="article__byline">
-                        By <span class="article__author">APP ACADEMY INSTRUCTIONAL TEAM</span>
+                         By <span class="article__author">APP ACADEMY INSTRUCTIONAL TEAM</span>
                      </h2>
-                </header>
-                <ul class="article__ul">
-                    <li class="article__li">
-                        It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test. On top of that, it provides a great developer experience, such as live code editing combined with a time traveling debugger.
-                    </li>
-                    <li class="article__li">
-                        The whole state of your app is stored in an object tree inside a single store.
-                        The only way to change the state tree is to emit an action, an object describing what happened. To specify how the actions transform the state tree, you write pure reducers.
+                    </header>
+                    <ul class="article__ul">
+                        <li class="article__li">
+                            It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test. On top of that, it provides a great developer experience, such as live code editing combined with a time traveling debugger.
+                        </li>
+                        <li class="article__li">
+                            The whole state of your app is stored in an object tree inside a single store.
+                            The only way to change the state tree is to emit an action, an object describing what happened. To specify how the actions transform the state tree, you write pure reducers.
                     </li>
                 </ul>
                 <span class="article__comments">1738 Comments</span>
@@ -143,10 +169,10 @@
                 <iframe src="https://player.vimeo.com/video/380193367" width="480"
                     height="280" frameborder="0" allow="autoplay; fullscreen"
                     allowfullscreen></iframe>
-                <p class="article__video__text">
-                    Warning: This video will make you want to change your career
-                </p>
-            </div>
+                    <p class="article__video__text">
+                        Warning: This video will make you want to change your career
+                    </p>
+                </div>
             </div>
             <div class="main__other-articles">
                 <article class="article">
@@ -174,11 +200,12 @@
                     </article>
                 </div>
             </div>
+        </div>
             <div class="main__sidebar">
                 <h1 class="main__sidebar__h1">Opinions</h1>
                 <article class="article">
                     <header class="article__header">
-                        <h2 class="article__byline">
+                        <h2 class="article__byline ops">
                             By <span class="article__author">Breakfast the Cat</span>
                         </h2>
                         <h2 class="article__title">Will Javascript ever be as easy as Python? </h2>
@@ -195,8 +222,8 @@
                 <article class="article">
                     <header class="article__header">
                         <h2 class="article__title">App Academy New York Has A Brand New Office</h2>
-                        <h2 class="article__byline">
-                            By <span class="article__author">By NY OPERATIONS</span>
+                        <h2 class="article__byline ops">
+                            By <span class="article__author">NY OPERATIONS</span>
                         </h2>
                     </header>
                     <p>
@@ -205,10 +232,82 @@
 
                     <span class="article__comments">299 Comments</span>
                 </article>
-            </div>
-        </div>
 
-    </main>
-    <footer></footer>
-</body>
-</html>
+                <div class ="main__Sidebar__additional">
+
+                    <div class="main__Sidebar_additional1">
+                        <article class="article">
+                            <header class="article__header">
+                                <h2 class="article__byline__additional">
+                                    <span class="article__author__other">Torvalds</span>
+                                </h2>
+                                <h2 class="article__title__other">When I Was Almost Wrong</h2>
+                        </header>
+                    </article>
+                    <hr>
+                    <article class="article">
+                        <header class="article__header">
+                            <h2 class="article__byline__additional">
+                                <span class="article__author__other">Knuth</span>
+                            </h2>
+                            <h2 class="article__title__other">Art of Programming</h2>
+                        </header>
+                    </article>
+                    <hr>
+                    <article class="article">
+                        <header class="article__header">
+                            <h2 class="article__byline__additional">
+                                <span class="article__author__other">Lovelace</span>
+                            </h2>
+                            <h2 class="article__title__other">The First Algorithm</h2>
+                        </header>
+                    </article>
+                    <hr>
+                    <article class="article">
+                        <header class="article__header">
+                            <h2 class="article__byline__additional">
+                                <span class="article__author__other">Hopper</span>
+                            </h2>
+                            <h2 class="article__title__other">The First Bug</h2>
+                        </header>
+                    </article>
+                    </div>
+                    <div class="main__Sidebar_additional2">
+                        <article class="article">
+                            <header class="article__header">
+                                <h2 class="article__byline__additional">
+                                    <span class="article__author__other">Thompson</span>
+                                </h2>
+                                <h2 class="article__title__other">Go C Unix</h2>
+                            </header>
+                        </article>
+                        <hr>
+                        <article class="article">
+                            <header class="article__header">
+                                <h2 class="article__byline__additional">
+                                    <span class="article__author__other">Carmack</span>
+                                </h2>
+                                <h2 class="article__title__other">My Virtual Reality</h2>
+                            </header>
+                        </article>
+                        <hr>
+                        <article class="article">
+                            <header class="article__header">
+                                <h2 class="article__byline__additional">
+                                    <span class="article__author__other">Stallman</span>
+                                </h2>
+                                <h2 class="article__title__other">Free Speech Not Free Coffee</h2>
+                            </header>
+                        </article>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>  <!-- MAIN -->
+
+        </main>
+        <footer></footer>
+    </body>
+    </html>
