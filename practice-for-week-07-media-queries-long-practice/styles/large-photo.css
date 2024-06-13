@@ -1,0 +1,46 @@
+body {
+    background-color: #1d3e81;
+    color: #E8EFF0;
+    text-align: center;
+}
+img {
+    width: 50%;
+}
+a {
+    color: #E8EFF0;
+}
+
+a.backButton {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    z-index: 1;
+    text-decoration: none;
+}
+
+/* Your code here */
+
+@media print {
+    body {
+        display: flex;
+        flex-direction: column;
+        color: black;
+    }
+
+    h1 {
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    img {
+        width: 100%;
+        order: 1;
+        padding-top: 0;
+        margin-top: 0;
+    }
+
+    .notPrinted {
+        display: none;
+    }
+
+}

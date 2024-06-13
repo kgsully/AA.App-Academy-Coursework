@@ -1,0 +1,80 @@
+.photo-card {
+    background-color: #1d3e81;
+    color: #E8EFF0;
+    padding: 0.5rem 2rem 1.5rem 2rem;
+    border-radius: 2rem;
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+
+.photo-card a {
+    color: #E8EFF0;
+}
+.photo-card img {
+    width: 100%;
+}
+
+.photo-card p {
+    text-align: justify;
+}
+
+.photo-card .content {
+    display: block;
+    text-align: center;
+}
+
+/* Your code here */
+@media screen and ((min-width: 601px) and (max-width: 900px)), screen and (min-width: 1201px), print {
+
+    .photo-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 4fr 1fr;
+        grid-template-areas:
+            "title ."
+            "content content"
+            "link .";
+    }
+
+    .photo-card a {
+        grid-area: link;
+        text-align: left;
+        padding-top: 1em;
+    }
+
+    .photo-card h3 {
+        grid-area: title;
+        text-align: left;
+    }
+
+    .photo-card .content {
+        grid-area: content;
+        display: flex;
+    }
+
+    .photo-card p {
+        margin-left: 2em;
+    }
+
+    .photo-card img {
+        width: 250px;
+
+    }
+}
+
+
+@media screen and (min-width: 901px) {
+
+    .photography-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: .5em;
+
+    }
+
+    .animation-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: .5em;
+    }
+}
