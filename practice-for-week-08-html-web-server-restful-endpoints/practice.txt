@@ -1,0 +1,58 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Instructions
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Determine an endpoint for each of the following use cases. Don't worry about getting it perfect as this is just practice!
+
+For example, to access the home page of a site, the RESTful endpoint could be GET / or GET /home.
+
+Remember, HTML web servers should only accept requests with methods of GET and POST only! They cannot accept PUT, PATCH or DELETE requests.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Scenarios:
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+Access the home page
+    GET /
+    GET /home
+
+Submit a contact form
+    POST /contact-form
+
+Access the posts page
+    GET /posts
+
+Access the edit page for a post
+    GET /posts/:post-id/edit
+
+Access the create page for a post
+    GET /posts/new
+
+Create a new user
+    GET /users/new
+
+Log In
+    POST /login
+
+Log Out
+    POST /logout
+
+Access the comments for a post page
+    GET /posts/:post-id/comments
+
+Access the create page for a post's comment
+    GET /posts/:post-id/comments/new
+
+Access the edit page for a comment
+    GET /comments/:comment-id/edit
+
+Submit a like for a post
+    POST /posts/:post-id
+
+Delete a like for a post
+    POST /posts/:post-id/delete
+
+Access all the posts of a user
+    GET /posts/:user-id
+
+Submit a search on posts
+    POST /posts
