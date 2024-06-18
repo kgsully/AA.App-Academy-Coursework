@@ -54,28 +54,28 @@ const server = http.createServer((req, res) => {
       // dog ID
       if (req.url.startsWith('/dogs')) {
 
-          const reqArr = req.url.split('/');
+        const reqArr = req.url.split('/');
 
-          if (reqArr.length === '/dogs/:dogID'.split('/').length) {
+        if (reqArr.length === '/dogs/:dogID'.split('/').length) {
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'text/plain');
+
+          let urlEnd = reqArr.pop();
+          if(urlEnd === 'new') {
+            return res.end('Dog create form page');
+          } else return res.end(`Dog details for ${urlEnd}`);
+        }
+
+        if (reqArr.length === '/dogs/:dogID/edit'.split('/').length) {
+          let urlEnd = reqArr.pop();
+          let  id = reqArr.pop();
+          if (urlEnd === 'edit') {
             res.statusCode = 200;
             res.setHeader('Content-Type', 'text/plain');
-
-            let urlEnd = reqArr.pop();
-            if(urlEnd === 'new') {
-              return res.end('Dog create form page');
-            } else return res.end(`Dog details for ${urlEnd}`);
-          }
-
-          if (reqArr.length === '/dogs/:dogID/edit'.split('/').length) {
-            let urlEnd = reqArr.pop();
-            let  id = reqArr.pop();
-            if (urlEnd === 'edit') {
-              res.statusCode = 200;
-              res.setHeader('Content-Type', 'text/plain');
-              return res.end(`Dog edit form page for ${id}`);
-            }
+            return res.end(`Dog edit form page for ${id}`);
           }
         }
+      }
     }
 
     // POST METHODS
