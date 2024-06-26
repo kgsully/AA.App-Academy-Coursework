@@ -2,3 +2,4 @@ node_modules/
 cypress/plugins
 cypress/screenshots
 cypress/support
+db/database.sqlite
