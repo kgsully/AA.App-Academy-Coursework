@@ -263,13 +263,12 @@ Response components:
 Request components:
 
 - Method: POST
-- URL: /albums
+- URL: /artists/:artistId/albums
 - Headers: Content-Type: application/json
 - Body: json format of album details for album and associated artist
   ``` json
   {
-    "name": "Smash",
-    "artistId": 2
+    "name": "Smash"
   }
   ```
 
@@ -297,7 +296,6 @@ Request components:
   ``` json
   {
     "name": "Ixnay on the Hombre",
-    "artistId": 2
   }
   ```
 
@@ -476,7 +474,7 @@ Request components:
 
 Response components:
 
-- Status code: 200
+- Status code: 201
 - Headers: Content-Type: application/json
 - Body: json response containing song info for the newly created song
   ``` json

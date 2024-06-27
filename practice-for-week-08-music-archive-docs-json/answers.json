@@ -1,0 +1,418 @@
+{
+  "1": {
+    "endpoint": "Get all the artists",
+    "request": {
+      "method": "GET",
+      "URL": "/artists",
+      "headers": false,
+      "body": false
+    },
+    "response": {
+      "headers":
+      {
+        "Content-Type": "application/json"
+      },
+      "statusCode": 200,
+      "body":
+      [
+        {
+          "artistId": 1,
+          "name": "Red Hot Chili Peppers"
+        }
+      ]
+    }
+  },
+  "2": {
+    "endpoint": "Get a specific artist's details based on artistId",
+    "request": {
+      "method": "GET",
+      "URL": "/artists/:artistId",
+      "headers": false,
+      "body": false
+    },
+    "response": {
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "statusCode": 200,
+      "body": {
+        "name": "Red Hot Chili Peppers",
+        "artistId": 1,
+        "albums": [
+            {
+                "name": "Stadium Arcadium",
+                "albumId": 1,
+                "artistId": 1
+            }
+        ]
+      }
+    }
+  },
+  "3": {
+    "endpoint": "Add an artist",
+    "request": {
+      "method": "POST",
+      "URL": "/artists",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "name": "The Offspring"
+      }
+    },
+    "response": {
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "statusCode": 201,
+      "body": {
+        "name": "The Offspring",
+        "artistId": 2
+      }
+    }
+  },
+  "4": {
+    "endpoint": "Edit a specified artist by artistId",
+    "request": {
+      "method": "PATCH",
+      "URL": "/artists/:artistId",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "name": "Stone Temple Pilots"
+      }
+    },
+    "response": {
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "statusCode": 200,
+      "body": {
+        "name": "Stone Temple Pilots",
+        "artistId": 2,
+        "updatedAt": "TIMESTAMP"
+      }
+    }
+  },
+  "5": {
+    "endpoint": "Delete a specified artist by artistId",
+    "request": {
+      "method": "DELETE",
+      "URL": "/artists/:artistId",
+      "headers": false,
+      "body": false
+    },
+    "response": {
+      "headers": {
+        "Content-Type":"application/json"
+      },
+      "statusCode": 200,
+      "body": {
+        "message": "Sucessfully deleted"
+      }
+    }
+  },
+  "6": {
+    "endpoint": "Get all albums of a specific artist based on artistId",
+    "request": {
+      "method": "GET",
+      "URL": "/artists/:artistId/albums",
+      "headers": false,
+      "body": false
+    },
+    "response": {
+      "headers": {
+        "Content-Type":"application/json"
+      },
+      "statusCode": 200,
+      "body": [
+        {
+            "name": "Stadium Arcadium",
+            "albumId": 1,
+            "artistId": 1
+        }
+      ]
+    }
+  },
+  "7": {
+    "endpoint": "Get a specific album's details based on albumId",
+    "request": {
+      "method": "GET",
+      "URL": "/albums/:albumId",
+      "headers": false,
+      "body": false
+    },
+    "response": {
+      "headers": {
+        "Content-Type":"application/json"
+      },
+      "statusCode": 200,
+      "body": {
+        "name": "Stadium Arcadium",
+        "albumId": 1,
+        "artistId": 1,
+        "artist": {
+            "name": "Red Hot Chili Peppers",
+            "artistId": 1
+        },
+        "songs": [
+            {
+                "name": "Dani California",
+                "lyrics": "Getting born in the state of Mississippi\nPapa was a copper, and her mama was a hippy\nIn Alabama she would swing a hammer\nPrice you got to pay when you break the panorama\nShe never knew that there was anything more than poor\nWhat in the world does your company take me for?\nBlack bandanna, sweet Louisiana\nRobbing on a bank in the state of Indiana\nShe's a runner\nRebel, and a stunner\nOn her merry way saying baby, watcha gonna?\nLooking down the barrel of a hot metal forty-five\nJust another way to survive\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nShe's a lover, baby, and a fighter\nShould've seen it coming when I got a little brighter\nWith a name like Dani California\nDay was gonna come when I was gonna mourn ya\nA little loaded, she was stealing another breath\nI love my baby to death\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nWho knew the other side of you?\nWho knew that others died to prove?\nToo true to say goodbye to you\nToo true to say, say, say\nPushed the fader, gifted animator\nOne for the now, and eleven for the later\nNever made it up to Minnesota\nNorth Dakota man\nWasn't gunnin' for the quota\nDown in the Badlands she was saving the best for last\nIt only hurts when I laugh\nGone too fast\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah",
+                "trackNumber": 1,
+                "songId": 1,
+                "createdAt": "2024-06-26T19:49:23.000Z",
+                "updatedAt": "2024-06-26T19:49:23.000Z",
+                "albumId": 1
+            }
+        ]
+      }
+    }
+  },
+  "8": {
+    "endpoint": "Add an album to a specific artist based on artistId",
+    "request": {
+      "method": "POST",
+      "URL": "/artists/:artistId/albums",
+      "headers": {
+        "Content-Type":"application/json"
+      },
+      "body": {
+        "name": "Smash"
+      }
+    },
+    "response": {
+      "headers": {
+        "Content-Type":"application/json"
+      },
+      "statusCode": 201,
+      "body": {
+        "name": "Smash",
+        "albumId": 2,
+        "artistId": 2
+      }
+    }
+  },
+  "9": {
+    "endpoint": "Edit a specified album by albumId",
+    "request": {
+      "method": "PATCH",
+      "URL": "/albums/:albumId",
+      "headers": {
+        "Content-Type":"application/json"
+      },
+      "body": {
+        "name": "Ixnay on the Hombre"
+      }
+    },
+    "response": {
+      "headers": {
+        "Content-Type":"application/json"
+      },
+      "statusCode": 200,
+      "body": {
+        "name": "Ixnay on the Hombre",
+        "albumId": 2,
+        "artistId": 2,
+        "updatedAt": "2024-06-26T20:22:21.022Z"
+      }
+    }
+  },
+  "10": {
+    "endpoint": "Delete a specified album by albumId",
+    "request": {
+      "method": "DELETE",
+      "URL": "/albums/:albumId",
+      "headers": false,
+      "body": false
+    },
+    "response": {
+      "headers": {
+        "Content-Type":"application/json"
+      },
+      "statusCode": 200,
+      "body": {
+        "message": "Sucessfully deleted"
+      }
+    }
+  },
+  "11": {
+    "endpoint": "Get all songs of a specific artist based on artistId",
+    "request": {
+      "method": "GET",
+      "URL": "/artists/:artistId/songs",
+      "headers": false,
+      "body": false
+    },
+    "response": {
+      "headers": {
+        "Content-Type":"application/json"
+      },
+      "statusCode": 200,
+      "body": [
+        {
+            "name": "Dani California",
+            "lyrics": "Getting born in the state of Mississippi\nPapa was a copper, and her mama was a hippy\nIn Alabama she would swing a hammer\nPrice you got to pay when you break the panorama\nShe never knew that there was anything more than poor\nWhat in the world does your company take me for?\nBlack bandanna, sweet Louisiana\nRobbing on a bank in the state of Indiana\nShe's a runner\nRebel, and a stunner\nOn her merry way saying baby, watcha gonna?\nLooking down the barrel of a hot metal forty-five\nJust another way to survive\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nShe's a lover, baby, and a fighter\nShould've seen it coming when I got a little brighter\nWith a name like Dani California\nDay was gonna come when I was gonna mourn ya\nA little loaded, she was stealing another breath\nI love my baby to death\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nWho knew the other side of you?\nWho knew that others died to prove?\nToo true to say goodbye to you\nToo true to say, say, say\nPushed the fader, gifted animator\nOne for the now, and eleven for the later\nNever made it up to Minnesota\nNorth Dakota man\nWasn't gunnin' for the quota\nDown in the Badlands she was saving the best for last\nIt only hurts when I laugh\nGone too fast\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah",
+            "trackNumber": 1,
+            "songId": 1,
+            "albumId": 1
+        }
+      ]
+    }
+  },
+  "12": {
+    "endpoint": "Get all songs of a specific album based on albumId",
+    "request": {
+      "method": "GET",
+      "URL": "/albums/:albumId/songs",
+      "headers": false,
+      "body": false
+    },
+    "response": {
+      "headers": {
+        "Content-Type":"application/json"
+      },
+      "statusCode": 200,
+      "body": [
+        {
+            "name": "Dani California",
+            "lyrics": "Getting born in the state of Mississippi\nPapa was a copper, and her mama was a hippy\nIn Alabama she would swing a hammer\nPrice you got to pay when you break the panorama\nShe never knew that there was anything more than poor\nWhat in the world does your company take me for?\nBlack bandanna, sweet Louisiana\nRobbing on a bank in the state of Indiana\nShe's a runner\nRebel, and a stunner\nOn her merry way saying baby, watcha gonna?\nLooking down the barrel of a hot metal forty-five\nJust another way to survive\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nShe's a lover, baby, and a fighter\nShould've seen it coming when I got a little brighter\nWith a name like Dani California\nDay was gonna come when I was gonna mourn ya\nA little loaded, she was stealing another breath\nI love my baby to death\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nWho knew the other side of you?\nWho knew that others died to prove?\nToo true to say goodbye to you\nToo true to say, say, say\nPushed the fader, gifted animator\nOne for the now, and eleven for the later\nNever made it up to Minnesota\nNorth Dakota man\nWasn't gunnin' for the quota\nDown in the Badlands she was saving the best for last\nIt only hurts when I laugh\nGone too fast\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah",
+            "trackNumber": 1,
+            "songId": 1,
+            "albumId": 1
+        }
+      ]
+    }
+  },
+  "13": {
+    "endpoint": "Get all songs of a specified trackNumber",
+    "request": {
+      "method": "GET",
+      "URL": "/trackNumbers/:trackNumber/songs",
+      "headers": false,
+      "body": false
+    },
+    "response": {
+      "headers": {
+        "Content-Type":"application/json"
+      },
+      "statusCode": 200,
+      "body": [
+        {
+            "name": "Dani California",
+            "lyrics": "Getting born in the state of Mississippi\nPapa was a copper, and her mama was a hippy\nIn Alabama she would swing a hammer\nPrice you got to pay when you break the panorama\nShe never knew that there was anything more than poor\nWhat in the world does your company take me for?\nBlack bandanna, sweet Louisiana\nRobbing on a bank in the state of Indiana\nShe's a runner\nRebel, and a stunner\nOn her merry way saying baby, watcha gonna?\nLooking down the barrel of a hot metal forty-five\nJust another way to survive\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nShe's a lover, baby, and a fighter\nShould've seen it coming when I got a little brighter\nWith a name like Dani California\nDay was gonna come when I was gonna mourn ya\nA little loaded, she was stealing another breath\nI love my baby to death\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nWho knew the other side of you?\nWho knew that others died to prove?\nToo true to say goodbye to you\nToo true to say, say, say\nPushed the fader, gifted animator\nOne for the now, and eleven for the later\nNever made it up to Minnesota\nNorth Dakota man\nWasn't gunnin' for the quota\nDown in the Badlands she was saving the best for last\nIt only hurts when I laugh\nGone too fast\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah",
+            "trackNumber": 1,
+            "songId": 1,
+            "albumId": 1
+        }
+      ]
+    }
+  },
+  "14": {
+    "endpoint": "Get a specific song's details based on songId",
+    "request": {
+      "method": "GET",
+      "URL": "/songs/:songId",
+      "headers": false,
+      "body": false
+    },
+    "response": {
+      "headers": {
+        "Content-Type":"application/json"
+      },
+      "statusCode": 200,
+      "body": {
+        "name": "Dani California",
+        "lyrics": "Getting born in the state of Mississippi\nPapa was a copper, and her mama was a hippy\nIn Alabama she would swing a hammer\nPrice you got to pay when you break the panorama\nShe never knew that there was anything more than poor\nWhat in the world does your company take me for?\nBlack bandanna, sweet Louisiana\nRobbing on a bank in the state of Indiana\nShe's a runner\nRebel, and a stunner\nOn her merry way saying baby, watcha gonna?\nLooking down the barrel of a hot metal forty-five\nJust another way to survive\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nShe's a lover, baby, and a fighter\nShould've seen it coming when I got a little brighter\nWith a name like Dani California\nDay was gonna come when I was gonna mourn ya\nA little loaded, she was stealing another breath\nI love my baby to death\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nWho knew the other side of you?\nWho knew that others died to prove?\nToo true to say goodbye to you\nToo true to say, say, say\nPushed the fader, gifted animator\nOne for the now, and eleven for the later\nNever made it up to Minnesota\nNorth Dakota man\nWasn't gunnin' for the quota\nDown in the Badlands she was saving the best for last\nIt only hurts when I laugh\nGone too fast\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah",
+        "trackNumber": 1,
+        "songId": 1,
+        "albumId": 1,
+        "album": {
+            "name": "Stadium Arcadium",
+            "albumId": 1,
+            "artistId": 1
+        },
+        "artist": {
+            "name": "Red Hot Chili Peppers",
+            "artistId": 1
+        }
+      }
+    }
+  },
+  "15": {
+    "endpoint": "Add a song to a specific album based on albumId",
+    "request": {
+      "method": "POST",
+      "URL": "/albums/:albumId/songs",
+      "headers": {
+        "Content-Type":"application/json"
+      },
+      "body": {
+        "name": "Self Esteem",
+        "lyrics": "She wrote me off for the 10th time today\nI'm practicing all the things I should say\nWhen she came over I lost my nerve\nI took her back and made her desert\nOh I know I'm being used\nbut that's OK man cuz I like the abuse\nI know she's playing with me\nBut that's OK cuz I've got no self esteem...",
+        "trackNumber": 1
+      }
+    },
+    "response": {
+      "headers": {
+        "Content-Type":"application/json"
+      },
+      "statusCode": 201,
+      "body": {
+        "name": "Self Esteem",
+        "lyrics": "She wrote me off for the 10th time today\nI'm practicing all the things I should say\nWhen she came over I lost my nerve\nI took her back and made her desert\nOh I know I'm being used\nbut that's OK man cuz I like the abuse\nI know she's playing with me\nBut that's OK cuz I've got no self esteem...",
+        "trackNumber": 1,
+        "songId": 2,
+        "albumId": 3
+      }
+    }
+  },
+  "16": {
+    "endpoint": "Edit a specified song by songId",
+    "request": {
+      "method": "PATCH",
+      "URL": "/songs/:songId",
+      "headers": {
+        "Content-Type":"application/json"
+      },
+      "body": {
+        "name": "Self Esteem",
+        "lyrics": "She wrote me off for the 10th time today\nI'm practicing all the things I should say\nWhen she came over I lost my nerve\nI took her back and made her desert\nOh I know I'm being used\nbut that's OK man cuz I like the abuse\nI know she's playing with me\nBut that's OK cuz I've got no self esteem...",
+        "trackNumber": 2
+      }
+    },
+    "response": {
+      "headers": {
+        "Content-Type":"application/json"
+      },
+      "statusCode": 200,
+      "body": {
+        "name": "Self Esteem",
+        "lyrics": "She wrote me off for the 10th time today\nI'm practicing all the things I should say\nWhen she came over I lost my nerve\nI took her back and made her desert\nOh I know I'm being used\nbut that's OK man cuz I like the abuse\nI know she's playing with me\nBut that's OK cuz I've got no self esteem...",
+        "trackNumber": 2,
+        "songId": 2,
+        "albumId": 3,
+        "updatedAt": "2024-06-26T20:43:06.979Z"
+      }
+    }
+  },
+  "17": {
+    "endpoint": "Delete a specified song by songId",
+    "request": {
+      "method": "DELETE",
+      "URL": "/songs/:songId",
+      "headers": false,
+      "body": false
+    },
+    "response": {
+      "headers": {
+        "Content-Type":"application/json"
+      },
+      "statusCode": 200,
+      "body": {
+        "message": "Sucessfully deleted"
+      }
+    }
+  }
+}
