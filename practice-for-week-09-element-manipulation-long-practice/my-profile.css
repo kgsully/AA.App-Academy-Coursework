@@ -1,0 +1,18 @@
+.details-container {
+    border: 2px solid darkgreen;
+    width: 80%;
+    margin-left: 1rem;
+}
+
+.name {
+    color: darkgreen;
+}
+
+.detail:hover {
+    color: darkgreen;
+    font-weight: bold;
+}
+
+.main__content__p {
+    margin-left: 2rem;
+}
