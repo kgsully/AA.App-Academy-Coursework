@@ -1,0 +1,51 @@
+/* Your code here */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#btn-reset {
+    font-size: 1.1rem;
+}
+
+.game-over-msg {
+    font-size: 1.2rem;
+    margin: 0.5rem 0rem;
+    visibility: hidden;
+}
+
+#grid-container {
+    justify-items: center;
+    grid-gap: .2rem;
+    /* disallow text selection on grid items */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+
+}
+
+.grid-element {
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    transition-property: background-color;
+    transition-duration: 0.3s;
+}
+
+.hover-enabled:hover {
+    background-color: lightgray;
+}
+
+.hit {
+    background-color: green;
+}
+
+.miss {
+    background-color: red;
+}
