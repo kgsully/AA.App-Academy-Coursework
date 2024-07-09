@@ -1,0 +1,65 @@
+/* Your code here */
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* disallow selection */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+#button-container {
+    width: 30rem;
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0;
+}
+
+.btn-bottom {
+    font-size: 1.3rem;
+}
+
+.cell {
+    background-color: white;
+    width: var(--cell-width);
+    height: var(--cell-height);
+    transition-property: background-color;
+    transition-duration: 0.3s;
+}
+
+.cell__hover-enabled:hover {
+    background-color: lightgray;
+}
+
+#div-winner {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: darkgreen;
+}
+
+#grid-container {
+    display: grid;
+    grid-gap: 4px;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: black;
+    margin: 2rem 0;
+
+    /* define variables for cell / image sizes */
+    --cell-width: 6rem;
+    --cell-height: 6rem;
+}
+
+h1 {
+    border: 1px solid black;
+    padding: 0.6rem 1rem;
+}
+
+img {
+    width: var(--cell-width);
+    height: var(--cell-height);
+}
