@@ -1,4 +1,6 @@
 import { createMainContent, enableEventListeners } from './main.js';
+import { createScoreContent } from './score.js';
+import { createCommentsContent } from './comments.js'
 
 const initializePage = () => {
     // Create container
@@ -15,4 +17,6 @@ window.onload = () => {
     initializePage();
     createMainContent();
     enableEventListeners();
+    createScoreContent();
+    createCommentsContent();
 };

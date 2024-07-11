@@ -14,41 +14,18 @@ export const createMainContent = () => {
     img.style.margin = "20px";
     img.style.maxWidth = "750px";
 
-    // Create div for user interactive items (score, upvote/downvote/comment etc.)
-    const userDiv = document.createElement('div');
-    userDiv.innerHTML = `
-                        <p>Popularity Score:
-                            <span id="score">X</span>
-                        </p>
-                        <button id="upvote" type="button" style="margin-right: 0.5rem";>Upvote</button>
-                        <button id="downvote" type="button" style="margin-left: 0.5rem";>Downvote</button>
-                        <div style="margin: 1rem 0;>
-                            <label for="comment">Comment:</label>
-                            <input type="text" id="comment-field" name="comment" placeholder="Add a comment...">
-                            <button id="submit" type="button" style="margin: 0 1rem;">Submit</button>
-                        </div>
-                        `;
-    userDiv.style.margin = "0";
-    userDiv.style.textAlign = "center";
-
-    // create text area
-    const comments = document.createElement("textarea");
-    comments.id = "comments";
-
     const container = document.querySelector(".container");
     container.appendChild(h1);
     container.appendChild(btnNewCat);
     container.appendChild(img);
-    container.appendChild(userDiv);
-    container.appendChild(comments);
 
     fetchImage();
 };
 
 export const enableEventListeners = () => {
     // Create event listener for new cat button
-    const newCat = document.getElementById("btn-new-cat");
-    newCat.addEventListener("click", fetchImage);
+    const btnNewCat = document.getElementById("btn-new-cat");
+    btnNewCat.addEventListener("click", newCat);
 };
 
 const fetchImage = async () => {
@@ -64,3 +41,14 @@ const fetchImage = async () => {
         console.log("Failed to fetch image", e);
     }
 };
+
+const newCat = () => {
+    // Reset score when a new cat is fetched
+    const score = document.getElementById("score");
+    score.innerText = "0";
+
+    const comments = document.getElementById("comment-display");
+    comments.innerHTML = "";
+
+    fetchImage();
+}
