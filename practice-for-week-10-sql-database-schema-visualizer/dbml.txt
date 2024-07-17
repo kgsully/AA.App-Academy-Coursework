@@ -1,0 +1,16 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table kids {
+  id integer [primary key]
+  name text
+  age number
+}
+
+Table toys {
+  id integer [primary key]
+  name text
+  kid_id integer
+}
+
+Ref: kids.id > toys.kid_id
