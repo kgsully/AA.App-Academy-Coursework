@@ -1,0 +1,11 @@
+View the list of tables:
+.tables ?TABLE?  List names of tables matching LIKE pattern TABLE
+
+View the table schema:
+.schema ?PATTERN? Show the CREATE statements matching PATTERN
+
+Read an sql file in to configure tables, etc
+.read FILENAME
+
+Turn on table column headers
+.headers on

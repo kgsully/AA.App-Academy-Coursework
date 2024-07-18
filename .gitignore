@@ -3,4 +3,5 @@ cypress/plugins
 cypress/screenshots
 cypress/support
 db/database.sqlite
+*.db
 *.zip
