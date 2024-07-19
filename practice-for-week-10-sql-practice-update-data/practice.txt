@@ -1,0 +1,68 @@
+SQL Commands and responses -
+
+-------------------------------------------------
+Initialize
+-------------------------------------------------
+sqlite> .read seed-data.sql
+1|Amy|Pond
+2|Rose|Tyler
+3|Morgan|Jones
+4|Shannon|Noble
+5|River|Song
+
+
+-------------------------------------------------
+Step 1: Update last name
+-------------------------------------------------
+sqlite> UPDATE friends
+   ...> SET last_name = 'Blue'
+   ...> WHERE first_name = 'Amy'
+   ...> AND last_name = 'Pond';
+
+sqlite> SELECT * FROM friends;
+1|Amy|Blue
+2|Rose|Tyler
+3|Morgan|Jones
+4|Shannon|Noble
+5|River|Song
+
+-------------------------------------------------
+Step 2: Silent failure
+-------------------------------------------------
+sqlite> UPDATE friends
+   ...> SET last_name = 'Smith'
+   ...> WHERE first_name = 'Tyler'
+   ...> AND last_name = 'Rose';
+
+sqlite> SELECT * FROM friends;
+1|Amy|Blue
+2|Rose|Tyler
+3|Morgan|Jones
+4|Shannon|Noble
+5|River|Song
+
+--> No change to data in the table because record with first name 'Tyler' and last name 'Rose' does not exist.
+
+-------------------------------------------------
+Bonus: Trigger an UPDATE error
+-------------------------------------------------
+sqlite> UPDATE friends
+   ...> SET last_name = NULL
+   ...> WHERE id = 5;
+Error: stepping, NOT NULL constraint failed: friends.last_name (19)
+
+--> This error happens because the column constraint defined by the schema requires NOT NULL
+
+Resolve the error - Without changing the database schema,
+                    is there another way to change friend 5 so they only have a first name?
+
+sqlite> UPDATE friends
+   ...> SET last_name = ''
+   ...> WHERE id = 5;
+
+sqlite> SELECT * FROM friends;
+1|Amy|Blue
+2|Rose|Tyler
+3|Morgan|Jones
+4|Shannon|Noble
+5|River|
