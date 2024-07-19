@@ -1,0 +1,48 @@
+SQL Commands and response results -
+
+---------------------------------------------------------------------
+Step 1: Delete one row by primary key
+---------------------------------------------------------------------
+sqlite> SELECT * FROM puppies WHERE id = 9;
+9|Leinni|1|Miniature Schnauzer|25|1
+
+sqlite> DELETE FROM puppies WHERE id = 9;
+
+sqlite> SELECT * FROM puppies;
+1|Cooper|1|Miniature Schnauzer|18|1
+2|Indie|0.5|Yorkshire Terrier|13|1
+3|Kota|0.7|Australian Shepherd|26|0
+4|Zoe|0.8|Korean Jindo|32|1
+5|Charley|1.5|Basset Hound|25|0
+6|Ladybird|0.6|Labradoodle|20|1
+7|Callie|0.9|Corgi|16|0
+8|Jaxson|0.4|Beagle|19|1
+10|Max|1.6|German Shepherd|65|0
+
+---------------------------------------------------------------------
+Step 2: Delete several rows with matching condition
+---------------------------------------------------------------------
+sqlite> SELECT * FROM puppies WHERE microchipped = 0;
+3|Kota|0.7|Australian Shepherd|26|0
+5|Charley|1.5|Basset Hound|25|0
+7|Callie|0.9|Corgi|16|0
+10|Max|1.6|German Shepherd|65|0
+
+sqlite> DELETE FROM puppies WHERE microchipped = 0;
+
+sqlite> SELECT * FROM puppies;
+1|Cooper|1|Miniature Schnauzer|18|1
+2|Indie|0.5|Yorkshire Terrier|13|1
+4|Zoe|0.8|Korean Jindo|32|1
+6|Ladybird|0.6|Labradoodle|20|1
+8|Jaxson|0.4|Beagle|19|1
+
+---------------------------------------------------------------------
+Step 3: Final result
+---------------------------------------------------------------------
+sqlite> SELECT * FROM puppies;
+1|Cooper|1|Miniature Schnauzer|18|1
+2|Indie|0.5|Yorkshire Terrier|13|1
+4|Zoe|0.8|Korean Jindo|32|1
+6|Ladybird|0.6|Labradoodle|20|1
+8|Jaxson|0.4|Beagle|19|1
