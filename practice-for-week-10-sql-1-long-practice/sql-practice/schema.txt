@@ -1,0 +1,17 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table customers {
+  id integer [primary key, increment]
+  name varchar(40) [not null, unique,]
+  phone varchar(10) 
+  email varchar(255)
+  points integer [default: 5]
+  created_at timestamp [not null, default: `now()`]
+}
+
+Table coffee_orders {
+  id integer [primary key, increment]
+  is_redeemed boolean [default: false]
+  ordered_at timestamp [not null, default: `now()`]
+} 
