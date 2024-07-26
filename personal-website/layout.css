@@ -1,0 +1,203 @@
+/*------------------------------------------------------------------------*/
+/*                      PAGE GENERAL LAYOUT / STYLE                       */
+/*------------------------------------------------------------------------*/
+
+html {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/*------------------------------------------------------------------------*/
+/*                      PAGE HEADER LAYOUT / STYLE                        */
+/*------------------------------------------------------------------------*/
+
+heading {
+    position: sticky;
+    top: 0;
+}
+
+#heading-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #537A5A; /* Fern Green */
+}
+
+h1 {
+    display: inline-block;
+    color: #2C302E; /* Jet */
+    font-size: 40px;
+    margin: 0 0 0 10px;
+}
+
+#header-img {
+    height: 60px;
+    width: 60px;
+    margin-right: 15px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #2C302E; /* Jet */
+}
+
+.nav-link-container {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: 5px 0;
+}
+
+.nav-link-container:hover {
+    background-color: #474A48; /* Outer Space */
+}
+
+.nav-link-container a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align:center;
+    color: #E4EEE4; /* Mint Cream */
+    text-decoration: none;
+}
+
+.nav-link-container a:hover {
+    color: #9AE19D; /* Celadon */
+}
+
+.nav-link-container .current-page {
+    text-decoration: underline;
+}
+
+/*------------------------------------------------------------------------*/
+/*                      PAGE BODY LAYOUT / STYLE                          */
+/*------------------------------------------------------------------------*/
+
+body {
+    background-color: #E4EEE4; /* Mint Cream */
+}
+
+#welcome-h2 {
+    margin-left: 30px;
+    color: #2C302E; /* Jet */
+}
+
+#contact-h2 {
+    margin-left: 30px;
+    color: #2C302E; /* Jet */
+}
+
+#welcome-content {
+    display: flex;
+    align-items:flex-start;
+    color: #474A48; /* Outer Space */
+}
+
+#welcome-content p {
+    display: inline-block;
+    margin-right: 45px;
+    color: #474A48; /* Outer Space */
+}
+
+h3 {
+    font-size: 16px;
+}
+
+#headshot {
+    width: 150px;
+    height: 150px;
+    margin: 0 20px 0 45px;
+    box-shadow: 5px 5px 3px #474A48; /* Outer Space */
+}
+
+#body-text-content{
+    margin-left: 30px;
+    color: #2C302E; /* Jet */
+}
+
+#body-text-content p {
+    display: inline-block;
+    margin: 0 45px 0 15px;
+    color: #474A48; /* Outer Space */
+}
+
+#body-text-content a {
+    color: #474A48; /* Outer Space */
+}
+
+#body-text-content a:visited {
+    color: #537A5A; /* Fern Green */
+}
+
+#body-text-content a:hover {
+    color: #9AE19D; /* Celadon */
+}
+
+#linkedin-profile {
+    display: inline-block;
+    margin: 0 0 15px 15px;
+}
+
+.photo-container-h2 {
+    margin-left: 30px;
+}
+
+.photo-container-3x3 {
+    justify-content: center;
+    display: grid;
+    margin-top:30px;
+    grid-template-columns: 300px 300px 300px;
+    grid-template-rows: 300px 300px 300px;
+}
+
+.photo-container-3x2 {
+    justify-content: center;
+    display: grid;
+    margin-top:30px;
+    grid-template-columns: 300px 300px 300px;
+    grid-template-rows: 300px 300px;
+}
+
+.photo-container-3x3 label, .photo-container-3x2 label {
+    text-align: center;
+    color: #474A48; /* Outer Space */
+}
+
+.pic-personal {
+    width: 275px;
+    height: 275px;
+}
+
+#contact-container {
+    display: flex;
+    justify-content: center;
+}
+
+#contact-form-fieldset {
+    color: #474A48; /* Outer Space */
+}
+
+.contact-input {
+    margin: 10px 0;
+}
+
+/*------------------------------------------------------------------------*/
+/*                      PAGE FOOTER LAYOUT / STYLE                        */
+/*------------------------------------------------------------------------*/
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 99%;
+    text-align: right;
+    background-color: #537A5A; /* Fern Green */
+}
+
+#copyright-text {
+    margin: 5px 10px 5px 0;
+    font-weight: bold;
+    color: #2C302E; /* Jet */
+}

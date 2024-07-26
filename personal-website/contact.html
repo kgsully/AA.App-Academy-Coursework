@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="layout.css">
+        <title>Ken S. - Home</title>
+    </head>
+
+    <heading>
+
+        <div id="heading-banner">
+            <h1 class="heading-h1">Ken S.</h1>
+            <img id="header-img" src="assets/header-img-light.png">
+        </div>
+
+        <nav>
+            <div class="nav-link-container">
+                <a href="home.html">Home</a>
+            </div>
+            <div class="nav-link-container">
+                <a href="professional.html">Professional</a>
+            </div>
+            <div class="nav-link-container">
+                <a href="personal.html">Personal</a>
+            </div>
+            <div class="nav-link-container">
+                <a class= "current-page" href="contact.html">Contact</a>
+            </div>
+        </nav>
+    </heading>
+
+    <body>
+        <h2 id="contact-h2">Contact Me</h2>
+        <div id="contact-container">
+            <form action="mailto:ks.sw.projects@gmail.com?subject=Contact via Profile Website" method="post" enctype="text/plain">
+                <fieldset id="contact-form-fieldset">
+                    <legend>Send a Message</legend>
+                    <div class="contact-input">
+                        <label for="contact-name">Your Name:</label>
+                        <br>
+                        <input type="text" id="contact-name" name="contact_name" placeholder="First / Last">
+                    </div>
+
+                    <div class="contact-input">
+                        <label for="contact-email">Your Email:</label>
+                        <br>
+                        <input type="text" id="contact-email" name="contact_email" placeholder="abc@xyz.com">
+                    </div>
+
+                    <div class="contact-input">
+                        <label for="contact-message">Message:</label>
+                        <br>
+                        <textarea id="contact-message" rows="10" cols="50" style="resize:none" placeholder="Your message here..." name="contact_message"></textarea>
+                    </div>
+
+                    <div class="contact-input">
+                        <label for="linkedin">
+                            <input type="checkbox" id="linkedin" name="viewed_linkedin" value="yes">
+                        Viewed LinkedIn Profile
+                        </label>
+                    </div>
+
+                    <div class="contact-input">
+                        <button type="submit">Submit</button>
+                        &nbsp &nbsp
+                        <button type="reset">Reset</button>
+                    </div>
+
+                </fieldset>
+
+
+
+
+
+            </form>
+
+        </div>
+
+    </body>
+
+    <footer>
+        <div id="copyright-text">© Ken S. 2024</div>
+    </footer>
+
+</html>
