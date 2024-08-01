@@ -3,5 +3,6 @@ cypress/plugins
 cypress/screenshots
 cypress/support
 db/database.sqlite
+package-lock.json
 *.db
 *.zip
