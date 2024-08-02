@@ -1,0 +1,20 @@
+Step 1: Generate a migration file -
+        Used the command
+        > npx sequelize-cli migration:generate --name create-color
+        to generate the migration for this Step
+
+Step 4: Run the migration -
+        Used the command
+        > dotenv npx sequelize-cli db:migrate
+        to run the migration that was created in step 1, and configured in steps 2 and 3.
+        'dotenv' was used in order for npx to use the environment variable(s) defined in the .env file
+        when the command was executed.
+
+Step 5: Validate the table creation -
+        Validation from sqlite3:
+
+        sqlite> .tables
+        Colors         SequelizeMeta
+
+        sqlite> .schema Colors
+        CREATE TABLE `Colors` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` VARCHAR(50));
