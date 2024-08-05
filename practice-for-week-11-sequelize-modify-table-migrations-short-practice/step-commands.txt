@@ -1,0 +1,331 @@
+Getting started
+Use sequelize-cli to run the existing migrations and seeder files.
+Use sqlite3 to check that Colors, Cats, and Games tables all exist in your database and have seed data present.
+
+Commands / Output (run from ./server):
+
+    ❯ dotenv npx sequelize-cli db:migrate
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.2.0, ORM: 6.37.3]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM `sqlite_master` WHERE type='table' and name!='sqlite_sequence';
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): CREATE TABLE IF NOT EXISTS `SequelizeMeta` (`name` VARCHAR(255) NOT NULL UNIQUE PRIMARY KEY);
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20211013211216-create-color: migrating =======
+    Executed (default): CREATE TABLE IF NOT EXISTS `Colors` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` VARCHAR(20) NOT NULL, `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): INSERT INTO `SequelizeMeta` (`name`) VALUES ($1); {"$1":"20211013211216-create-color.js"}
+    == 20211013211216-create-color: migrated (0.011s)
+
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20211013211725-create-cat: migrating =======
+    Executed (default): CREATE TABLE IF NOT EXISTS `Cats` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` VARCHAR(255), `weight` FLOAT, `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): INSERT INTO `SequelizeMeta` (`name`) VALUES ($1); {"$1":"20211013211725-create-cat.js"}
+    == 20211013211725-create-cat: migrated (0.006s)
+
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20211013232719-create-game: migrating =======
+    Executed (default): CREATE TABLE IF NOT EXISTS `Games` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` VARCHAR(255), `numPlayers` INTEGER, `estPlayTime` INTEGER, `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): INSERT INTO `SequelizeMeta` (`name`) VALUES ($1); {"$1":"20211013232719-create-game.js"}
+    == 20211013232719-create-game: migrated (0.005s)
+
+    ❯ dotenv npx sequelize-cli db:seed:all
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.2.0, ORM: 6.37.3]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): CREATE TABLE IF NOT EXISTS `SequelizeData` (`name` VARCHAR(255) NOT NULL UNIQUE PRIMARY KEY);
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20211013232807-base-colors: migrating =======
+    Executed (default): INSERT INTO `Colors` (`id`,`name`,`createdAt`,`updatedAt`) VALUES (NULL,'red','2024-08-05 20:18:29.311 +00:00','2024-08-05 20:18:29.311 +00:00'),(NULL,'blue','2024-08-05 20:18:29.311 +00:00','2024-08-05 20:18:29.311 +00:00'),(NULL,'yellow','2024-08-05 20:18:29.311 +00:00','2024-08-05 20:18:29.311 +00:00');
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): INSERT INTO `SequelizeData` (`name`) VALUES ($1); {"$1":"20211013232807-base-colors.js"}
+    == 20211013232807-base-colors: migrated (0.020s)
+
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20211013232842-base-cats: migrating =======
+    Executed (default): INSERT INTO `Cats` (`id`,`name`,`weight`,`createdAt`,`updatedAt`) VALUES (NULL,'Jasper','12','2024-08-05 20:18:29.328 +00:00','2024-08-05 20:18:29.328 +00:00'),(NULL,'Marcy','16','2024-08-05 20:18:29.328 +00:00','2024-08-05 20:18:29.328 +00:00'),(NULL,'Princess','8','2024-08-05 20:18:29.328 +00:00','2024-08-05 20:18:29.328 +00:00');
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): INSERT INTO `SequelizeData` (`name`) VALUES ($1); {"$1":"20211013232842-base-cats.js"}
+    == 20211013232842-base-cats: migrated (0.006s)rt a new record for a cat
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20211013232933-base-games: migrating =======
+    Executed (default): INSERT INTO `Games` (`id`,`name`,`numPlayers`,`estPlayTime`,`createdAt`,`updatedAt`) VALUES (NULL,'Root',4,90,'2024-08-05 20:18:29.337 +00:00','2024-08-05 20:18:29.337 +00:00'),(NULL,'Scythe',5,115,'2024-08-05 20:18:29.337 +00:00','2024-08-05 20:18:29.337 +00:00'),(NULL,'The Resistance',10,30,'2024-08-05 20:18:29.337 +00:00','2024-08-05 20:18:29.337 +00:00');
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): INSERT INTO `SequelizeData` (`name`) VALUES ($1); {"$1":"20211013232933-base-games.js"}
+    == 20211013232933-base-games: migrated (0.006s)
+
+    sqlite> .tables
+    Cats           Colors         Games          SequelizeData  SequelizeMeta
+    sqlite> SELECT * FROM Colors
+    ...> ;
+    1|red|2024-08-05 20:18:29.311 +00:00|2024-08-05 20:18:29.311 +00:00
+    2|blue|2024-08-05 20:18:29.311 +00:00|2024-08-05 20:18:29.311 +00:00
+    3|yellow|2024-08-05 20:18:29.311 +00:00|2024-08-05 20:18:29.311 +00:00
+
+    sqlite> SELECT * FROM Cats;
+    1|Jasper|12.0|2024-08-05 20:18:29.328 +00:00|2024-08-05 20:18:29.328 +00:00
+    2|Marcy|16.0|2024-08-05 20:18:29.328 +00:00|2024-08-05 20:18:29.328 +00:00
+    3|Princess|8.0|2024-08-05 20:18:29.328 +00:00|2024-08-05 20:18:29.328 +00:00
+
+    sqlite> SELECT * FROM Games;
+    1|Root|4|90|2024-08-05 20:18:29.337 +00:00|2024-08-05 20:18:29.337 +00:00
+    2|Scythe|5|115|2024-08-05 20:18:29.337 +00:00|2024-08-05 20:18:29.337 +00:00
+    3|The Resistance|10|30|2024-08-05 20:18:29.337 +00:00|2024-08-05 20:18:29.337 +00:00
+
+Step 1: Add a column
+Use sequelize-cli and the migration:generate command to generate a new migration called add-age-to-cats.
+Utilize the queryInterface to add a column to the Cats table. This column should be called age and store floating-point numbers.
+Be sure to include a corresponding action in the down key in order to reverse your actions if the migration is undone.
+
+Command / Output (run from ./server):
+    ❯ npx sequelize-cli migration:generate --name add-age-to-cats
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.2.0, ORM: 6.37.3]
+
+    migrations folder at "/home/ken/Documents/App Academy/aa-coursework/practice-for-week-11-sequelize-modify-table-migrations-short-practice/server/db/migrations" already exists.
+    New migration was created at /home/ken/Documents/App Academy/aa-coursework/practice-for-week-11-sequelize-modify-table-migrations-short-practice/server/db/migrations/20240805202159-add-age-to-cats.js .
+
+Run the migration and use sqlite3 to check that the schema of the table now includes this new column.
+
+Command / Output (run from ./server & sqlite3 dev.db):
+
+❯ dotenv npx sequelize-cli db:migrate
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.2.0, ORM: 6.37.3]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM `sqlite_master` WHERE type='table' and name!='sqlite_sequence';
+    Executed (default): PRAGMA TABLE_INFO(`SequelizeMeta`);
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): PRAGMA foreign_key_list(`SequelizeMeta`)
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20240805202159-add-age-to-cats: migrating =======
+    Executed (default): ALTER TABLE `Cats` ADD `age` FLOAT(3,1);
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): INSERT INTO `SequelizeMeta` (`name`) VALUES ($1); {"$1":"20240805202159-add-age-to-cats.js"}
+    == 20240805202159-add-age-to-cats: migrated (0.009s)
+
+    sqlite> SELECT * FROM Cats;
+    id|name|weight|createdAt|updatedAt|age
+    1|Jasper|12.0|2024-08-05 20:18:29.328 +00:00|2024-08-05 20:18:29.328 +00:00|
+    2|Marcy|16.0|2024-08-05 20:18:29.328 +00:00|2024-08-05 20:18:29.328 +00:00|
+    3|Princess|8.0|2024-08-05 20:18:29.328 +00:00|2024-08-05 20:18:29.328 +00:00|
+    -----> NOTE: age column added to the end ^
+
+Insert a new record for a cat Marcy, weight 12.2, age 4.5. Check that this record is now present in the table.
+
+Commands / Output (sqlite3 dev.db):
+    sqlite> INSERT INTO Cats (name, weight, age) VALUES ('Marcy', 12.2, 4.5);
+
+    sqlite> SELECT * FROM Cats;
+    id|name|weight|createdAt|updatedAt|age
+    1|Jasper|12.0|2024-08-05 20:18:29.328 +00:00|2024-08-05 20:18:29.328 +00:00|
+    2|Marcy|16.0|2024-08-05 20:18:29.328 +00:00|2024-08-05 20:18:29.328 +00:00|
+    3|Princess|8.0|2024-08-05 20:18:29.328 +00:00|2024-08-05 20:18:29.328 +00:00|
+    4|Marcy|12.2|2024-08-05 20:42:11|2024-08-05 20:42:11|4.5
+
+Step 2: Add a column constraint
+Use sequelize-cli and the migration:generate command to generate a new migration called add-unique-constraint-to-color-names
+
+Command / Output (run from ./server):
+
+    ❯ npx sequelize-cli migration:generate --name add-unique-constraint-to-color-names
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.2.0, ORM: 6.37.3]
+
+    migrations folder at "/home/ken/Documents/App Academy/aa-coursework/practice-for-week-11-sequelize-modify-table-migrations-short-practice/server/db/migrations" already exists.
+    New migration was created at /home/ken/Documents/App Academy/aa-coursework/practice-for-week-11-sequelize-modify-table-migrations-short-practice/server/db/migrations/20240805204505-add-unique-constraint-to-color-names.js .
+
+Run the migration and use sqlite3 to check that the schema of the table now includes this column constraint.
+
+Command / Output (run from ./server):
+    ❯ dotenv npx sequelize-cli db:migrate
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.2.0, ORM: 6.37.3]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM `sqlite_master` WHERE type='table' and name!='sqlite_sequence';
+    Executed (default): PRAGMA TABLE_INFO(`SequelizeMeta`);
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): PRAGMA foreign_key_list(`SequelizeMeta`)
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20240805204505-add-unique-constraint-to-color-names: migrating =======
+    Executed (default): SELECT sql FROM sqlite_master WHERE tbl_name='Colors';
+    Executed (default): PRAGMA TABLE_INFO(`Colors`);
+    Executed (default): PRAGMA INDEX_LIST(`Colors`)
+    Executed (default): PRAGMA foreign_key_list(`Colors`)
+    Executed (default): CREATE TABLE `Colors_backup` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` VARCHAR(20) NOT NULL, `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, CONSTRAINT `constraint_colors_name_unique` UNIQUE (`name`));
+    Executed (default): INSERT INTO `Colors_backup` SELECT `id`, `name`, `createdAt`, `updatedAt` FROM `Colors`;
+    Executed (default): DROP TABLE `Colors`;
+    Executed (default): ALTER TABLE `Colors_backup` RENAME TO `Colors`;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): INSERT INTO `SequelizeMeta` (`name`) VALUES ($1); {"$1":"20240805204505-add-unique-constraint-to-color-names.js"}
+    == 20240805204505-add-unique-constraint-to-color-names: migrated (0.017s)
+
+Insert a new record for a color red. This record should not be accepted since the seeder file already inserted a color with this name.
+
+Command / Output (run from sqlite3 dev.db):
+
+    sqlite> SELECT * FROM Colors;
+    1|red|2024-08-05 20:18:29.311 +00:00|2024-08-05 20:18:29.311 +00:00
+    2|blue|2024-08-05 20:18:29.311 +00:00|2024-08-05 20:18:29.311 +00:00
+    3|yellow|2024-08-05 20:18:29.311 +00:00|2024-08-05 20:18:29.311 +00:00
+
+    sqlite> INSERT INTO Colors (name) VALUES ('red');
+    Runtime error: UNIQUE constraint failed: Colors.name (19)
+
+Step 3: Rename and remove columns
+Use sequelize-cli and the migration:generate command to generate a new migration called rename-games-numPlayers-and-remove-estPlayTime.
+Utilize the queryInterface to perform two actions. First, rename the numPlayers column to maxPlayers. Next, remove the estPlayTime column.
+Update the Game model in models/game.js to reflect these attribute changes.
+
+Commands / Output (run from ./server & sqlite3 dev.db):
+    ❯ npx sequelize-cli migration:generate --name rename-games-numPlayers-and-remove-estPlayTime
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.2.0, ORM: 6.37.3]
+
+    migrations folder at "/home/ken/Documents/App Academy/aa-coursework/practice-for-week-11-sequelize-modify-table-migrations-short-practice/server/db/migrations" already exists.
+    New migration was created at /home/ken/Documents/App Academy/aa-coursework/practice-for-week-11-sequelize-modify-table-migrations-short-practice/server/db/migrations/20240805205431-rename-games-numPlayers-and-remove-estPlayTime.js .
+
+Run the migration and use sqlite3 to check that the schema of the table now includes this column constraint.
+
+Commands / Output (run from ./server & sqlite3 dev.db):
+
+    ❯ dotenv npx sequelize-cli db:migrate
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.2.0, ORM: 6.37.3]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM `sqlite_master` WHERE type='table' and name!='sqlite_sequence';
+    Executed (default): PRAGMA TABLE_INFO(`SequelizeMeta`);
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): PRAGMA foreign_key_list(`SequelizeMeta`)
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20240805205431-rename-games-numPlayers-and-remove-estPlayTime: migrating =======
+    Executed (default): PRAGMA TABLE_INFO(`Games`);
+    Executed (default): PRAGMA INDEX_LIST(`Games`)
+    Executed (default): PRAGMA foreign_key_list(`Games`)
+    Executed (default): CREATE TABLE IF NOT EXISTS `Games_backup` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255), `estPlayTime` INTEGER, `createdAt` DATETIME NOT NULL DEFAULT 'CURRENT_TIMESTAMP', `updatedAt` DATETIME NOT NULL DEFAULT 'CURRENT_TIMESTAMP', `maxPlayers` INTEGER);
+    Executed (default): INSERT INTO `Games_backup` SELECT `id`, `name`, `estPlayTime`, `createdAt`, `updatedAt`, `numPlayers` AS `maxPlayers` FROM `Games`;
+    Executed (default): DROP TABLE `Games`;
+    Executed (default): CREATE TABLE IF NOT EXISTS `Games` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255), `estPlayTime` INTEGER, `createdAt` DATETIME NOT NULL DEFAULT 'CURRENT_TIMESTAMP', `updatedAt` DATETIME NOT NULL DEFAULT 'CURRENT_TIMESTAMP', `maxPlayers` INTEGER);
+    Executed (default): INSERT INTO `Games` SELECT `id`, `name`, `estPlayTime`, `createdAt`, `updatedAt`, `maxPlayers` FROM `Games_backup`;
+    Executed (default): DROP TABLE `Games_backup`;
+    Executed (default): PRAGMA TABLE_INFO(`Games`);
+    Executed (default): PRAGMA INDEX_LIST(`Games`)
+    Executed (default): PRAGMA foreign_key_list(`Games`)
+    Executed (default): CREATE TABLE IF NOT EXISTS `Games_backup` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255), `createdAt` DATETIME NOT NULL DEFAULT 'CURRENT_TIMESTAMP', `updatedAt` DATETIME NOT NULL DEFAULT 'CURRENT_TIMESTAMP', `maxPlayers` INTEGER);
+    Executed (default): INSERT INTO `Games_backup` SELECT `id`, `name`, `createdAt`, `updatedAt`, `maxPlayers` FROM `Games`;
+    Executed (default): DROP TABLE `Games`;
+    Executed (default): CREATE TABLE IF NOT EXISTS `Games` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255), `createdAt` DATETIME NOT NULL DEFAULT 'CURRENT_TIMESTAMP', `updatedAt` DATETIME NOT NULL DEFAULT 'CURRENT_TIMESTAMP', `maxPlayers` INTEGER);
+    Executed (default): INSERT INTO `Games` SELECT `id`, `name`, `createdAt`, `updatedAt`, `maxPlayers` FROM `Games_backup`;
+    Executed (default): DROP TABLE `Games_backup`;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): INSERT INTO `SequelizeMeta` (`name`) VALUES ($1); {"$1":"20240805205431-rename-games-numPlayers-and-remove-estPlayTime.js"}
+    == 20240805205431-rename-games-numPlayers-and-remove-estPlayTime: migrated (0.029s)
+
+    sqlite> .headers on
+    sqlite> SELECT * FROM Games;
+    id|name|createdAt|updatedAt|maxPlayers
+    1|Root|2024-08-05 20:18:29.337 +00:00|2024-08-05 20:18:29.337 +00:00|4
+    2|Scythe|2024-08-05 20:18:29.337 +00:00|2024-08-05 20:18:29.337 +00:00|5
+    3|The Resistance|2024-08-05 20:18:29.337 +00:00|2024-08-05 20:18:29.337 +00:00|10
+    -----> NOTE: Now have a column 'maxPlayers' and no longer have a column 'estPlayTime' ^
