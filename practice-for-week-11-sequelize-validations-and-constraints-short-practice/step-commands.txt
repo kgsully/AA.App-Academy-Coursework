@@ -1,0 +1,145 @@
+Step 1: Test the migration without changes
+Use sequelize-cli to run the migration as is, creating the Colors table. You'll notice that the migration currently only indicates a type for the name column, with no other constraints.
+
+Command: (from server directory)
+    dotenv npx sequelize-cli db:migrate
+
+Output:
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM `sqlite_master` WHERE type='table' and name!='sqlite_sequence';
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): CREATE TABLE IF NOT EXISTS `SequelizeMeta` (`name` VARCHAR(255) NOT NULL UNIQUE PRIMARY KEY);
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20211011170805-create-color: migrating =======
+    Executed (default): CREATE TABLE IF NOT EXISTS `Colors` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` VARCHAR(20), `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): INSERT INTO `SequelizeMeta` (`name`) VALUES ($1); {"$1":"20211011170805-create-color.js"}
+    == 20211011170805-create-color: migrated (0.009s)
+
+Use sqlite3 to make the following insertion statements.
+Commands / Output:
+    sqlite> INSERT INTO Colors (name) VALUES('red');
+    sqlite> INSERT INTO Colors (name) VALUES('red');
+    sqlite> INSERT INTO Colors (name) VALUES(NULL);
+    sqlite> INSERT INTO Colors (name) VALUES('a');
+    sqlite> INSERT INTO Colors (name) VALUES('orangey');
+
+    sqlite> SELECT * FROM Colors;
+    1|red|2024-08-05 18:40:53|2024-08-05 18:40:53
+    2|red|2024-08-05 18:41:09|2024-08-05 18:41:09
+    3||2024-08-05 18:41:18|2024-08-05 18:41:18
+    4|a|2024-08-05 18:41:34|2024-08-05 18:41:34
+    5|orangey|2024-08-05 18:41:44|2024-08-05 18:41:44
+
+Step 2: Modify the migration file
+Use sequelize-cli to undo the migration.
+
+Command: (run from ./server)
+    dotenv npx sequelize-cli db:migrate:undo:all
+
+Output:
+    Sequelize CLI [Node: 16.20.2, CLI: 6.2.0, ORM: 6.37.3]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM `sqlite_master` WHERE type='table' and name!='sqlite_sequence';
+    Executed (default): PRAGMA TABLE_INFO(`SequelizeMeta`);
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): PRAGMA foreign_key_list(`SequelizeMeta`)
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20211011170805-create-color: reverting =======
+    Executed (default): DROP TABLE IF EXISTS `Colors`;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): DELETE FROM `SequelizeMeta` WHERE `name` = '20211011170805-create-color.js'
+    == 20211011170805-create-color: reverted (0.007s)
+
+Command / Output:
+    sqlite> SELECT * FROM Colors;
+    Parse error: no such table: Colors
+
+Step 2: Modify the migration file
+Rerun the migration with sequelize-cli. Try to do the same insertions with sqlite3 as in the previous step.
+The second and third insertion statements should result in an error due to the database-level constraints you created.
+The fourth and fifth insertion statements should still be accepted by the database.
+
+Command / Output (run from ./server):
+    ❯ dotenv npx sequelize-cli db:migrate
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.2.0, ORM: 6.37.3]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM `sqlite_master` WHERE type='table' and name!='sqlite_sequence';
+    Executed (default): PRAGMA TABLE_INFO(`SequelizeMeta`);
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): PRAGMA foreign_key_list(`SequelizeMeta`)
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20211011170805-create-color: migrating =======
+    Executed (default): CREATE TABLE IF NOT EXISTS `Colors` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` VARCHAR(20) NOT NULL UNIQUE, `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): INSERT INTO `SequelizeMeta` (`name`) VALUES ($1); {"$1":"20211011170805-create-color.js"}
+    == 20211011170805-create-color: migrated (0.010s)
+
+Command / Output (sqlite3 dev.db):
+    sqlite> INSERT INTO Colors (name) VALUES ('red');
+    sqlite> INSERT INTO Colors (name) VALUES ('red');
+    Runtime error: UNIQUE constraint failed: Colors.name (19)
+    sqlite> INSERT INTO Colors (name) VALUES (NULL);
+    Runtime error: NOT NULL constraint failed: Colors.name (19)
+    sqlite> INSERT INTO Colors (name) VALUES ('a');
+    sqlite> INSERT INTO Colors (name) VALUES ('orangey');
+    sqlite> SELECT * FROM Colors;
+    1|red|2024-08-05 18:49:34|2024-08-05 18:49:34
+    2|a|2024-08-05 18:49:49|2024-08-05 18:49:49
+    3|orangey|2024-08-05 18:49:54|2024-08-05 18:49:54
+
+Bonus Step 5: Insert directly into the database
+Open up sqlite3 again and try inserting the values a and orangey directly into the database. You should not see any errors with these insertion statements.
+Can you explain why these statements are accepted in the database but result in errors when the model is used to create them?
+
+    Yes, the values are accepted into the DB. This is because they are model level validations that are not checked when directly interacting with the db via sql.
+    These types of validations may not be supported by db constraints within sql (such as the ending in 'y' validation).
