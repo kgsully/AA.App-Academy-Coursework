@@ -1,0 +1,83 @@
+Step 0: Getting Started:
+Create a server/.env file in order to store environment variables. Add a variable DB_FILE with a value of db/dev.db
+-----> Complete, .env file created
+
+Run the migration using the appropriate sequelize command. This should create the (empty) database.
+If successful, it will end with No migrations were executed, database schema was already up to date. and you should now see that the db/dev.db file was created.
+
+    ❯ dotenv npx sequelize-cli db:migrate
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.3.0, ORM: 6.37.3]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM `sqlite_master` WHERE type='table' and name!='sqlite_sequence';
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): CREATE TABLE IF NOT EXISTS `SequelizeMeta` (`name` VARCHAR(255) NOT NULL UNIQUE PRIMARY KEY);
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    No migrations were executed, database schema was already up to date.       // <----------------------------------- SUCCESS!
+
+
+Phase 1 - Model and Migration
+Generate migration and model -
+
+    ❯ npx sequelize-cli model:generate --name Tree --attributes tree:String,location:String,height_ft:Float,ground_circumference_ft:Float
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.3.0, ORM: 6.37.3]
+
+    New model was created at /home/ken/Documents/App Academy/aa-coursework/practice-for-week-11-combining-express-sequelize-long-practice-1/server/db/models/tree.js .
+    New migration was created at /home/ken/Documents/App Academy/aa-coursework/practice-for-week-11-combining-express-sequelize-long-practice-1/server/db/migrations/20240805214757-create-tree.js .
+
+Add constraints and validations -----> Complete
+
+Run the migration (from ./server):
+
+    ❯ dotenv npx sequelize-cli db:migrate
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.3.0, ORM: 6.37.3]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM `sqlite_master` WHERE type='table' and name!='sqlite_sequence';
+    Executed (default): PRAGMA TABLE_INFO(`SequelizeMeta`);
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): PRAGMA foreign_key_list(`SequelizeMeta`)
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20240805214757-create-tree: migrating =======
+    Executed (default): CREATE TABLE IF NOT EXISTS `Trees` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `tree` VARCHAR(255) NOT NULL UNIQUE, `location` VARCHAR(255), `height_ft` FLOAT, `ground_circumference_ft` FLOAT, `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): INSERT INTO `SequelizeMeta` (`name`) VALUES ($1); {"$1":"20240805214757-create-tree.js"}
+    == 20240805214757-create-tree: migrated (0.010s)
+
+Verify the table exists - Use the SQLite CLI to verify the table exists with the specified constraints:
+
+❯ sqlite3 db/dev.db ".schema Trees"
+CREATE TABLE `Trees` (
+    `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+    `tree` VARCHAR(255) NOT NULL UNIQUE,
+    `location` VARCHAR(255),
+    `height_ft` FLOAT,
+    `ground_circumference_ft` FLOAT,
+    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+Verify the validations
