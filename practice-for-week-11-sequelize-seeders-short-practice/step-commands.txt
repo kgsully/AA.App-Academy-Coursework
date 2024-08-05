@@ -1,0 +1,230 @@
+Step 1:
+
+Command:
+    npx sequelize-cli seed:generate --name base-colors
+
+Output:
+    Sequelize CLI [Node: 16.20.2, CLI: 6.6.0, ORM: 6.29.1]
+
+    seeders folder at "/home/ken/Documents/App Academy/aa-coursework/practice-for-week-11-sequelize-seeders-short-practice/server/db/seeders" already exists.
+    New seed was created at /home/ken/Documents/App Academy/aa-coursework/practice-for-week-11-sequelize-seeders-short-practice/server/db/seeders/20240805164020-base-colors.js .
+
+
+Step 4: Run the seeder and check the database
+Use sequelize-cli to run the seeder. If the table hasn't been created in the database yet, you may have to first run the migration.
+
+Command:
+    dotenv npx sequelize-cli db:migrate
+
+Output:
+    Sequelize CLI [Node: 16.20.2, CLI: 6.6.0, ORM: 6.29.1]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM `sqlite_master` WHERE type='table' and name!='sqlite_sequence';
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): CREATE TABLE IF NOT EXISTS `SequelizeMeta` (`name` VARCHAR(255) NOT NULL UNIQUE PRIMARY KEY);
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20211011170805-create-color: migrating =======
+    Executed (default): CREATE TABLE IF NOT EXISTS `Colors` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` VARCHAR(20) NOT NULL UNIQUE, `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): INSERT INTO `SequelizeMeta` (`name`) VALUES ($1); {"$1":"20211011170805-create-color.js"}
+    == 20211011170805-create-color: migrated (0.008s)
+
+    ----- NOTE: dev.db created in server/db
+
+Command:
+    dotenv npx sequelize-cli db:seed:all     (run from server directory)
+
+Output:
+    Sequelize CLI [Node: 16.20.2, CLI: 6.6.0, ORM: 6.29.1]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): CREATE TABLE IF NOT EXISTS `SequelizeData` (`name` VARCHAR(255) NOT NULL UNIQUE PRIMARY KEY);
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20240805164020-base-colors: migrating =======
+    Executed (default): INSERT INTO `Colors` (`name`) VALUES ('red'),('blue'),('yellow');
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): INSERT INTO `SequelizeData` (`name`) VALUES ($1); {"$1":"20240805164020-base-colors.js"}
+    == 20240805164020-base-colors: migrated (0.011s)
+
+Command:
+    sqlite> .tables
+
+Output:
+    Colors         SequelizeData  SequelizeMeta
+
+Command:
+    sqlite> SELECT * FROM Colors;
+
+Output:
+    1|red|2024-08-05 16:48:41|2024-08-05 16:48:41
+    2|blue|2024-08-05 16:48:41|2024-08-05 16:48:41
+    3|yellow|2024-08-05 16:48:41|2024-08-05 16:48:41
+
+Step 5: Undo the seeder and check the database
+Use sequelize-cli to undo the seeder.
+Check that the database no longer has the seed data defined in the seeder file.
+
+Command:
+    dotenv npx sequelize-cli db:seed:undo:all      (from server directory)
+
+Output:
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.6.0, ORM: 6.29.1]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20240805164020-base-colors: reverting =======
+    Executed (default): DELETE FROM `Colors` WHERE (`name` IN ('red', 'blue', 'yellow'))
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): DELETE FROM `SequelizeData` WHERE `name` = '20240805164020-base-colors.js'
+    == 20240805164020-base-colors: reverted (0.009s)
+
+Command / Output:
+
+sqlite> .tables
+Colors         SequelizeData  SequelizeMeta
+sqlite> SELECT * FROM Colors;
+sqlite>
+
+Bonus Step 6: Seed more data -
+Using Sequelize, you will be inserting more colors as seed data for the Colors table.
+Use sequelize-cli to generate a second seeder named fancy-colors. Create a bulkInsert and bulkDelete to add and remove a few more colors.
+In this seeder, define your own createdAt and updatedAt values. While this may not be the most practical in this scenario, it's good to see how you can overwrite default values.
+Create a new Date object with a specific date for each color that you create (any date will do, so use whatever date you like).
+Use sequelize-cli to run both seeder files.
+
+Command:
+    npx sequelize-cli seed:generate --name fancy-colors
+
+Output:
+    Sequelize CLI [Node: 16.20.2, CLI: 6.6.0, ORM: 6.29.1]
+
+    seeders folder at "/home/ken/Documents/App Academy/aa-coursework/practice-for-week-11-sequelize-seeders-short-practice/server/db/seeders" already exists.
+    New seed was created at /home/ken/Documents/App Academy/aa-coursework/practice-for-week-11-sequelize-seeders-short-practice/server/db/seeders/20240805180436-fancy-colors.js .
+
+Command:
+    dotenv npx sequelize-cli db:seed:all
+
+Output:
+    Sequelize CLI [Node: 16.20.2, CLI: 6.6.0, ORM: 6.29.1]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20240805164020-base-colors: migrating =======
+    Executed (default): INSERT INTO `Colors` (`name`) VALUES ('red'),('blue'),('yellow');
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): INSERT INTO `SequelizeData` (`name`) VALUES ($1); {"$1":"20240805164020-base-colors.js"}
+    == 20240805164020-base-colors: migrated (0.012s)
+
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20240805180436-fancy-colors: migrating =======
+    Executed (default): INSERT INTO `Colors` (`name`,`createdAt`,`updatedAt`) VALUES ('aquamarine','2023-07-01 12:48:41','2024-08-05 16:48:41'),('indigo','2022-02-19 18:48:41','2023-07-01 12:48:41');
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): INSERT INTO `SequelizeData` (`name`) VALUES ($1); {"$1":"20240805180436-fancy-colors.js"}
+    == 20240805180436-fancy-colors: migrated (0.006s)
+
+Command / Output:
+    sqlite> .tables
+    Colors         SequelizeData  SequelizeMeta
+    sqlite> SELECT * FROM Colors;
+    4|red|2024-08-05 18:11:10|2024-08-05 18:11:10
+    5|blue|2024-08-05 18:11:10|2024-08-05 18:11:10
+    6|yellow|2024-08-05 18:11:10|2024-08-05 18:11:10
+    7|aquamarine|2023-07-01 12:48:41|2024-08-05 16:48:41
+    8|indigo|2022-02-19 18:48:41|2023-07-01 12:48:41
+
+Command:
+    dotenv npx sequelize-cli db:seed:undo:all
+
+Output:
+    Sequelize CLI [Node: 16.20.2, CLI: 6.6.0, ORM: 6.29.1]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20240805180436-fancy-colors: reverting =======
+    Executed (default): DELETE FROM `Colors` WHERE (`name` IN ('aquamarine', 'indigo'))
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): DELETE FROM `SequelizeData` WHERE `name` = '20240805180436-fancy-colors.js'
+    == 20240805180436-fancy-colors: reverted (0.011s)
+
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20240805164020-base-colors: reverting =======
+    Executed (default): DELETE FROM `Colors` WHERE (`name` IN ('red', 'blue', 'yellow'))
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): DELETE FROM `SequelizeData` WHERE `name` = '20240805164020-base-colors.js'
+    == 20240805164020-base-colors: reverted (0.005s)
+
+Command / Output:
+    sqlite> .tables
+    Colors         SequelizeData  SequelizeMeta
+    sqlite> SELECT * FROM Colors;
+    sqlite>
