@@ -81,3 +81,230 @@ CREATE TABLE `Trees` (
 );
 
 Verify the validations
+
+❯ npm test test/phase-1-spec.js
+
+> sequelize-long-practice-1@1.0.0 test
+> NODE_ENV=test mocha test/phase-1-spec.js
+
+
+
+  Phase 1 Specs - Tree
+    Invalid Data
+      ✔ does not allow `tree` attribute to be empty (114ms)
+Executing (default): INSERT INTO `Trees` (`id`,`tree`,`createdAt`,`updatedAt`) VALUES (NULL,$1,$2,$3);
+Executing (default): INSERT INTO `Trees` (`id`,`tree`,`createdAt`,`updatedAt`) VALUES (NULL,$1,$2,$3);
+      ✔ does not allow duplicate `tree` attribute values
+      ✔ does not allow `height_ft` attribute values less than 0
+      ✔ does not allow `ground_circumference_ft` attribute values less than 0
+    Valid Data
+Executing (default): INSERT INTO `Trees` (`id`,`tree`,`createdAt`,`updatedAt`) VALUES (NULL,$1,$2,$3);
+      ✔ allows a string for the `tree` attribute value
+Executing (default): INSERT INTO `Trees` (`id`,`tree`,`height_ft`,`ground_circumference_ft`,`createdAt`,`updatedAt`) VALUES (NULL,$1,$2,$3,$4,$5);
+      ✔ allows a number greater than 0 for the `height_ft` and `ground_circumference_ft` attribute values
+Executing (default): SELECT `createdAt`, `updatedAt` FROM `Trees` AS `Tree` WHERE `Tree`.`tree` = 'apple';
+      ✔ uses the current time as default values for `createdAt` and `updatedAt` attribute values (111ms)
+
+
+  7 passing (2s)
+
+Phase 2 - Seeder
+Generate seeder - use the Sequelize CLI to generate a new seeder. Name this seed biggest-trees.
+
+    ❯ npx sequelize-cli seed:generate --name biggest-trees
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.3.0, ORM: 6.37.3]
+
+    seeders folder at "/home/ken/Documents/App Academy/aa-coursework/practice-for-week-11-combining-express-sequelize-long-practice-1/server/db/seeders" already exists.
+    New seed was created at /home/ken/Documents/App Academy/aa-coursework/practice-for-week-11-combining-express-sequelize-long-practice-1/server/db/seeders/20240806145107-biggest-trees.js .
+
+Run the Sequelize CLI command to seed the database
+
+    ❯ dotenv npx sequelize-cli db:seed:all
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.3.0, ORM: 6.37.3]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20240806145107-biggest-trees: migrating =======
+    Executed (default): INSERT INTO `Trees` (`tree`,`location`,`height_ft`,`ground_circumference_ft`) VALUES ('General Sherman','Sequoia National Park',274.9,102.6),('General Grant','Kings Canyon National Park',268.1,107.5),('President','Sequoia National Park',240.9,93),('Lincoln','Sequoia National Park',255.8,98.3),('Stagg','Private Land',243,109);
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): INSERT INTO `SequelizeData` (`name`) VALUES ($1); {"$1":"20240806145107-biggest-trees.js"}
+    == 20240806145107-biggest-trees: migrated (0.009s)
+
+
+Verify the data:
+
+    ❯ sqlite3 db/dev.db "SELECT * FROM 'Trees';"
+
+    1|General Sherman|Sequoia National Park|274.9|102.6|2024-08-06 15:00:58|2024-08-06 15:00:58
+    2|General Grant|Kings Canyon National Park|268.1|107.5|2024-08-06 15:00:58|2024-08-06 15:00:58
+    3|President|Sequoia National Park|240.9|93.0|2024-08-06 15:00:58|2024-08-06 15:00:58
+    4|Lincoln|Sequoia National Park|255.8|98.3|2024-08-06 15:00:58|2024-08-06 15:00:58
+    5|Stagg|Private Land|243.0|109.0|2024-08-06 15:00:58|2024-08-06 15:00:58
+
+Allow undoing with bulkDelete
+Implement the code needed in the down function in order to remove the 5 trees listed above from the database.
+
+    ❯ dotenv npx sequelize-cli db:seed:undo:all
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.3.0, ORM: 6.37.3]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20240806145107-biggest-trees: reverting =======
+    Executed (default): DELETE FROM `Trees` WHERE `tree` IN ('General Sherman', 'General Grant', 'President', 'Lincoln', 'Stagg')
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): DELETE FROM `SequelizeData` WHERE `name` = '20240806145107-biggest-trees.js'
+    == 20240806145107-biggest-trees: reverted (0.008s)
+
+Verify the data:
+
+    ❯ sqlite3 db/dev.db "SELECT * FROM 'Trees';"
+
+Phase 3 - Another Model and Migration
+
+Use the Sequelize CLI to create a model named Insect
+    ❯ npx sequelize-cli model:generate --name Insect --attributes name:String,description:String,territory:String,fact:String,millimeters:String
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.3.0, ORM: 6.37.3]
+
+    New model was created at /home/ken/Documents/App Academy/aa-coursework/practice-for-week-11-combining-express-sequelize-long-practice-1/server/db/models/insect.js .
+    New migration was created at /home/ken/Documents/App Academy/aa-coursework/practice-for-week-11-combining-express-sequelize-long-practice-1/server/db/migrations/20240806152326-create-insect.js .
+
+Run the migration
+    ❯ dotenv npx sequelize-cli db:migrate
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.3.0, ORM: 6.37.3]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM `sqlite_master` WHERE type='table' and name!='sqlite_sequence';
+    Executed (default): PRAGMA TABLE_INFO(`SequelizeMeta`);
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): PRAGMA foreign_key_list(`SequelizeMeta`)
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20240806152326-create-insect: migrating =======
+    Executed (default): CREATE TABLE IF NOT EXISTS `Insects` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` VARCHAR(255) NOT NULL UNIQUE, `description` VARCHAR(255), `territory` VARCHAR(255), `fact` VARCHAR(255), `millimeters` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): INSERT INTO `SequelizeMeta` (`name`) VALUES ($1); {"$1":"20240806152326-create-insect.js"}
+    == 20240806152326-create-insect: migrated (0.016s)
+
+Verify the table exists
+❯ sqlite3 db/dev.db ".schema Insects"
+    CREATE TABLE `Insects` (
+        `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+        `name` VARCHAR(255) NOT NULL UNIQUE,
+        `description` VARCHAR(255),
+        `territory` VARCHAR(255),
+        `fact` VARCHAR(240),
+        `millimeters` FLOAT NOT NULL,
+        `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
+
+Verify validations:
+    ❯ npm test test/phase-3-spec.js
+
+    > sequelize-long-practice-1@1.0.0 test
+    > NODE_ENV=test mocha test/phase-3-spec.js
+
+
+
+    Phase 3 Specs - Insect
+        Invalid Data
+        ✔ does not allow `name` attribute to be empty (113ms)
+    Executing (default): INSERT INTO `Insects` (`id`,`name`,`millimeters`,`createdAt`,`updatedAt`) VALUES (NULL,$1,$2,$3,$4);
+    Executing (default): INSERT INTO `Insects` (`id`,`name`,`millimeters`,`createdAt`,`updatedAt`) VALUES (NULL,$1,$2,$3,$4);
+        ✔ does not allow duplicate `name` attribute values
+        ✔ does not allow `name` attribute values that are not title cased
+        ✔ does not allow `fact` attribute values that are greater than 240 characters
+        ✔ does not allow `millimeters` attribute to be empty (103ms)
+        ✔ does not allow `millimeters` attribute values less than 0
+        Valid Data
+    Executing (default): INSERT INTO `Insects` (`id`,`name`,`millimeters`,`createdAt`,`updatedAt`) VALUES (NULL,$1,$2,$3,$4);
+        ✔ allows a title-cased string for the `name` attribute value
+    Executing (default): INSERT INTO `Insects` (`id`,`name`,`millimeters`,`createdAt`,`updatedAt`) VALUES (NULL,$1,$2,$3,$4);
+        ✔ allows a number greater than 0 for the `millimeters` attribute
+    Executing (default): INSERT INTO `Insects` (`id`,`name`,`fact`,`millimeters`,`createdAt`,`updatedAt`) VALUES (NULL,$1,$2,$3,$4,$5);
+        ✔ allows a `fact` attribute that is less than 240 characters
+    Executing (default): INSERT INTO `Insects` (`id`,`name`,`description`,`millimeters`,`createdAt`,`updatedAt`) VALUES (NULL,$1,$2,$3,$4,$5);
+        ✔ allows a string for the `description` attribute
+    Executing (default): SELECT `createdAt`, `updatedAt` FROM `Insects` AS `Insect` WHERE `Insect`.`name` = 'Ladybug' LIMIT 1;
+        ✔ uses the current time as default values for `createdAt` and `updatedAt` attribute values (112ms)
+
+
+    11 passing (2s)
+
+Generate seeder
+    ❯ npx sequelize-cli seed:generate --name smallest-insects
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.3.0, ORM: 6.37.3]
+
+    seeders folder at "/home/ken/Documents/App Academy/aa-coursework/practice-for-week-11-combining-express-sequelize-long-practice-1/server/db/seeders" already exists.
+    New seed was created at /home/ken/Documents/App Academy/aa-coursework/practice-for-week-11-combining-express-sequelize-long-practice-1/server/db/seeders/20240806160017-smallest-insects.js .
+
+Add seed data with bulkInsert
+
+    ❯ dotenv npx sequelize-cli db:seed:all
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.3.0, ORM: 6.37.3]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20240806160017-smallest-insects: migrating =======
+    Executed (default): INSERT INTO `Insects` (`name`,`description`,`territory`,`fact`,`millimeters`) VALUES ('Western Pygmy Blue Butterfly','The smallest member of the butterfly family is thought to be the pygmy blue butterfly (Brephidium exilis).',' North America and as far west as Hawaii and the middle east','It can be recognized by the copper brown and dull blue pattern at the bases of both wings',12);
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): INSERT INTO `SequelizeData` (`name`) VALUES ($1); {"$1":"20240806160017-smallest-insects.js"}
+    == 20240806160017-smallest-insects: migrated (0.009s)
+
+Verify the data:
+    ❯ sqlite3 db/dev.db "SELECT * FROM 'Insects';"
+    1|Western Pygmy Blue Butterfly|The smallest member of the butterfly family is thought to be the pygmy blue butterfly (Brephidium exilis).| North America and as far west as Hawaii and the middle east|It can be recognized by the copper brown and dull blue pattern at the bases of both wings|12.0|2024-08-06 16:05:55|2024-08-06 16:05:55
