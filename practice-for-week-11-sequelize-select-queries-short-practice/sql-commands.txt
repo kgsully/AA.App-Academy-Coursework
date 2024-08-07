@@ -1,0 +1,65 @@
+❯ dotenv npx sequelize-cli db:migrate
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.2.0, ORM: 6.37.3]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM `sqlite_master` WHERE type='table' and name!='sqlite_sequence';
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): CREATE TABLE IF NOT EXISTS `SequelizeMeta` (`name` VARCHAR(255) NOT NULL UNIQUE PRIMARY KEY);
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): SELECT `name` FROM `SequelizeMeta` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20211015210654-create-puppy: migrating =======
+    Executed (default): CREATE TABLE IF NOT EXISTS `Puppies` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` VARCHAR(255), `ageYrs` FLOAT, `breed` VARCHAR(255), `weightLbs` INTEGER, `microchipped` INTEGER, `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeMeta';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeMeta`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeMeta_1`)
+    Executed (default): INSERT INTO `SequelizeMeta` (`name`) VALUES ($1); {"$1":"20211015210654-create-puppy.js"}
+    == 20211015210654-create-puppy: migrated (0.012s)
+
+❯ dotenv npx sequelize-cli db:seed:all
+
+    Sequelize CLI [Node: 16.20.2, CLI: 6.2.0, ORM: 6.37.3]
+
+    Loaded configuration file "config/database.js".
+    Using environment "development".
+    Executed (default): SELECT 1+1 AS result
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): CREATE TABLE IF NOT EXISTS `SequelizeData` (`name` VARCHAR(255) NOT NULL UNIQUE PRIMARY KEY);
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): SELECT `name` FROM `SequelizeData` AS `SequelizeMeta` ORDER BY `SequelizeMeta`.`name` ASC;
+    == 20211015211019-starting-puppies: migrating =======
+    Executed (default): INSERT INTO `Puppies` (`id`,`name`,`ageYrs`,`breed`,`weightLbs`,`microchipped`,`createdAt`,`updatedAt`) VALUES (NULL,'Cooper','1','Miniature Schnauzer',18,1,'2024-08-07 15:29:07.296 +00:00','2024-08-07 15:29:07.296 +00:00'),(NULL,'Indie','0.5','Yorkshire Terrier',13,1,'2024-08-07 15:29:07.296 +00:00','2024-08-07 15:29:07.296 +00:00'),(NULL,'Kota','0.7','Australian Shepherd',26,0,'2024-08-07 15:29:07.296 +00:00','2024-08-07 15:29:07.296 +00:00'),(NULL,'Zoe','0.8','Korean Jindo',32,1,'2024-08-07 15:29:07.296 +00:00','2024-08-07 15:29:07.296 +00:00'),(NULL,'Charley','1.5','Basset Hound',25,0,'2024-08-07 15:29:07.296 +00:00','2024-08-07 15:29:07.296 +00:00'),(NULL,'Ladybird','0.6','Labradoodle',20,1,'2024-08-07 15:29:07.296 +00:00','2024-08-07 15:29:07.296 +00:00'),(NULL,'Callie','0.9','Corgi',16,0,'2024-08-07 15:29:07.296 +00:00','2024-08-07 15:29:07.296 +00:00'),(NULL,'Jaxson','0.4','Beagle',19,1,'2024-08-07 15:29:07.296 +00:00','2024-08-07 15:29:07.296 +00:00'),(NULL,'Leinni','1','Miniature Schnauzer',25,1,'2024-08-07 15:29:07.296 +00:00','2024-08-07 15:29:07.296 +00:00'),(NULL,'Max','1.6','German Shepherd',65,0,'2024-08-07 15:29:07.296 +00:00','2024-08-07 15:29:07.296 +00:00');
+    Executed (default): SELECT name FROM sqlite_master WHERE type='table' AND name='SequelizeData';
+    Executed (default): PRAGMA INDEX_LIST(`SequelizeData`)
+    Executed (default): PRAGMA INDEX_INFO(`sqlite_autoindex_SequelizeData_1`)
+    Executed (default): INSERT INTO `SequelizeData` (`name`) VALUES ($1); {"$1":"20211015211019-starting-puppies.js"}
+    == 20211015211019-starting-puppies: migrated (0.026s)
+
+❯ sqlite3 db/dev.db "SELECT * FROM Puppies;"
+
+    1|Cooper|1.0|Miniature Schnauzer|18|1|2024-08-07 15:29:07.296 +00:00|2024-08-07 15:29:07.296 +00:00
+    2|Indie|0.5|Yorkshire Terrier|13|1|2024-08-07 15:29:07.296 +00:00|2024-08-07 15:29:07.296 +00:00
+    3|Kota|0.7|Australian Shepherd|26|0|2024-08-07 15:29:07.296 +00:00|2024-08-07 15:29:07.296 +00:00
+    4|Zoe|0.8|Korean Jindo|32|1|2024-08-07 15:29:07.296 +00:00|2024-08-07 15:29:07.296 +00:00
+    5|Charley|1.5|Basset Hound|25|0|2024-08-07 15:29:07.296 +00:00|2024-08-07 15:29:07.296 +00:00
+    6|Ladybird|0.6|Labradoodle|20|1|2024-08-07 15:29:07.296 +00:00|2024-08-07 15:29:07.296 +00:00
+    7|Callie|0.9|Corgi|16|0|2024-08-07 15:29:07.296 +00:00|2024-08-07 15:29:07.296 +00:00
+    8|Jaxson|0.4|Beagle|19|1|2024-08-07 15:29:07.296 +00:00|2024-08-07 15:29:07.296 +00:00
+    9|Leinni|1.0|Miniature Schnauzer|25|1|2024-08-07 15:29:07.296 +00:00|2024-08-07 15:29:07.296 +00:00
+    10|Max|1.6|German Shepherd|65|0|2024-08-07 15:29:07.296 +00:00|2024-08-07 15:29:07.296 +00:00
