@@ -121,5 +121,93 @@ router.get('/insects-trees', async (req, res, next) => {
  */
 // Your code here
 
+router.post('/associate-tree-insect', async (req, res, next) => {
+    try {
+        const { tree, insect } = req.body;
+        let ascTree;
+        let ascInsect;
+        const error = new Error();
+
+        if (!tree) {
+            error = {
+                status: "error",
+                message: "tree missing in request"
+            };
+
+            throw error;
+        }
+
+        if (!insect) {
+            error = {
+                status: "error",
+                message: "insect missing in request"
+            };
+            throw error;
+        }
+
+
+        if (tree) {
+            if (tree.id) {
+                ascTree = await Tree.findOne({
+                    where: {
+                        id: id
+                    }
+                });
+                if (!ascTree) {
+                    res.status(400).json({
+                        status: "not-found",
+                        message: "Tree not found"
+                    });
+                }
+            } else {
+                ascTree = await Tree.create({
+                    tree: tree.name,
+                    location: tree.location,
+                    heightFt: tree.height,
+                    groundCircumferenceFt: tree.size
+                });
+            }
+        }
+
+        if (insect){
+            if (insect.id) {
+                ascInsect = await Insect.findOne({
+                    where: {
+                        id: id
+                    }
+                });
+                if (!ascInsect) {
+                    res.status(400).json({
+                        status: "not-found",
+                        message: "Insect not found"
+                    });
+                }
+            } else {
+                ascInsect = await Insect.create(insect);
+            }
+        }
+
+        if (tree && insect) {
+            if (await ascTree.hasInsect(ascInsect) && await ascInsect.hasTree(ascTree)) {
+                error = {
+                    status: "error",
+                    message: `Association already exists between ${ascTree.tree} and ${ascInsect.name}`
+                };
+                throw error;
+            } else {
+                await ascInsect.addTree(ascTree);
+                res.json({
+                    status: 'success',
+                    message: 'Successfully created association',
+                    data: { tree, insect }
+                });
+            }
+        }
+    }
+    catch (error) {
+        next(error);
+    }
+});
+
 // Export class - DO NOT MODIFY
 module.exports = router;
