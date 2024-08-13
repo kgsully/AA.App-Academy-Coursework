@@ -24,7 +24,25 @@ router.get('/trees-insects', async (req, res, next) => {
 
     trees = await Tree.findAll({
         attributes: ['id', 'tree', 'location', 'heightFt'],
+        where: {
+
+        },
+        include: {
+            model: Insect,
+            // use required: true to force the query to return only records which have an associated model, effectively
+            // converting the query from the default outer join to an inner join. Also works on nested includes
+            required: true,
+            attributes: ['id', 'name'],
+            // for many to many attributes, the 'through' option defines what gets returned from the join table,
+            // providing an empty array will then not fetch the extra properties from the join table
+            through: {
+                attributes: []
+            },
+        },
+        // order: 1st [] is for top level ordering, second [] is for 1st level of nested values, etc
+        order: [ ['heightFt', 'DESC'], [Insect, 'name', 'ASC'] ]
     });
+
 
     res.json(trees);
 });
@@ -51,10 +69,23 @@ router.get('/insects-trees', async (req, res, next) => {
     });
     for (let i = 0; i < insects.length; i++) {
         const insect = insects[i];
+
+        // Start added code
+        const trees = await insect.getTrees({
+            attributes: ['id', 'tree'],
+            // joinTableAttributes for lazy loading works similarly to the through: { attributes: [] } method in
+            // an include (eager loading)
+            joinTableAttributes: [],
+            order: [ ['tree'] ]
+        });
+        // End added code
+
         payload.push({
             id: insect.id,
             name: insect.name,
             description: insect.description,
+            // added trees for payload return
+            trees: trees
         });
     }
 
