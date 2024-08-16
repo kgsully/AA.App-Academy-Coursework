@@ -83,7 +83,11 @@ router.get('/', async (req, res, next) => {
                 }
         */
     // Your code here
+
     if (errorResult.errors.length > 0) {
+        errorResult.count = await Student.count({
+            where,
+        });
         next(errorResult);
     }
 
@@ -92,7 +96,11 @@ router.get('/', async (req, res, next) => {
     // Phase 3A: Include total number of results returned from the query without
         // limits and offsets as a property of count on the result
         // Note: This should be a new query
+    const count = await Student.count({
+        where,
+    });
 
+    // MAIN QUERY - PROVIDED CODE
     result.rows = await Student.findAll({
         attributes: ['id', 'firstName', 'lastName', 'leftHanded'],
         where,
@@ -116,8 +124,10 @@ router.get('/', async (req, res, next) => {
             }
         */
     // Your code here
-    // Syntax uses the spread operator to set the page key/parameter to the 'beginning'
-    result = page === 0 ? {page: 1, ...result} : {page: page, ...result};
+    resPage = page === 0 ? 1 : page;
+
+    // ----> NOTE: Combined the parameters for inclusion into the result object all together,
+    //             as such, inclusion of the page key/value is done under Phase 3B
 
     // Phase 3B:
         // Include the total number of available pages for this query as a key
@@ -134,6 +144,11 @@ router.get('/', async (req, res, next) => {
             }
         */
     // Your code here
+    pageCount = page === 0 ? 1 : Math.ceil(count / size);
+
+
+    // Syntax uses the spread operator to set the page key/parameter to the 'beginning'
+    result = {count: count, page: resPage, pageCount: pageCount, ...result};
 
     // TESTING res.json:
     // res.json({page, size, limit, offset, errorResult, result});
