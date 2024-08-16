@@ -12,12 +12,32 @@ router.get('/', async (req, res, next) => {
 
     // Phase 2A: Use query params for page & size
     // Your code here
+    // let page = (/^[0-9]+$/.test(req.query.page)) ? parseInt(req.query.page) : 1;  // this will check to see if the provided value contains only characters 0-9 (integer)
+    let page = req.query.page ? parseInt(req.query.page) : 1;
+    let size = req.query.size ? parseInt(req.query.size) : 10;
 
     // Phase 2B: Calculate limit and offset
     // Phase 2B (optional): Special case to return all students (page=0, size=0)
     // Phase 2B: Add an error message to errorResult.errors of
-        // 'Requires valid page and size params' when page or size is invalid
+    // 'Requires valid page and size params' when page or size is invalid
     // Your code here
+
+    // Pre-set limit to null and offset to 0. SQL interprets the null values as 'unlimited'
+    let limit = null;
+    let offset = 0;
+
+    // VALIDITY CHECKS:
+    // Check whether page and size are valid (positive integer) with /^[0-9]+$/.test()
+    // Also check if page = 0 but size != 0 / page != 0 but size = 0 --> page & size both required to be 0 to show all results, it is invalid if only page OR size is = 0
+    if ( !(/^[0-9]+$/.test(size)) || !(/^[0-9]+$/.test(page)) || (Number(page) === 0 && Number(size) !== 0) || (Number(page) !== 0 && Number(size) === 0)) {
+        errorResult.errors.push({ message: 'Requires valid page and size params' });
+    } else {
+        // page >= 1 && size >= 1 conditional still required as otherwise query result will be empty
+        if (page >=1 && size >= 1){
+            limit = size > 200 ? 200 : size;    // max size = 200
+            offset = size * (page -1);
+        }
+    }
 
     // Phase 4: Student Search Filters
     /*
@@ -63,6 +83,9 @@ router.get('/', async (req, res, next) => {
                 }
         */
     // Your code here
+    if (errorResult.errors.length > 0) {
+        next(errorResult);
+    }
 
     let result = {};
 
@@ -74,7 +97,12 @@ router.get('/', async (req, res, next) => {
         attributes: ['id', 'firstName', 'lastName', 'leftHanded'],
         where,
         // Phase 1A: Order the Students search results
-        order: [ ['lastName'], ['firstName'] ]
+        order: [ ['lastName'], ['firstName'] ],
+
+        // Phase 2D: Add limit and offset to the query
+        limit: limit,
+        offset: offset
+
     });
 
     // Phase 2E: Include the page number as a key of page in the response data
@@ -88,6 +116,8 @@ router.get('/', async (req, res, next) => {
             }
         */
     // Your code here
+    // Syntax uses the spread operator to set the page key/parameter to the 'beginning'
+    result = page === 0 ? {page: 1, ...result} : {page: page, ...result};
 
     // Phase 3B:
         // Include the total number of available pages for this query as a key
@@ -105,6 +135,9 @@ router.get('/', async (req, res, next) => {
         */
     // Your code here
 
+    // TESTING res.json:
+    // res.json({page, size, limit, offset, errorResult, result});
+    // ORIGINAL res.json:
     res.json(result);
 });
 
