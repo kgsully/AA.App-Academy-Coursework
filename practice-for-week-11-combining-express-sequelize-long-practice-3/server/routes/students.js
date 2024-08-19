@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // Import model(s)
-const { Student } = require('../db/models');
+const { Student, Classroom, StudentClassroom } = require('../db/models');
 const { Op } = require("sequelize");
 
 // List
@@ -71,8 +71,6 @@ router.get('/', async (req, res, next) => {
         where.firstName = {
             [Op.like]: `%${firstName}`
         };
-    }
-    if (lastName) {
         where.lastName = {
             [Op.like]: `%${lastName}`
         };
@@ -123,14 +121,25 @@ router.get('/', async (req, res, next) => {
     // MAIN QUERY - PROVIDED CODE
     result.rows = await Student.findAll({
         attributes: ['id', 'firstName', 'lastName', 'leftHanded'],
-        where,
         // Phase 1A: Order the Students search results
+        where,
         order: [ ['lastName'], ['firstName'] ],
 
         // Phase 2D: Add limit and offset to the query
         limit: limit,
-        offset: offset
+        offset: offset,
 
+        // Phase 8A - Include classroom, order by class that student is performing best in
+
+        include: {
+            model: Classroom,
+            attributes: ['id', 'name'],
+            through: {
+                attributes: ['grade']
+            }
+        },
+
+        order: [ [ Classroom, StudentClassroom, 'grade', 'DESC' ] ]
     });
 
     // Phase 2E: Include the page number as a key of page in the response data

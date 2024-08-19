@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // Import model(s)
-const { Supply } = require('../db/models');
+const { Supply, Classroom, Student, sequelize } = require('../db/models');
 
 // List of supplies by category
 router.get('/category/:categoryName', async (req, res, next) => {
@@ -12,12 +12,24 @@ router.get('/category/:categoryName', async (req, res, next) => {
         // Order results by supply's name then handed
         // Return the found supplies as the response body
         const supplies = await Supply.findAll({
-            order: [ ['name'], ['handed'] ]
+            where: {
+                category: req.params.categoryName
+            },
+            // Phase 8A:
+            // Include Classroom in the supplies query results
+            // Order nested classroom results by name first then by supply name
+            // Your code here
+            include: {
+                model: Classroom,
+                attributes: ['id', 'name']
+            },
+            // Updated order based upon isntructions for phase 8A:
+            order: [ [Classroom, 'name'], ['name'] ]
+
+            // Original order for phase 1C:
+            // order: [ ['name'], ['handed'] ]
+
         });
-    // Phase 8A:
-        // Include Classroom in the supplies query results
-        // Order nested classroom results by name first then by supply name
-    // Your code here
 
     res.json(supplies);
 });
@@ -36,9 +48,24 @@ router.get('/scissors/calculate', async (req, res, next) => {
             // "Safety Scissors" currently in all classrooms, regardless of
             // handed-ness
     // Your code here
+    // https://stackoverflow.com/questions/22627258/how-does-group-by-works-in-sequelize
+    const scissors = await Supply.findAll({
+        where: { name: 'Safety Scissors' },
+        attributes: [
+            'handed',
+            [sequelize.fn('COUNT', sequelize.col('handed')), 'count']
+        ],
+        group: ['handed'],
+        raw: true // raw must be true to get object directly
+    });
 
-    // Phase 10B: Total number of right-handed and left-handed students in all
-        // classrooms
+    result.numRightyScissors = scissors[1].count || 0;
+    result.numLeftyScissors = scissors[0].count || 0;
+    result.totalNumScissors = scissors[1].count + scissors[0].count;
+
+
+
+    // Phase 10B: Total number of right-handed and left-handed students in all classrooms
         // result.numRightHandedStudents should equal the total number of
             // right-handed students in all classrooms
             // Note: This is different from the total amount of students that
@@ -51,6 +78,25 @@ router.get('/scissors/calculate', async (req, res, next) => {
         // result.numLeftHandedStudents should equal the total number of
             // left-handed students in all classrooms
     // Your code here
+    const students = await Classroom.findAll({
+        attributes: [
+            'Students.leftHanded',
+            [sequelize.fn('COUNT', sequelize.col('Students.leftHanded')), 'count']
+        ],
+        include: {
+            model: Student,
+            attributes: [],
+            through: {
+                attributes: []
+            }
+        },
+        group: ['Students.leftHanded'],
+        raw: true
+    });
+
+    result.numRightHandedStudents = students[0].count || 0;
+    result.numLeftHandedStudents = students[1].count || 0;
+
 
     // Phase 10C: Total number of scissors still needed for all classrooms
         // result.numRightyScissorsStillNeeded should equal the total number
@@ -63,6 +109,9 @@ router.get('/scissors/calculate', async (req, res, next) => {
             // of left-handed scissors still needed to be added to all the
             // classrooms
     // Your code here
+
+    result.numRightyScissorsStillNeeded = result.numRightHandedStudents - result.numRightyScissors;
+    result.numLeftyScissorsStillNeeded = result.numLeftHandedStudents - result.numLeftyScissors;
 
     res.json(result);
 });
