@@ -4,5 +4,8 @@ cypress/screenshots
 cypress/support
 db/database.sqlite
 package-lock.json
+.env
+build
+.DS_Store
 *.db
 *.zip
