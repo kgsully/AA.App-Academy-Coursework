@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.5 Chrome/126.0.6478.183 Electron/31.3.0 Safari/537.36" version="24.7.5">
   <diagram name="Page-1" id="1tvuOQJT0n1HeKmIc-OV">
-    <mxGraphModel dx="1652" dy="984" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="2339" math="0" shadow="0">
+    <mxGraphModel dx="4952" dy="984" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="2339" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -14,7 +14,7 @@
           <mxGeometry x="20" y="10" width="380" height="270" as="geometry" />
         </mxCell>
         <mxCell id="GpSlVhP3Auss_XkfHNzA-41" value="/backend" style="swimlane;whiteSpace=wrap;html=1;startSize=23;fillColor=#dae8fc;strokeColor=#6c8ebf;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
-          <mxGeometry y="330" width="1730" height="1160" as="geometry" />
+          <mxGeometry x="-10" y="390" width="1730" height="1560" as="geometry" />
         </mxCell>
         <mxCell id="GpSlVhP3Auss_XkfHNzA-20" value=".env" style="swimlane;whiteSpace=wrap;html=1;startSize=23;fillColor=#bac8d3;strokeColor=#23445d;" parent="GpSlVhP3Auss_XkfHNzA-41" vertex="1">
           <mxGeometry x="190" y="40" width="240" height="160" as="geometry" />
@@ -107,7 +107,7 @@
           <mxGeometry x="130" y="30" width="260" height="40" as="geometry" />
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-38" value="dotenv npx sequelize&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;db:migrate&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="GpSlVhP3Auss_XkfHNzA-46">
-          <mxGeometry x="180" y="310" width="180" height="10" as="geometry" />
+          <mxGeometry x="50" y="310" width="180" height="10" as="geometry" />
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-40" value="dotenv npx sequelize&lt;br&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;db:seed:all&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="GpSlVhP3Auss_XkfHNzA-46">
           <mxGeometry x="660" y="290" width="100" height="10" as="geometry" />
@@ -173,7 +173,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="GpSlVhP3Auss_XkfHNzA-98" value="/routes" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="GpSlVhP3Auss_XkfHNzA-41" vertex="1">
-          <mxGeometry x="700" y="600" width="360" height="520" as="geometry" />
+          <mxGeometry x="680" y="600" width="350" height="730" as="geometry" />
         </mxCell>
         <mxCell id="GpSlVhP3Auss_XkfHNzA-101" value="index.js" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="GpSlVhP3Auss_XkfHNzA-98" vertex="1">
           <mxGeometry x="35" y="40" width="280" height="160" as="geometry" />
@@ -182,13 +182,25 @@
           <mxGeometry x="10" y="30" width="250" height="110" as="geometry" />
         </mxCell>
         <mxCell id="Vh5eemPmoigoI3z--_Fc-1" value="/api" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="GpSlVhP3Auss_XkfHNzA-98" vertex="1">
-          <mxGeometry x="20" y="230" width="310" height="210" as="geometry" />
+          <mxGeometry x="20" y="230" width="310" height="480" as="geometry" />
         </mxCell>
         <mxCell id="Vh5eemPmoigoI3z--_Fc-2" value="index.js" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vh5eemPmoigoI3z--_Fc-1" vertex="1">
-          <mxGeometry x="10" y="30" width="280" height="160" as="geometry" />
+          <mxGeometry x="10" y="30" width="280" height="100" as="geometry" />
         </mxCell>
         <mxCell id="Vh5eemPmoigoI3z--_Fc-3" value="Routes index&lt;div&gt;- Contains test endpoint POST /api/test&lt;br&gt;&amp;nbsp; which will send back the request body in&lt;br&gt;&amp;nbsp; JSON format&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="Vh5eemPmoigoI3z--_Fc-2" vertex="1">
-          <mxGeometry x="10" y="30" width="250" height="100" as="geometry" />
+          <mxGeometry x="10" y="30" width="250" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="xRNBOfDQ-NbFJoLuyLIO-294" value="session.js" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="Vh5eemPmoigoI3z--_Fc-1">
+          <mxGeometry x="10" y="140" width="280" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="xRNBOfDQ-NbFJoLuyLIO-295" value="Contains routes for login, logout, and get session user:&lt;div&gt;&lt;div&gt;Login: POST /api/session&lt;/div&gt;&lt;div&gt;Logout: DELETE /api/session&lt;/div&gt;&lt;div&gt;Get session user: GET /api/session&lt;/div&gt;&lt;/div&gt;&lt;div&gt;Uses setTokenCookie and restoreUser middlewares&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="xRNBOfDQ-NbFJoLuyLIO-294">
+          <mxGeometry x="10" y="30" width="250" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="xRNBOfDQ-NbFJoLuyLIO-296" value="users.js" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="Vh5eemPmoigoI3z--_Fc-1">
+          <mxGeometry x="10" y="310" width="280" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="xRNBOfDQ-NbFJoLuyLIO-297" value="asdf" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="xRNBOfDQ-NbFJoLuyLIO-296">
+          <mxGeometry x="10" y="30" width="250" height="90" as="geometry" />
         </mxCell>
         <mxCell id="Vh5eemPmoigoI3z--_Fc-6" value="&lt;div&gt;const apiRouter = require(&#39;./api&#39;);&lt;/div&gt;&lt;div&gt;router.use(&#39;/api&#39;, apiRouter);&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="GpSlVhP3Auss_XkfHNzA-98" vertex="1">
           <mxGeometry x="20" y="200" width="150" height="30" as="geometry" />
@@ -202,7 +214,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="GpSlVhP3Auss_XkfHNzA-100" value="require(&#39;./routes&#39;)&lt;div style=&quot;font-size: 9px;&quot;&gt;app.use(routes);&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;" parent="GpSlVhP3Auss_XkfHNzA-41" vertex="1">
-          <mxGeometry x="620" y="860" width="90" height="30" as="geometry" />
+          <mxGeometry x="570" y="920" width="90" height="30" as="geometry" />
         </mxCell>
         <mxCell id="GpSlVhP3Auss_XkfHNzA-105" value="/bin" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="GpSlVhP3Auss_XkfHNzA-41" vertex="1">
           <mxGeometry x="35" y="910" width="460" height="240" as="geometry" />
@@ -318,6 +330,39 @@
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-201" value="require(&#39;../db/models&#39;)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="GpSlVhP3Auss_XkfHNzA-41">
           <mxGeometry x="1440" y="560" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="xRNBOfDQ-NbFJoLuyLIO-298" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fillColor=#0050ef;strokeColor=#001DBC;" edge="1" parent="GpSlVhP3Auss_XkfHNzA-41" source="xRNBOfDQ-NbFJoLuyLIO-205" target="xRNBOfDQ-NbFJoLuyLIO-294">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1060" y="955" />
+              <mxPoint x="1060" y="1040" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xRNBOfDQ-NbFJoLuyLIO-299" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fillColor=#0050ef;strokeColor=#001DBC;" edge="1" parent="GpSlVhP3Auss_XkfHNzA-41" source="xRNBOfDQ-NbFJoLuyLIO-196" target="xRNBOfDQ-NbFJoLuyLIO-294">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1060" y="780" />
+              <mxPoint x="1060" y="1040" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xRNBOfDQ-NbFJoLuyLIO-300" value="require(&#39;../../utils/auth&#39;);" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;rotation=-90;" vertex="1" parent="GpSlVhP3Auss_XkfHNzA-41">
+          <mxGeometry x="1020" y="880" width="100" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="xRNBOfDQ-NbFJoLuyLIO-314" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;fillColor=#fff2cc;strokeColor=#d6b656;" edge="1" parent="GpSlVhP3Auss_XkfHNzA-41" source="xRNBOfDQ-NbFJoLuyLIO-28" target="xRNBOfDQ-NbFJoLuyLIO-294">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1083" y="330" />
+              <mxPoint x="980" y="330" />
+              <mxPoint x="980" y="570" />
+              <mxPoint x="1050" y="570" />
+              <mxPoint x="1050" y="1005" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xRNBOfDQ-NbFJoLuyLIO-315" value="require(&#39;../../db/models&#39;);" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;rotation=-90;" vertex="1" parent="GpSlVhP3Auss_XkfHNzA-41">
+          <mxGeometry x="990" y="890" width="100" height="10" as="geometry" />
         </mxCell>
         <mxCell id="TN3s48xv0ag6netvd0yR-3" value="config file" style="swimlane;whiteSpace=wrap;html=1;startSize=23;fillColor=#bac8d3;strokeColor=#23445d;" parent="1" vertex="1">
           <mxGeometry x="1220" y="105" width="170" height="40" as="geometry" />

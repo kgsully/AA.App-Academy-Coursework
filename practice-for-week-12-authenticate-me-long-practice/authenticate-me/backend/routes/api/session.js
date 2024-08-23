@@ -1,0 +1,84 @@
+// SESSION ROUTES:
+// Login: POST /api/session
+// Logout: DELETE /api/session
+// Get session user: GET /api/session
+
+const express = require('express');
+
+// Attach auth middleware and Users model class
+const { setTokenCookie, restoreUser } = require('../../utils/auth');
+const { User } = require('../../db/models');
+
+const router = express.Router();
+
+// Login route:
+// Using an asynchronous route handler, call the login static method from the User model.
+// If a user is returned from the login static method, call setTokenCookie and return a JSON response with the user info
+// If no user is returned, create a "Login Failed" error and invoke the next error-handling middleware with it
+router.post('/', async (req, res, next) => {
+    // retrieve credential and password from request body
+    const { credential, password } = req.body;
+
+    // call User model class static method login, providing credential and password deconstructed from the request body
+    const user = await User.login({ credential, password });
+
+    // error handling - if login fails, generate error and call next error handling middleware
+    if (!user) {
+        const err = new Error('Login failed');
+        err.status = 401;
+        err.title = 'Login failed';
+        err.errors = ['The provided credentials were invalid.'];
+        return next(err);
+    }
+
+    // set session token (jwt) cookie if error doesn't occur
+    await setTokenCookie(res, user);
+    // return logged in user
+    return res.json({ user });
+});
+
+module.exports = router;
+
+// ----------------------------------------------------------------------------------
+// Login Route Tests:
+// ----------------------------------------------------------------------------------
+// Test the login route by navigating to the http://localhost:8000/api/csrf/restore route and making a fetch request from the browser's DevTools console.
+// In devtools, perform the following fetch requests:
+// Remember to replace the <value of XSRF-TOKEN cookie> with the value of the XSRF-TOKEN cookie found in your browser's DevTools.
+// If you don't have the XSRF-TOKEN cookie anymore, access the http://localhost:8000/api/csrf/restore route to add the cookie back.
+
+// ----------------------------------------------------------
+// TEST DEMO USER USING USERNAME CREDENTIAL:
+// ----------------------------------------------------------
+// fetch('/api/session', {
+//     method: 'POST',
+//     headers: {
+//       "Content-Type": "application/json",
+//       "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+//     },
+//     body: JSON.stringify({ credential: 'Demo-lition', password: 'password' })
+//   }).then(res => res.json()).then(data => console.log(data));
+
+// ----------------------------------------------------------
+// TEST DEMO USER USING EMAIL CREDENTIAL:
+// ----------------------------------------------------------
+// fetch('/api/session', {
+//     method: 'POST',
+//     headers: {
+//       "Content-Type": "application/json",
+//       "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+//     },
+//     body: JSON.stringify({ credential: 'demo@user.io', password: 'password' })
+//   }).then(res => res.json()).then(data => console.log(data));
+
+// ----------------------------------------------------------
+// TEST DEMO USER USING INVALID CREDENTIAL / PASSWORD COMBO:
+// ----------------------------------------------------------
+// fetch('/api/session', {
+//     method: 'POST',
+//     headers: {
+//       "Content-Type": "application/json",
+//       "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+//     },
+//     body: JSON.stringify({ credential: 'Demo-lition', password: 'Hello World!' })
+//   }).then(res => res.json()).then(data => console.log(data));

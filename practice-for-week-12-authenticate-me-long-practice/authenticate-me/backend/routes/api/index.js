@@ -1,5 +1,17 @@
 const router = require('express').Router();
 
+// Connect session and users routes
+const sessionRouter = require('./session.js');
+const usersRouter = require('./users.js');
+
+router.use('/session', sessionRouter);
+router.use('/users', usersRouter);
+
+// ------------------------------------------------------------------------------------------------------------
+// TESTS ROUTES
+// ------------------------------------------------------------------------------------------------------------
+
+
 // Test route to verify api connection is working
 // The API test route is accepting requests with the URL path of /api/test with the HTTP verb of POST.
 // It sends a JSON response containing whatever is in the body of the request.
