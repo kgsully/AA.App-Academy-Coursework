@@ -25,3 +25,26 @@ router.post('/', async (req, res) => {
 
 
 module.exports = router;
+
+// ----------------------------------------------------------------------------------
+// Signup Route Test:
+// ----------------------------------------------------------------------------------
+// Test the signup route by navigating to the http://localhost:8000/api/csrf/restore route and making a fetch request from the browser's DevTools console.
+// Remember, you need to pass in the value of the XSRF-TOKEN cookie as a header in the fetch request because the login route has a POST HTTP verb.
+
+// Next, try to hit the Sequelize model validation errors by testing the following which should give back a Validation error:
+//      email is not unique (signup with an existing email)
+//      username is not unique (signup with an existing username)
+
+// fetch('/api/users', {
+//     method: 'POST',
+//     headers: {
+//       "Content-Type": "application/json",
+//       "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+//     },
+//     body: JSON.stringify({
+//       email: 'spidey@spider.man',
+//       username: 'Spidey',
+//       password: 'password'
+//     })
+//   }).then(res => res.json()).then(data => console.log(data));

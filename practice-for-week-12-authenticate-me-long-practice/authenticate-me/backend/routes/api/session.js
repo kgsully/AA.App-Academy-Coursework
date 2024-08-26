@@ -45,6 +45,19 @@ router.delete('/', (_req, res) => { // underscore prefix on request to mean that
     return res.json({message: 'success'});
 });
 
+// Get Session User route:
+// Uses the restoreUser middleware and will return the session user as JSON under the key of user.
+// If there is not a session (i.e. no JWT session cookie), it will return a JSON with an empty object.
+router.get('/', restoreUser, (req, res) => {
+    const { user } = req;
+    if (user) {
+        return res.json({
+            user: user.toSafeObject()
+        });
+    } else return res.json({});
+});
+
+
 module.exports = router;
 
 // ----------------------------------------------------------------------------------
@@ -89,4 +102,19 @@ module.exports = router;
 //       "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
 //     },
 //     body: JSON.stringify({ credential: 'Demo-lition', password: 'Hello World!' })
+//   }).then(res => res.json()).then(data => console.log(data));
+
+// ----------------------------------------------------------------------------------
+// Logout Route Test:
+// ----------------------------------------------------------------------------------
+// Start by navigating to the http://localhost:8000/api/csrf/restore route and making a fetch request from the browser's DevTools console to test the logout route.
+// Check that you are logged in by confirming that a token cookie is in your list of cookies in the browser's DevTools.
+// Remember, you need to pass in the value of the XSRF-TOKEN cookie as a header in the fetch request because the logout route has a DELETE HTTP verb.
+
+// fetch('/api/session', {
+//     method: 'DELETE',
+//     headers: {
+//       "Content-Type": "application/json",
+//       "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+//     }
 //   }).then(res => res.json()).then(data => console.log(data));
