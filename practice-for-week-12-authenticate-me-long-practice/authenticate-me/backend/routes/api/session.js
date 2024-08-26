@@ -9,13 +9,37 @@ const express = require('express');
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
 const { User } = require('../../db/models');
 
+// Attach express-validator and handleValidationErrors middleware
+const { check } = require('express-validator');
+const { handleValidationErrors } = require('../../utils/validation');
+
 const router = express.Router();
+
+// Validating Login Request Body - validateLogin middleware
+// The check function from express-validator will be used with the handleValidationErrors to validate the body of a request.
+// The POST /api/session login route will expect the body of the request to have a key of credential with either
+// the username or email of a user and a key of password with the password of the user.
+
+// The validateLogin middleware is composed of the check and handleValidationErrors middleware.
+// It checks to see whether or not req.body.credential and req.body.password are empty. If one of them is empty, then an error will be returned as the response.
+const validateLogin = [
+    check('credential')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage('Please provide a valid email or username.'),
+    check('password')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage('Please provide a password.'),
+    handleValidationErrors
+];
 
 // Login route:
 // Using an asynchronous route handler, call the login static method from the User model.
 // If a user is returned from the login static method, call setTokenCookie and return a JSON response with the user info
 // If no user is returned, create a "Login Failed" error and invoke the next error-handling middleware with it
-router.post('/', async (req, res, next) => {
+// NOTE ---> USES validateLogin MIDDLEWARE TO VALIDATE REQUEST BODY. SEE COMMENTS / CODE FOR MORE INFORMATION
+router.post('/', validateLogin, async (req, res, next) => {
     // retrieve credential and password from request body
     const { credential, password } = req.body;
 
@@ -56,7 +80,6 @@ router.get('/', restoreUser, (req, res) => {
         });
     } else return res.json({});
 });
-
 
 module.exports = router;
 
@@ -102,6 +125,30 @@ module.exports = router;
 //       "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
 //     },
 //     body: JSON.stringify({ credential: 'Demo-lition', password: 'Hello World!' })
+//   }).then(res => res.json()).then(data => console.log(data));
+
+// ----------------------------------------------------------
+// TEST REQUEST BODY VALIDATION USING EMPTY CREDENTIAL:
+// ----------------------------------------------------------
+// fetch('/api/session', {
+//     method: 'POST',
+//     headers: {
+//       "Content-Type": "application/json",
+//       "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+//     },
+//     body: JSON.stringify({ credential: '', password: 'password' })
+//   }).then(res => res.json()).then(data => console.log(data));
+
+// ----------------------------------------------------------
+// TEST REQUEST BODY VALIDATION USING EMPTY PASSWORD:
+// ----------------------------------------------------------
+// fetch('/api/session', {
+//     method: 'POST',
+//     headers: {
+//       "Content-Type": "application/json",
+//       "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+//     },
+//     body: JSON.stringify({ credential: 'Demo-lition', password: '' })
 //   }).then(res => res.json()).then(data => console.log(data));
 
 // ----------------------------------------------------------------------------------
