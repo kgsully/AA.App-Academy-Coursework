@@ -1,0 +1,13 @@
+.type {
+    background-color: green;
+    color: #ffffff;
+}
+
+.moves {
+    background-color: white;
+    color: green;
+}
+
+.showcase-container {
+    text-align: center;
+}

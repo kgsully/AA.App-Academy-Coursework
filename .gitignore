@@ -1,11 +1,35 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
 node_modules/
+/.pnp
+.pnp/
+.pnp.js
+
+# testing
+/coverage
+coverage/
 cypress/plugins
 cypress/screenshots
 cypress/support
-db/database.sqlite
-package-lock.json
-.env
-build
-.DS_Store
+
+# production
+/build
+
+# database
 *.db
+db/database.sqlite
+
+# misc
 *.zip
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.eslintcache
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
