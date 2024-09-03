@@ -1,20 +1,32 @@
-import { useParams } from 'react-router-dom';
+import { Route, useParams } from 'react-router-dom';
+import ArtImageTile from '../ArtImageTile/index.js';
+import './GalleryView.css';
 
 const GalleryView = ({ galleries }) => {
     const { galleryId } = useParams();
-    // console.log(galleries);
-    // console.log(galleryId);
 
     const gallery = galleries.find(({id}) => id === parseInt(galleryId));
-    // console.log(gallery);
 
     // handle case that gallery id is not found
     if(gallery) {
+        const { name, labeltext } = gallery
+
+        // Dynamically generate art image tiles
+        const tiles = gallery.objects.map((object) => {
+            return (
+                <ArtImageTile key={object.id} art={object} galleryId={galleryId}/>
+            )
+        });
+
         return (
             <div>
-                {/* <h1>Hello from GalleryView</h1> */}
-                <h2>{gallery.name}</h2>
-                <p>{gallery.labeltext}</p>
+                <Route exact path='/galleries/:galleryId'>
+                    <h2>{name}</h2>
+                    <p>{labeltext}</p>
+                    <div className="art-image-tiles">   {/* Create div as a container for aranging / styling tiles */}
+                        {tiles}
+                    </div>
+                </Route>
             </div>
         )
     } else {
