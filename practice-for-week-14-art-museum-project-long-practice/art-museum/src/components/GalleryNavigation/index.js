@@ -11,7 +11,7 @@ const GalleryNavigation = ({ galleries }) => {  // destructure galleries prop
         const { id, name } = item;
         // because arrow function includes curly braces due to const declaration, need to explicitly return JSX node
         return (
-            <NavLink to={`/galleries/${id}`}>{name}</NavLink>
+            <NavLink key={id} to={`/galleries/${id}`}>{name}</NavLink>
         )
     });
 

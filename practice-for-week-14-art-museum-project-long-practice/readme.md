@@ -1,4 +1,4 @@
-Long Practice: Art Museum Project
+# Long Practice: Art Museum Project
 
 In this project, you will create React components to build a purely frontend application that displays a list of art galleries. Using the React Router library, you will enable a user to navigate through the different art galleries to see images and descriptions of their respective art pieces. The information about the art galleries will be seeded using data extracted from the Harvard Art Museum API.
 
@@ -146,3 +146,45 @@ NavLinks make it easy to show when a link's path matches the current route. You 
 (13) Import the GalleryNavigation.css file at the top of the GalleryNavigation component file. (See src/index.js to see how to import CSS files into a create-react-app JavaScript file.)
 
 In the browser, you should see the active route in boldface in the navigation bar. Make sure that the NavLink to the home page is bolded only at the / route.
+
+# Art Museum pt.2
+
+
+Here's a breakdown of the steps you'll be taking in this phase (more detailed instruction below):
+
+    Create <GalleryView> component with placeholder content (<h1>).
+    Add <GalleryView> to <App>, wrapped with a <Route> from React Router.
+    Use useParams to access the gallery ID value from the URL.
+    Pass harvardArt.records to <GalleryView> as the galleries prop.
+    Receive the galleries prop in <GalleryView> and use the gallery ID to find correct gallery.
+    Render header with the gallery name.
+
+It's time to make the component that renders the /galleries/:galleryId route and shows the details about the specific gallery with the matching galleryId in the URL parameter.
+
+(1) Create a folder in components called GalleryView with an index.js file. Make a functional component called GalleryView that renders <h1>Hello from GalleryView</h1> and export the component as default.
+
+(2) Import the GalleryView component into App and render at the /galleries/:galleryId route. You should use the <Route> component from react-router-dom. Always remember to use documentation!
+
+Tips for Step 2:
+
+    Remember your <NavLink>s in <GalleryNavigation>? This <Route> is where they will lead!
+    You will need to use both the <Route> and <GalleryView> components in App.js.
+    Now that another element is being added to App.js, you will need to wrap <GalleryNavigation> and <Route> in something. We use <div> with a className "page-wrapper".
+    The path prop of the <Route> component works a lot like the definition of an Express route!
+    Submit a Progress Tracker question if you get stuck!
+
+Click on a link to a gallery in the navigation bar and you should see the text, "Hello from GalleryView".
+
+(3) In the GalleryView component, extract the matched value for the galleryId URL parameter with the useParams hook from React Router. Print this value and make sure it looks correct in the browser's Dev Tools console. See how far you can get with just the documentation. Use Progress Tracker if you are stuck! Again: the param you are looking for is galleryId! (You set the parameter's name in the Route path that you specified in App.js.)
+
+(4) To get the information on the art gallery with the specified galleryId, the <GalleryView> component needs to find the art gallery from the list of art galleries. The data for art galleries live in the App component. Similarly to how you passed the galleries information into the GalleryNavigation component, now pass the galleries information into the GalleryView component.
+
+(5) In the <GalleryView> component, extract the gallery with the specified galleryId from the list of galleries in the galleries prop. Confirm that it is the desired gallery by using the Dev Tools (either debugger or using console.log).
+
+Tips for Step 4 and 5:
+
+    Refer to how your <GalleryNavigation> component is passed and receives its galleries prop. It should be pretty similar here!
+    There are lots of ways to find a value in an array, but we highly suggest .find!
+    Be careful with the data type of your ID! Make sure you are not comparing numbers to strings that merely resemble numbers!!
+
+(6) Next, render the name of the specified gallery in h2 tags. Make sure that the name changes whenever you navigate to a different gallery from the navigation bar.
