@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
+import './ArtDescription.css';
 
 const ArtDescription = ({ gallery }) => {
     const { artId } = useParams();
@@ -9,7 +10,7 @@ const ArtDescription = ({ gallery }) => {
         return (
         <div className="art-preview">
             <img key={image.imageid} className="art-image" src={`${image.baseimageurl}`} alt={`${image.alttext}`} />
-            <p>Photo © {image.copyright}</p>
+            <p className='photo-credit'>{image.copyright ? `Photo © ${image.copyright}` : ''}</p>
         </div>
         )
     })
@@ -27,9 +28,12 @@ const ArtDescription = ({ gallery }) => {
                 <p>Description: {description ? description : 'Unavailable'}</p>
             </div>
 
-            {artImgs}
+            <p>{labeltext ? labeltext : 'Exhibit Text Unavailable'}</p>
 
-            <p>Exhibit Text: {labeltext ? labeltext : 'Unavailable'}</p>
+            <div className='art-preview-wrapper'>
+                {artImgs}
+            </div>
+
 
             <Link to={`/galleries/${gallery.id}`}>{
                 `Back to Gallery - ${gallery.name}`}

@@ -4,16 +4,22 @@ import harvardArt from './data/harvardArt.js';
 // console.log(harvardArt.records[0].objects[0]);
 import GalleryNavigation from './components/GalleryNavigation/index.js';
 import GalleryView from './components/GalleryView/index.js';
+import './index.css';
 
 function App() {
   return (
     <div className='page-wrapper'>
+
+        <h1 className='page-title'>Art Museum</h1>
+
       <GalleryNavigation galleries={harvardArt.records}/>
 
       <Switch>
         <Route exact path="/">
-          <h2>Harvard Art Museum</h2>
-          <p>Look, but Don't Touch. Please select a Gallery in the navigation bar.</p>
+          <div className='home-content'>
+            <h2>Harvard Art Museum</h2>
+            <p>Look, but Don't Touch. Please select a Gallery in the navigation bar.</p>
+          </div>
         </Route>
         <Route path="/galleries/:galleryId">
           <GalleryView galleries={harvardArt.records} />

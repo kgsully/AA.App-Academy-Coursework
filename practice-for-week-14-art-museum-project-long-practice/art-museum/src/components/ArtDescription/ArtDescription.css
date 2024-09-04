@@ -1,0 +1,20 @@
+.art-preview-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.art-preview {
+    margin: 1rem 0;
+}
+
+.art-image {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.photo-credit {
+    color: darkgray;
+    text-align: center;
+    margin: .2rem 0 0 0;
+}

@@ -20,7 +20,7 @@ const GalleryView = ({ galleries }) => {
         });
 
         return (
-            <div>
+            <div className='gallery-view-wrapper'>
                 <Route exact path='/galleries/:galleryId'>
                     <h2>{name}</h2>
                     <p>{labeltext}</p>

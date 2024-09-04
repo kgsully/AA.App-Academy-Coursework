@@ -17,9 +17,13 @@ const GalleryNavigation = ({ galleries }) => {  // destructure galleries prop
 
     return (
         <nav>
-            <h1>Galleries</h1>
-            <NavLink exact to="/">Home</NavLink>
-            {navLinks}
+            <div className='gallery-title-wrapper'>
+                <h2 className='gallery-title'>Galleries</h2>
+                <NavLink className='home-link' exact to="/">Home</NavLink>
+            </div>
+            <div className='nav-link-wrapper'>
+                {navLinks}
+            </div>
         </nav>
     )
 }

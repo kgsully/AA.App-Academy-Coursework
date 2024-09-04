@@ -6,7 +6,7 @@ const ArtImageTile = ({ art, galleryId }) => {
 
     return (
         <Link to={`/galleries/${galleryId}/art/${art.id}`}>
-            <img src={baseimageurl} alt={alttext}></img>
+            <img className='tile-img' src={baseimageurl} alt={alttext}></img>
         </Link>
     )
 }

@@ -1,1 +1,17 @@
 /* TODO Add site wide styles */
+#root {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0 2rem;
+}
+
+.home-content {
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.page-title {
+    background-color: darkred;
+    color: white;
+    margin: 0;
+    padding: 1rem;
+}
