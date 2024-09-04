@@ -1,5 +1,6 @@
 import { Route, useParams } from 'react-router-dom';
 import ArtImageTile from '../ArtImageTile/index.js';
+import ArtDescription from '../ArtDescription';
 import './GalleryView.css';
 
 const GalleryView = ({ galleries }) => {
@@ -26,6 +27,9 @@ const GalleryView = ({ galleries }) => {
                     <div className="art-image-tiles">   {/* Create div as a container for aranging / styling tiles */}
                         {tiles}
                     </div>
+                </Route>
+                <Route exact path='/galleries/:galleryId/art/:artId'>
+                    <ArtDescription gallery={gallery}/>
                 </Route>
             </div>
         )
