@@ -1,0 +1,12 @@
+.form-wrapper {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0 auto;
+}
+
+.error {
+    color: red;
+}
+
+span {
+    margin-left: 1rem;
+}
