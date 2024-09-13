@@ -16,18 +16,19 @@ export const ClockToggle = ({ toggleClock }) => {
 const Clock = () => {
   const [ time, setTime ] = useState(new Date());
 
+  function tick() {
+    setTime(new Date());
+  }
+
   useEffect(() => {
     const interval = setInterval(tick, 1000);
 
-    return (
+    return () => (
       console.log("Clearing Clock interval!"),
       clearInterval(interval)
     );
   }, []);
 
-  function tick() {
-    setTime(new Date());
-  }
 
   let hours = time.getHours();
   let minutes = time.getMinutes();
