@@ -23,7 +23,7 @@ const Clock = () => {
   useEffect(() => {
     const interval = setInterval(tick, 1000);
 
-    return () => (
+    return () => (    // Have to return this as a FUNCTION, otherwise it gets immediately invoked
       console.log("Clearing Clock interval!"),
       clearInterval(interval)
     );
