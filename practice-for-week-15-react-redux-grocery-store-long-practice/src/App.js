@@ -1,10 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { populateProduce } from './store/produce';
 import Cart from './components/Cart';
 import ProduceList from './components/ProduceList';
 
 function App() {
   const [showCart, setShowCart] = useState(false);
-  
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(populateProduce());
+  }, [dispatch]);   // OK to add dispatch to the dependency array to clear the warning as it is a function that should not change (unless provider changes)
+
   return (
     <>
       <nav>
