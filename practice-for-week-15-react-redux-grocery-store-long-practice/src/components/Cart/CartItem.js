@@ -14,6 +14,7 @@ function CartItem({ item }) {
         <input
           type="number"
           value={count}
+          onChange={(e) => item.count = e.target.value}
         />
         <button
           className="cart-item-button"

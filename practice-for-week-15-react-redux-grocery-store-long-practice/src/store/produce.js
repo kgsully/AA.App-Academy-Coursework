@@ -1,6 +1,6 @@
 import produceData from '../mockData/produce.json';
 
-const POPULATE = 'produce/POPULATE'
+const POPULATE = 'produce/POPULATE';
 
 export function populateProduce() {
     return {
