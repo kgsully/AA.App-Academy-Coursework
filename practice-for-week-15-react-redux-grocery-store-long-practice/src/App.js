@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { populateProduce } from './store/produce';
+import { getCartItems } from './store/cart';
 import Cart from './components/Cart';
 import ProduceList from './components/ProduceList';
 
@@ -9,9 +10,19 @@ function App() {
 
   const dispatch = useDispatch();
 
+  const cartItems = useSelector(getCartItems);
+
   useEffect(() => {
     dispatch(populateProduce());
   }, [dispatch]);   // OK to add dispatch to the dependency array to clear the warning as it is a function that should not change (unless provider changes)
+
+  useEffect(() => {
+    if (cartItems.length > 0) {
+      setShowCart(() => true);
+    } else {
+      setShowCart(() => false);
+    }
+  }, [cartItems.length]);
 
   return (
     <>
