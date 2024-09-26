@@ -62,8 +62,8 @@ const tweetsReducer = (state = initialState, action) => {
       return newState;
     }
     case POST_TWEET: {
-      const tweet = action.newTweet
-      const newState = {...state, tweet};
+      const newState = {...state};
+      newState[action.newTweet.id] = action.newTweet;
       return newState;
     }
     default:
