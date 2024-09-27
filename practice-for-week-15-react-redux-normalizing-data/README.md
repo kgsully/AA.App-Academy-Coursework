@@ -1,21 +1,25 @@
-# Practice: Dispatch Thunk Actions
+# Normalizing Your State
 
-In this practice, you will dispatch the thunks returned from the thunk action
-creators you wrote in the previous practice.
+So far in your article reducer you have used an `entries` array to store the
+data. _Normalizing the data_ in your reducer can lead to better optimization.
+
+In this practice, you will normalize the data in your `articleReducer` and make
+the corresponding adjustments to your components. This will allow your
+`SingleArticle` component to search for data in 0(1) time.
 
 ## Setup
 
 Clone the starter repo accessible from the `Download Project` button at the
 bottom of this page.
 
-1. Install dependencies with `npm install`
-2. Copy the **.env.example** file to a new file in the same location called
-   **.env**
-   * The server should be listening for requests on port `5000`
-   * The SQLite3 database file should be **db/dev.db**
-3. Run
-   * `npm run db:setup` - create the database and tables and insert seed data
-   * `npm start` - start the backend server
+1. Install dependencies
+2. Create a __.env__ file based on the example with proper settings for your
+   local environment
+3. Run `npm install` in the __backend__ directory to install dependencies.
+4. Create a database user with the same name and password as found in your
+   __.env__ file with `CREATEDB` privileges
+5. Run `npm run db:setup` to set up the database.
+6. Run `npm start` to start the backend server.
 
 In a different terminal, `cd` into the __frontend__ directory of the starter.
 
@@ -24,101 +28,40 @@ In a different terminal, `cd` into the __frontend__ directory of the starter.
    * Note that the __package.json__ now defines a proxy of
      `http://localhost:5000`. This will effectively forward any unrecognized
      requests to the port (`5000`) on which your backend is listening.
-3. Open `http://localhost:3000` to see the frontend
 
-## Dispatching thunk actions: `fetchArticles`
+## Normalize ADD_ARTICLES case
 
-In the previous practice, you wrote thunk action creators, i.e., functions that
-returned a thunk action. In this practice, you will `dispatch` those thunk
-actions.
+In your __src/store/articleReducer.js__ file, locate your `initialState`
+variable. Change your `entries` key from an empty array to an empty object.
 
-In the __frontend/src/components/ArticleList/index.js__ file, you will update
-the component from `dispatch`-ing the action returned by the regular action
-creator--i.e., the old `loadArticles()`--to `dispatch`-ing the thunk action
-returned from the thunk action creator. Change the `import` statement near the
-top of the file to import the thunk action creator. Update the `dispatch` call
-inside the `useEffect` hook to `dispatch` the returned thunk action from the
-`fetchArticles` thunk action creator.
+Based on what you have learned, adjust the `LOAD_ARTICLES` case in your
+`articleReducer` function. Your `entries` object should store each article with
+a key of the article `id` and a value of the article itself. (Make sure you
+don't mutate nested objects!)
 
-You should `dispatch` your thunk actions the same way you `dispatch`-ed the
-actions returned from your action creators, using the same `dispatch` made
-available in your application through the `useDispatch` hook.
+## Adjust the ArticleList Component
 
-Once you finish, your code should look something like this:
+The data type for the `entries` in your `articleReducer` has changed from an
+array to an object. As a result, in your `ArticleList` component `return`, you
+can no longer simply `.map` over the `articles` returned by the `useSelector`.
+Adjust your JSX to make the articles display properly.
 
-```js
-import { fetchArticles } from '../../store/articleReducer';
+## Normalize ADD_ARTICLE case
 
-const ArticleList = () => {
-  const dispatch = useDispatch();
-  const articles = useSelector(state=>state.articleState.entries);
+Go back to your __src/store/articleReducer.js__ file. In the `articleReducer`
+function, adjust the code so that you store the new article in the `entries`
+array with a key of the article `id` and value of the article. Again, be careful
+not to mutate nested objects.
 
-  useEffect(() => {
-    dispatch(fetchArticles());
-  }, [dispatch]);
-  // ...
-};
-```
+## SingleArticle O(1)
 
-## Test and debug
-
-You ended the last practice with a broken app because you were no longer loading
-the articles. Now that you are fetching the articles, test your code in the
-browser again. You should see the "Article List" displaying the various titles
-once again. Yea!
-
-Now click on one of the titles. You will probably see a blank screen with the
-DevTools console shouting at you because `SingleArticle` is trying to access
-inside of `undefined`. In short, `SingleArticle` can't find the article it
-is supposed to display. Fix this problem in the `SingleArticle` component.
-
-> Hint: the database assigns integer `id`s rather than the string `id`s assigned
-> by `nanoid`.
-
-Once you get `SingleArticle` to render again, refresh the page. Oh no! It's
-(likely) broken again. Check the state in the Redux DevTools:
-`articleState.entries` should be empty. The refresh clears the Redux store, but
-why doesn't the app just re-fetch the articles?
-
-Take a look in __ArticleList/index.js__. Notice that you fetch the articles in a
-`useEffect`, and a `useEffect` always runs **after** a render. In other words,
-your app will always render at least once before it fetches the articles. It's
-this first render that's the problem: there are no articles loaded for
-`SingleArticle` to grab. To fix this, use some kind of conditional to make sure
-that `SingleArticle` doesn't try to render `singleArticle`--note the lowercase
-'s'--if there is no article to display. (There are several ways this could be
-done; just pick one.)
-
-Once `SingleArticle` makes it through the first render, the `useEffect` will
-run, fetch the articles, and load them into the Redux store. This updating of
-the store will then trigger a re-render in which `SingleArticle` should be able
-to find and display the specified article (assuming it was a valid article
-request to begin with). All of this typically happens so quickly that it is hard
-for the human eye to even notice that more than one render occurs!
-
-## `writeArticle`
-
-Now it's your turn! Update the `ArticleInput` component found in the
-__frontend/src/component/ArticleInput/index.js__ file to use the `writeArticle`
-thunk action creator when the user submits the form to create a new article.
-
-> Tip: The database will now assign the new article an `id`, so you will no
-> longer need `nanoid`.
-
-Note that you will want to `await` the result of your `dispatch` and only reset
-the form if the article was successfully entered into the database. You can only
-`await` inside an `async` function, however, so you will also need to re-define
-`handleSubmit` accordingly:
-
-```js
-const handleSubmit = async (e) => {
-  // ...
-}
-```
+In the `SingleArticle` component, you are now able to find your article without
+using the `.find` function. Change the `singleArticle` variable so that you
+directly reference the article you want to use.
 
 ## What you have learned
 
 **Congratulations!** In this practice you have learned how to
 
-1. `dispatch` thunk actions from within your React components
-2. Debug some of the issues that commonly arise when using thunks
+1. Normalize data in your reducer for more optimal performance.
+2. Choose data using O(1) time complexity.
