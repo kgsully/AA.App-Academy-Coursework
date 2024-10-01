@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';   // Phase 1 - Added useDispatch to import
 import { NavLink, Route, useParams } from 'react-router-dom';
-
+import { getPokemon } from '../store/pokemon';            // Phase 1 - import getPokemon thunk action creator
 import PokemonDetail from './PokemonDetail';
 import CreatePokemonForm from './CreatePokemonForm';
 import Fab from './Fab';
@@ -13,6 +13,13 @@ const PokemonBrowser = () => {
   });
   const [showForm, setShowForm] = useState(false);
 
+  // Phase 1 Dispatch the thunk action creator getPokemon when the PokemonBrowser component first renders
+  const dispatch = useDispatch(); // Phase 1
+
+  useEffect(() => {
+    dispatch(getPokemon());
+  },[dispatch]);
+  /////
 
   if (!pokemon) {
     return null;
