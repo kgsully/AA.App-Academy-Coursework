@@ -16,6 +16,8 @@ const CreatePokemonForm = ({ hideForm }) => {
   const [move1, setMove1] = useState('');
   const [move2, setMove2] = useState('');
 
+  const [errors, setErrors] = useState(null); // Bonus Phase 3 - Error Validation
+
   const updateNumber = (e) => setNumber(e.target.value);
   const updateAttack = (e) => setAttack(e.target.value);
   const updateDefense = (e) => setDefense(e.target.value);
@@ -51,10 +53,18 @@ const CreatePokemonForm = ({ hideForm }) => {
     };
 
     // let createdPokemon;  // Phase 3 - change definition for createdPokemon variable
-    let createdPokemon = await dispatch(createPokemon(payload));  // Phase 3 - assign value of createdPokemon to the value returned by the thunk action creator (new pokemon entry). Needs await as db interaction is async
-    if (createdPokemon) {
-      history.push(`/pokemon/${createdPokemon.id}`);
-      hideForm();
+    try {   // Bonus Phase 3 - wrap in a try / catch for error handling
+      let createdPokemon = await dispatch(createPokemon(payload));  // Phase 3 - assign value of createdPokemon to the value returned by the thunk action creator (new pokemon entry). Needs await as db interaction is async
+      if (createdPokemon) {
+        history.push(`/pokemon/${createdPokemon.id}`);
+        hideForm();
+      }
+    } catch (error) { // Bonus Phase 3 - wrap in a try / catch for error handling
+      if (error.errors) {
+        setErrors(error.errors);
+      } else {
+        setErrors({title: 'An unexpected error occurred'});
+      }
     }
   };
 
@@ -73,6 +83,7 @@ const CreatePokemonForm = ({ hideForm }) => {
           required
           value={number}
           onChange={updateNumber} />
+        {errors?.number && <p className="error-message">{`Number: ${errors.number}`}</p>}
         <input
           type="number"
           placeholder="Attack"
@@ -81,6 +92,7 @@ const CreatePokemonForm = ({ hideForm }) => {
           required
           value={attack}
           onChange={updateAttack} />
+        {errors?.attack && <p className="error-message">{`Attack: ${errors.attack}`}</p>}
         <input
           type="number"
           placeholder="Defense"
@@ -89,26 +101,31 @@ const CreatePokemonForm = ({ hideForm }) => {
           required
           value={defense}
           onChange={updateDefense} />
+        {errors?.defense && <p className="error-message">{`Defense: ${errors.defense}`}</p>}
         <input
           type="text"
           placeholder="Image URL"
           value={imageUrl}
           onChange={updateImageUrl} />
+        {errors?.imageUrl && <p className="error-message">{`Image URL: ${errors.imageUrl}`}</p>}
         <input
           type="text"
           placeholder="Name"
           value={name}
           onChange={updateName} />
+        {errors?.name && <p className="error-message">{`Name: ${errors.name}`}</p>}
         <input
           type="text"
           placeholder="Move 1"
           value={move1}
           onChange={updateMove1} />
+        {errors?.move1 && <p className="error-message">{`Move 1: ${errors.move1}`}</p>}
         <input
           type="text"
           placeholder="Move 2"
           value={move2}
           onChange={updateMove2} />
+        {errors?.move2 && <p className="error-message">{`Move 2: ${errors.move2}`}</p>}
         <select onChange={updateType} value={type}>
           {pokeTypes.map(type =>
             <option key={type}>{type}</option>

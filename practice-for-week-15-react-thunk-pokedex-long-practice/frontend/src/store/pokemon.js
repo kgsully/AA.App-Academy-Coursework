@@ -52,18 +52,33 @@ export const getPokemonDetails = (id) => async dispatch => {
 // After response comes back, add the newly created Pokemon to the Redux store by dispatching the appropriate regular POJO action
 export const createPokemon = (payload) => async dispatch => {
   const body = JSON.stringify(payload);
-  const response = await fetch(`/api/pokemon`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body
-  });
+  try{
+    const response = await fetch(`/api/pokemon`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body
+    });
 
-  if (response.ok) {
-    const newPokemon = await response.json();
-    dispatch(addOnePokemon(newPokemon));
-    return newPokemon;
+    if (response.ok) {
+      const newPokemon = await response.json();
+      dispatch(addOnePokemon(newPokemon));
+      return newPokemon;
+    } else {  // Bonus Phase 3 - provide error checking feedback
+      if (response.status === 422) {
+        const errorData = await response.json();
+        const error = new Error(errorData.title);
+        error.errors = errorData.errors;
+        throw error;
+      }
+    }
+  } catch (error) {
+    if (!error.data) {
+      error.data = { title: error.message, errors: { general: 'An unexpected error occurred' } };
+    }
+    console.log(error.errors);
+    throw(error);
   }
 };
 // -----------------------------------------------------------------------------------------
