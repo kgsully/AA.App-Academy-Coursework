@@ -52,7 +52,7 @@ input {
 }
 
 .item-form input {
-  margin-bottom: 2em;
+  margin-bottom: .5em;
 }
 
 input:focus {

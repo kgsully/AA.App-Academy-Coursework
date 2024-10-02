@@ -76,7 +76,25 @@ export const deletePokemonItem = (itemId, pokemonId) => async dispatch => {
     return itemId;
   }
 };
+// -----------------------------------------------------------------------------------------
 
+// Bonus Phase 2 - Create and dispatch a thunk action to create an item
+export const addPokemonItem = (pokemonId, payload) => async dispatch => {
+  const body = JSON.stringify(payload);
+  const response = await fetch(`/api/pokemon/${pokemonId}/items`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body
+  });
+
+  if (response.ok) {
+    const newItem = await response.json();
+    dispatch(add(newItem));
+    return newItem;
+  }
+};
 // -----------------------------------------------------------------------------------------
 
 const initialState = {};
@@ -97,6 +115,10 @@ const itemsReducer = (state = initialState, action) => {
       delete newState[action.itemId];
       return newState;
     case ADD_ITEM:
+      return {
+        ...state,
+        [action.item.id]: action.item
+      };
     case UPDATE_ITEM:
       return {
         ...state,

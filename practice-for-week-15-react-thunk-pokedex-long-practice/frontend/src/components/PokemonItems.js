@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";  // Phase 5 - import useEffect to dispatch thunk action creator when id changes
+import { useEffect } from "react";  // Phase 5 - import useEffect to dispatch thunk action creator when id changes
 import { useSelector, useDispatch } from "react-redux"; // Phase 5 - add useDispatch to import
 import { getPokemonItems, deletePokemonItem } from "../store/items"; // Phases 5 (thunk action creator getPokemonItems) & 6 (thunk action creator deletePokemonItem)
 
 const PokemonItems = ({ pokemon, setEditItemId }) => {
   const dispatch = useDispatch()
-  const [ deleteItemId, setDeleteItemId ] = useState(null);
   const items = useSelector((state) => {
     if (!pokemon.items) return null;
     return pokemon.items.map(itemId => state.items[itemId]);
@@ -15,13 +14,6 @@ const PokemonItems = ({ pokemon, setEditItemId }) => {
     dispatch(getPokemonItems(pokemon.id));
   }, [pokemon.id, dispatch])
   // -------------------------------------------------------
-
-  // useEffect(() => {
-  //   if(deleteItemId) {
-  //     dispatch(deletePokemonItem(deleteItemId, pokemon.id));
-  //     setDeleteItemId(null);
-  //   }
-  // }, [deleteItemId, dispatch]);
 
   const handleDelete = async (itemId) => {
     dispatch(deletePokemonItem(itemId, pokemon.id));

@@ -29,6 +29,7 @@ const PokemonDetail = () => {
     content = (
       <ItemForm
         itemId={editItemId}
+        pokemonId={pokemonId}   // Bonus Phase 2 - pass the pokemonId into the ItemForm as it is required for add new item functionality
         hideForm={() => setEditItemId(null)}
       />
     );
@@ -70,7 +71,7 @@ const PokemonDetail = () => {
         <div>
           <h2>
             Items
-            <button> + </button>
+            <button onClick={() => setEditItemId(-1)}> + </button>
           </h2>
           <table>
             <thead>
