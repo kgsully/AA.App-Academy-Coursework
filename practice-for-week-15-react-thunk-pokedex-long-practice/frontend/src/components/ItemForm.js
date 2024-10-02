@@ -25,7 +25,8 @@ const ItemForm = ({ itemId, hideForm }) => {
       price
     };
 
-    let returnedItem = await dispatch(editPokemonItem(item.id, payload));
+    // let returnedItem;  // Phase 6 - change variable declaration
+    let returnedItem = await dispatch(editPokemonItem(item.id, payload)); // Phase 6 - Change variable declaration to set it to the returned value from dispatching the thunk action creator
     if (returnedItem) {
       hideForm();
     }

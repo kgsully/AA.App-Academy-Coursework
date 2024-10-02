@@ -63,6 +63,22 @@ export const editPokemonItem = (id, payload) => async dispatch => {
 };
 // -----------------------------------------------------------------------------------------
 
+// Bonus Phase 1 - Create a thunk action creator for deleting an item. Per docs, hit the DELETE /api/items/:id route.
+// Dispatch the thunk action you just created when a user clicks the `DELETE` button next to an item in the Pokemon Detail view.
+export const deletePokemonItem = (itemId, pokemonId) => async dispatch => {
+  const response = await fetch(`/api/items/${itemId}`, {
+    method: "DELETE"
+  });
+
+  if (response.ok) {
+    const { id } = await response.json();
+    dispatch(remove( id, pokemonId));
+    return itemId;
+  }
+};
+
+// -----------------------------------------------------------------------------------------
+
 const initialState = {};
 
 const itemsReducer = (state = initialState, action) => {
