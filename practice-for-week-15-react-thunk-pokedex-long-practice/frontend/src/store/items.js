@@ -40,6 +40,29 @@ export const getPokemonItems = (id) => async dispatch => {
 };
 // -----------------------------------------------------------------------------------------
 
+// Phase 6 - Create a thunk action creator for editing an item in the 'ItemForm'. Per documentation, hit the PUT /api/items/:id route with appropriate payload body.
+// After the response comes back, use the data to dispatch the return of the 'update' POJO action creator for items.
+// Dispatch the thunk action on submission of the 'ItemForm'
+
+export const editPokemonItem = (id, payload) => async dispatch => {
+  const body = JSON.stringify(payload);
+
+  const response = await fetch(`/api/items/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body
+  });
+
+  if (response.ok) {
+    const editedItem = await response.json();
+    dispatch(update(editedItem));
+    return editedItem;
+  }
+};
+// -----------------------------------------------------------------------------------------
+
 const initialState = {};
 
 const itemsReducer = (state = initialState, action) => {

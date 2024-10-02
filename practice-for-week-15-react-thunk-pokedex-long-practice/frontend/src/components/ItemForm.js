@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux'; // Phase 6 - also import useDispatch
+import { editPokemonItem } from '../store/items';
 
 const ItemForm = ({ itemId, hideForm }) => {
   let item = useSelector(state => state.items[itemId]);
@@ -12,17 +13,19 @@ const ItemForm = ({ itemId, hideForm }) => {
   const updateHappiness = (e) => setHappiness(e.target.value);
   const updatePrice = (e) => setPrice(e.target.value);
 
+  const dispatch = useDispatch();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // const payload = {
-    //   ...item,
-    //   name,
-    //   happiness,
-    //   price
-    // };
-    
-    let returnedItem;
+    const payload = {   // Phase 6 - uncomment payload variable
+      ...item,
+      name,
+      happiness,
+      price
+    };
+
+    let returnedItem = await dispatch(editPokemonItem(item.id, payload));
     if (returnedItem) {
       hideForm();
     }
