@@ -25,11 +25,26 @@ const remove = (itemId, pokemonId) => ({
   pokemonId
 });
 
+// Phase 5 - Create a thunk action creator for feetching the items for a single Pokemon based on the id of the Pokemon in the 'PokemonItems' component.
+// After the response comes back, use the data to dispatch the return of the load action creator for items.
+// Dispatch the thunk action when the 'id' of the Pokemon changes in the 'PokemonItems' component
+
+export const getPokemonItems = (id) => async dispatch => {
+  const response = await fetch(`/api/pokemon/${id}/items`); // fetch default action is GET
+
+  if (response.ok) {
+    const pokemonItems = await response.json();
+    // console.log(pokemonItems);
+    dispatch(load(pokemonItems, id));
+  }
+};
+// -----------------------------------------------------------------------------------------
+
 const initialState = {};
 
 const itemsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOAD_ITEMS: 
+    case LOAD_ITEMS:
       const newItems = {};
       action.items.forEach(item => {
         newItems[item.id] = item;
@@ -38,12 +53,12 @@ const itemsReducer = (state = initialState, action) => {
         ...state,
         ...newItems
       }
-    case REMOVE_ITEM: 
+    case REMOVE_ITEM:
       const newState = { ...state };
       delete newState[action.itemId];
       return newState;
     case ADD_ITEM:
-    case UPDATE_ITEM: 
+    case UPDATE_ITEM:
       return {
         ...state,
         [action.item.id]: action.item

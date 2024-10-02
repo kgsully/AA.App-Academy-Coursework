@@ -1,10 +1,19 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";  // Phase 5 - import useEffect to dispatch thunk action creator when id changes
+import { useSelector, useDispatch } from "react-redux"; // Phase 5 - add useDispatch to import
+import { getPokemonItems } from "../store/items"; // Phase 5 - Import thunk action creator getPokemonItems
 
 const PokemonItems = ({ pokemon, setEditItemId }) => {
+  const dispatch = useDispatch()
   const items = useSelector((state) => {
     if (!pokemon.items) return null;
     return pokemon.items.map(itemId => state.items[itemId]);
   });
+
+  // Phase 5 - Dispatch pokemon items thunk action creator whenever pokemon id param changes
+  useEffect(() => {
+    dispatch(getPokemonItems(pokemon.id));
+  }, [pokemon.id, dispatch])
+  // -------------------------------------------------------
 
   if (!items) {
     return null;
@@ -35,7 +44,7 @@ const PokemonItems = ({ pokemon, setEditItemId }) => {
             Delete
           </button>
         </td>
-        
+
       )}
     </tr>
   ));
