@@ -68,6 +68,29 @@ export const createPokemon = (payload) => async dispatch => {
 };
 // -----------------------------------------------------------------------------------------
 
+// Phase 4 - Create a thunk action creator for editing a Pokemon in the EditPokemonForm. Check API docs for which route and url path / request body formatting.
+// After the response comes back, add the updated information Pokemon to the Redux store by dispatching the 'addOnePokemon' action.
+// Dispatch the thunk action on the submission of EditPokemonForm
+
+export const editPokemon = (id, payload) => async dispatch => {
+  const body = JSON.stringify(payload);
+  const response = await fetch(`/api/pokemon/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body
+  });
+
+  if (response.ok) {
+    const updatedPokemon = await response.json();
+    dispatch(addOnePokemon(updatedPokemon));
+    return updatedPokemon;
+  }
+};
+
+// -----------------------------------------------------------------------------------------
+
 const initialState = {
   list: [],
   types: []
