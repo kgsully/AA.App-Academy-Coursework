@@ -1,0 +1,45 @@
+# Installation Guide:
+https://www.postgresqltutorial.com/postgresql-getting-started/install-postgresql-linux/
+
+# Creating Users:
+https://phoenixnap.com/kb/postgres-create-user
+
+---------------------------------------------------------------------------
+Use systemctl command to manage postgresql service:
+https://stackoverflow.com/a/49828382
+---------------------------------------------------------------------------
+                            stop service:   systemctl stop postgresql
+                           start service:   systemctl start postgresql
+                  show status of service:   systemctl status postgresql
+disable service(not auto-start any more):   systemctl disable postgresql
+   enable service postgresql(auto-start):   systemctl enable postgresql
+
+
+### Shell Commands ###
+
+# Start the postgreSQL service:
+sudo systemctl start postgresql
+
+# Enable the PostgreSQL service (auto-start):
+sudo systemctl enable postgresql
+
+# Connect to the PostgreSQL database server
+sudo -u postgres psql
+
+# Connect to the PostgreSQL database server with a particular database
+sudo -u postgres psql <DB NAME>
+
+### PSQL COMMANDS ###
+
+# Quit psql
+\q
+
+# List users
+\du
+
+# Connect to a database
+\c <DB NAME>
+
+# List tables
+\dt
+

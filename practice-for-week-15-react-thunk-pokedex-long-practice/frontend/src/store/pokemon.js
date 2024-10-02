@@ -36,6 +36,37 @@ export const getPokemonTypes = () => async dispatch => {
     dispatch(loadTypes(types));
   }
 };
+// Phase 2 - Create thunk action creator for fetching a single Pokemon's details by their id
+// dispatch returned value to addOnePokemon action creator
+export const getPokemonDetails = (id) => async dispatch => {
+  const response = await fetch(`/api/pokemon/${id}`);
+
+  if (response.ok) {
+    const pokemonDetails = await response.json();
+    dispatch(addOnePokemon(pokemonDetails));
+  }
+};
+// -----------------------------------------------------------------------------------------
+
+// Phase 3 - Create thunk action creator for creating a Pokemon using the CreatePokemonForm by hitting the POST /api/pokemon backend route
+// After response comes back, add the newly created Pokemon to the Redux store by dispatching the appropriate regular POJO action
+export const createPokemon = (payload) => async dispatch => {
+  const body = JSON.stringify(payload);
+  const response = await fetch(`/api/pokemon`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body
+  });
+
+  if (response.ok) {
+    const newPokemon = await response.json();
+    dispatch(addOnePokemon(newPokemon));
+    return newPokemon;
+  }
+};
+// -----------------------------------------------------------------------------------------
 
 const initialState = {
   list: [],
@@ -50,7 +81,7 @@ const sortList = (list) => {
 
 const pokemonReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOAD: 
+    case LOAD:
       const allPokemon = {};
       action.list.forEach(pokemon => {
         allPokemon[pokemon.id] = pokemon;
@@ -60,12 +91,12 @@ const pokemonReducer = (state = initialState, action) => {
         ...state,
         list: sortList(action.list)
       };
-    case LOAD_TYPES: 
+    case LOAD_TYPES:
       return {
         ...state,
         types: action.types
       };
-    case ADD_ONE: 
+    case ADD_ONE:
       if (!state[action.pokemon.id]) {
         const newState = {
           ...state,
@@ -83,7 +114,7 @@ const pokemonReducer = (state = initialState, action) => {
           ...action.pokemon
         }
       };
-    case LOAD_ITEMS: 
+    case LOAD_ITEMS:
       return {
         ...state,
         [action.pokemonId]: {

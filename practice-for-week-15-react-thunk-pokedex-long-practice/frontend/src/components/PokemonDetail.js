@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux'; // Phase 2 - added useDispatch to the import
+import { getPokemonDetails } from '../store/pokemon';   // Phase 2 - Import getPokemonDetails thunk action creator
 import PokemonItems from './PokemonItems';
 import EditPokemonForm from './EditPokemonForm';
 import ItemForm from './ItemForm';
 
 const PokemonDetail = () => {
+  const dispatch = useDispatch(); // Phase 2 - declare variable for useDispatch method
   const { pokemonId } = useParams();
   const pokemon = useSelector(state => state.pokemon[pokemonId]);
   const [showEditPokeForm, setShowEditPokeForm] = useState(false);
@@ -14,7 +16,8 @@ const PokemonDetail = () => {
   useEffect(() => {
     setShowEditPokeForm(false);
     setEditItemId(null);
-  }, [pokemonId]);
+    dispatch(getPokemonDetails(pokemonId));   // Phase 2 - when id param changes, dispatch getPokemonDetails thunk action creator
+  }, [pokemonId, dispatch]);    // Phase 2 - added dispatch to the depenency array
 
   if (!pokemon || !pokemon.moves) {
     return null;
@@ -24,16 +27,16 @@ const PokemonDetail = () => {
 
   if (editItemId) {
     content = (
-      <ItemForm 
-        itemId={editItemId} 
-        hideForm={() => setEditItemId(null)} 
+      <ItemForm
+        itemId={editItemId}
+        hideForm={() => setEditItemId(null)}
       />
     );
   } else if (showEditPokeForm && pokemon.captured) {
     content = (
-      <EditPokemonForm 
-        pokemon={pokemon} 
-        hideForm={() => setShowEditPokeForm(false)} 
+      <EditPokemonForm
+        pokemon={pokemon}
+        hideForm={() => setShowEditPokeForm(false)}
       />
     );
   } else {
@@ -66,7 +69,7 @@ const PokemonDetail = () => {
         </div>
         <div>
           <h2>
-            Items 
+            Items
             <button> + </button>
           </h2>
           <table>

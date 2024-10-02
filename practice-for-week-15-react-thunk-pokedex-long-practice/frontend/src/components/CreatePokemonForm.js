@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { getPokemonTypes } from '../store/pokemon';
+import { getPokemonTypes, createPokemon } from '../store/pokemon';  // Phase 3 - added import for createPokemon thunk action creator
 
 const CreatePokemonForm = ({ hideForm }) => {
   const pokeTypes = useSelector(state => state.pokemon.types);
@@ -37,20 +37,21 @@ const CreatePokemonForm = ({ hideForm }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Phase 3 - un-commented definition for `payload` object for use in dispatch of thunk action creator `createPokemon`
+    const payload = {
+      number,
+      attack,
+      defense,
+      imageUrl,
+      name,
+      type,
+      // move1,
+      // move2,
+      moves: [move1, move2]
+    };
 
-    // const payload = {
-    //   number,
-    //   attack,
-    //   defense,
-    //   imageUrl,
-    //   name,
-    //   type,
-    //   move1,
-    //   move2,
-    //   moves: [move1, move2]
-    // };
-
-    let createdPokemon;
+    // let createdPokemon;  // Phase 3 - change definition for createdPokemon variable
+    let createdPokemon = await dispatch(createPokemon(payload));  // Phase 3 - assign value of createdPokemon to the value returned by the thunk action creator (new pokemon entry). Needs await as db interaction is async
     if (createdPokemon) {
       history.push(`/pokemon/${createdPokemon.id}`);
       hideForm();
