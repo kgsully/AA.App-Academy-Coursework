@@ -13,6 +13,9 @@ const routes = require('./routes');
 const { environment } = require('./config');
 const isProduction = environment === 'production';
 
+// Import ValidationError class type from sequelize in order to use it to check for this error type in the error handling middleware below
+const { ValidationError } = require('sequelize');
+
 // Initialize the express application
 const app = express();
 
@@ -58,5 +61,46 @@ app.use(
 
 // Connect all routes from the express router
 app.use(routes);
+
+// Error Handling Middleware:
+// -------------------------------
+
+// Resource Not Found - Catch unhandled requests and send them to the error handler
+app.use((_req, _res, next) => {      // Think that the arguments req and res are preceded with _ in order to indicate that they aren't used (but are still required to be there)
+    const err = new Error("The requested resource couldn't be found.");
+    err.title = "Resource Not Found";
+    err.errors = ["The requested resource couldn't be found."];
+    err.status = 404;
+    next(err);
+});
+
+// Sequelize Error Handler - Invoked if the error that caused this error-handler to be called is an instance of the sequelize package ValidationError type
+// Process sequelize errors -
+app.use((err, _req, _res, next) => {
+    // Check if error is a sequelize error
+    if(err instanceof ValidationError) {
+        err.errors = err.errors.map((e) => e.message);
+        err.title = 'Validation Error';
+    }
+    next(err);
+});
+
+// Error Formatter Error Handler - Formats all errors before returning a JSON response. Includes the error message, errors array, and error stack trace (if ENV is dev) with status code of the error message
+app.use((err, _req, res, _next) => {
+    res.status(err.status || 500);
+    console.error(err);
+    res.json({
+        title: err.title || 'Server Error',
+        message: err.message,
+        errors: err.errors,
+        stack: isProduction ? null : err.stack
+    });
+});
+
+
+
+
+
+
 
 module.exports = app;
