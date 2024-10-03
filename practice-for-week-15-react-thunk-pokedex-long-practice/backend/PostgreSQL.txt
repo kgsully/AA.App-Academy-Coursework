@@ -13,6 +13,7 @@ https://stackoverflow.com/a/49828382
                   show status of service:   systemctl status postgresql
 disable service(not auto-start any more):   systemctl disable postgresql
    enable service postgresql(auto-start):   systemctl enable postgresql
+   check if postgresql service is active:   systemctl is-active postgresql
 
 
 ### Shell Commands ###
