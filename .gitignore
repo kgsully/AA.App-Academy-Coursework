@@ -29,6 +29,7 @@ db/database.sqlite
 .env.test.local
 .env.production.local
 .eslintcache
+*.bkp
 
 npm-debug.log*
 yarn-debug.log*
