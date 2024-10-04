@@ -1,13 +1,13 @@
 'use strict';
 
-const { Model, Validator } = require('sequelize');
 const bcrypt = require('bcryptjs');
 
+const { Model, Validator } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
 
     // Instance method to return an object with only the user instance information that is safe to save to a JWT
-    toSafeObject = function() {   // Remember that this cannot be an arrow function
+    toSafeObject() {   // Remember that this cannot be an arrow function
       const { id, username, email } = this; // context will be the User instance, hence the use of 'this'
       return { id, username, email };
     }
@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
       // Note that the 'password' argument passed into the user.validatePassword
       // in this conditional is the password value received by the LOGIN STATIC METHOD (passed into validatePassword for comparison)
       if(user && user.validatePassword(password)) {
-        return await User.scope('currentUser').findByPk(user.id)
+        return await User.scope('currentUser').findByPk(user.id);
       }
     }
 
@@ -57,6 +57,11 @@ module.exports = (sequelize, DataTypes) => {
       });
       return await User.scope('currentUser').findByPk(user.id);
     }
+
+    static associate(models) {
+      // define association here
+    }
+
   }
 
   User.init({

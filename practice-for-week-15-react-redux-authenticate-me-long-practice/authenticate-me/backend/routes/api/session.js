@@ -53,7 +53,21 @@ router.delete(
     }
 );
 
-
+// Get Session User route:
+// Uses the restoreUser middleware and will return the session user as JSON under the key of user (toSafeObject as the restoreUser method uses the currentUser scope).
+// If there is not a session (i.e. no JWT session cookie), it will return a JSON with an empty object.
+router.get(
+  '/',
+  restoreUser,
+  (req, res) => {
+    const { user } = req;
+    if(user) {
+      return res.json({ user: user.toSafeObject() });
+    } else {
+      return res.json({});
+    }
+  }
+);
 
 module.exports = router;
 
@@ -128,4 +142,17 @@ fetch('/api/session', {
 You should see the token cookie disappear from the list of cookies in your browser's DevTools. If you don't have the XSRF-TOKEN cookie anymore, access the http://localhost:5000/hello/world route to add the cookie back.
 
 If you don't see this expected behavior while testing, then check your backend server logs in the terminal where you ran npm start as well as the syntax in the session.js route file.
+*/
+
+// ---------------------------
+// Get Session User Route
+// ---------------------------
+/*
+Test the route by navigating to http://localhost:5000/api/session. You should see the current session user information if you have the token cookie. If you don't have a token cookie, you should see an empty object returned.
+
+If you don't have the XSRF-TOKEN cookie anymore, access the http://localhost:5000/hello/world route to add the cookie back.
+
+If you don't see this expected behavior, then check your backend server logs in your terminal where you ran npm start and the syntax in the session.js route file and the restoreUser middleware function.
+
+Commit your code for the get session user route once you are done testing!
 */

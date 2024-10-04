@@ -12,10 +12,10 @@ router.use('/api', apiRouter);
 // Then it will send the text 'Hello World!' as the response body.
 
 // Test route removed by comment-out
-// router.get('/hello/world', function(req, res) {
-//     res.cookie('XSRF-TOKEN', req.csrfToken());
-//     res.send('Hello World!');
-// });
+router.get('/hello/world', function(req, res) {
+    res.cookie('XSRF-TOKEN', req.csrfToken());
+    res.send('Hello World!');
+});
 
 // GET /api/csrf/restore
 // Allows any developer to re-set the CSRF token cookie XSRF-TOKEN

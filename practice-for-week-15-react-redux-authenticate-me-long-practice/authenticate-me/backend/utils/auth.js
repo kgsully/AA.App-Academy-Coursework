@@ -28,7 +28,7 @@ const setTokenCookie = (res, user) => {
     });
 
     return token;
-}
+};
 
 // Middleware function to restore the session user based upon the contents of the JWT cookie.
 // Certain authenticated routes will require the identity of the current session user.
@@ -51,7 +51,8 @@ const restoreUser = (req, res, next) => {
     return jwt.verify(token, secret, null, async (err, jwtPayload) => {
         // 2. Handle the case where the token couldn't be verified
         if (err) {
-            return next();  // why not next(err)? Because nothing would be returned and the route / middleware calling this would handle it?
+            res.clearCookie('token');   // ***** ADDED BY ME: If the token is invalid, delete the token cookie *****
+            return next();  // not next(err) as if there is no token (no logged in user) code will just move on and it will be handled in the route by returning an empty JSON instead of user JSON.
         }
 
         try {
@@ -61,12 +62,13 @@ const restoreUser = (req, res, next) => {
         catch (e) {
             // 2. Handle the case where user with specified ID was not found in the database
             res.clearCookie('token');
-            return next();  // same question regarding next() vs next(e)
+            return next();  // not next(err) as
         }
 
-        // This seems like a duplicate? Wouldn't this be handled in the catch block since the ID wasn't found? If it is due to an error verifying the JWT, wouldn't this go
-        // into the if(err) as that handles the case where the token couldn't be verified as it will return next() within the conditional?
-        // Or is this a catch-all?
+        // This is necessary as in order to progress from this middleware the return next() must be invoked as the try block does not have a return next() - api route for get session user just spins
+        // the return next() in the if (err) and catch (e) don't actually return next from the return jwt.verify itself, but from their individual scopes as a way to progress. As such, without the
+        // clearCookie and return next() below, the cookie won't get cleared if it's invalid and the middleware won't progress onto the next
+
         if (!req.user) res.clearCookie('token');
 
         return next();
