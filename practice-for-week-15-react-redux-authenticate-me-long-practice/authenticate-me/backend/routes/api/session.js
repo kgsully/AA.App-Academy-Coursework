@@ -4,7 +4,8 @@
 // Get session user: GET /api/session
 
 const express = require('express');
-const asyncHandler = require('express-async-handler');  // The asyncHandler function from express-async-handler will wrap asynchronous route handlers and custom middlewares.
+// Not sure why the asyncHandler is necessary, previous exercise just used async instead of the async handler...
+// const asyncHandler = require('express-async-handler');  // The asyncHandler function from express-async-handler will wrap asynchronous route handlers and custom middlewares.
 
 // Attach auth middleware and Users model class
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
@@ -19,7 +20,7 @@ const router = express.Router();
 // NOTE ---> USES validateLogin MIDDLEWARE TO VALIDATE REQUEST BODY. SEE COMMENTS / CODE FOR MORE INFORMATION
 router.post(
     '/',
-    asyncHandler(async (req, res, next) => {
+    async (req, res, next) => {     // if using the express asyncHandler -> asyncHandler(async (req, res, next) => {  // DON'T FORGET THE CLOSING ) if using this syntax!
       const { credential, password } = req.body;
       console.log(password);
 
@@ -38,38 +39,19 @@ router.post(
       return res.json({
         user
       });
-    })
-  );
+    }
+);
 
-
-
-// router.post('/', asyncHandler(async(req, res, next) => {
-//     // retrieve credential and password from request body
-//     const { credential, password } = req.body;
-
-//     // call User model class static method login, providing credential and password deconstructed from the request body
-//     const user = await User.login({credential, password});
-
-//     // error handling - if login fails, generate error and call next error handling middleware
-//     if(!user) {
-//         const err = new Error('Login Failed');
-//         err.title = 'Login Failed';
-//         err.errors = ['Login Failed'];
-//         err.status = 401;
-//         next(err);
-//     }
-
-//     // set session token (jwt) cookie if error doesn't occur
-//     await setTokenCookie(res, user);    // not sure why this uses await... setTokenCookie doesn't appear to behave async...
-
-//     // return logged in user
-//     return res.json(user);
-// }));
-
-
-
-
-
+// Logout route:
+// The DELETE /api/session logout route will remove the token cookie from the response (i.e. ending the session and removing auth)
+// and return a JSON success message
+router.delete(
+    '/',
+    (_req, res) => {
+        res.clearCookie('token');
+        return res.json({message: "Success"});
+    }
+);
 
 
 
@@ -125,4 +107,25 @@ fetch('/api/session', {
 You should get a Login failed error back with an invalid password for the user with that credential.
 
 Commit your code for the login route once you are done testing!
+*/
+
+// ---------------------------
+// Logout Route
+// ---------------------------
+/*
+Start by navigating to the http://localhost:5000/hello/world test route and making a fetch request from the browser's DevTools console to test the logout route. Check that you are logged in by confirming that a token cookie is in your list of cookies in the browser's DevTools. Remember, you need to pass in the value of the XSRF-TOKEN cookie as a header in the fetch request because the logout route has a DELETE HTTP verb.
+
+Try to logout the session user.
+
+fetch('/api/session', {
+  method: 'DELETE',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+  }
+}).then(res => res.json()).then(data => console.log(data));
+
+You should see the token cookie disappear from the list of cookies in your browser's DevTools. If you don't have the XSRF-TOKEN cookie anymore, access the http://localhost:5000/hello/world route to add the cookie back.
+
+If you don't see this expected behavior while testing, then check your backend server logs in the terminal where you ran npm start as well as the syntax in the session.js route file.
 */
