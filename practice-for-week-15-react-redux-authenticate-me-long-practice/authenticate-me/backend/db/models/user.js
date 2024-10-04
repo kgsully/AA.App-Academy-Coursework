@@ -14,7 +14,9 @@ module.exports = (sequelize, DataTypes) => {
 
     // Instance method to validate user password on login
     validatePassword = function(password) {
-      return bcrypt.compareSync(password, this.hashedPassword);
+      // NOTE: the toString() method on the hashedPassword here is important! This is because the DB stores it as STRING.BINARY data type
+      // so when the hashed password is retrieved from the DB, it is not in string format that can be parsed by bcrypt!
+      return bcrypt.compareSync(password, this.hashedPassword.toString());
     }
 
     // Static method to get the current user by id that accepts an ID, and will use the currentUser scope to return a User with that ID
@@ -26,9 +28,8 @@ module.exports = (sequelize, DataTypes) => {
     // This method accepts an object with the 'credential' and 'password' keys. It searches for one User with the specified credential
     // (either username or email). If a user is found, the method will validate the password by passing it into the instance's .validatePassword method.
     // If the password is valid, the method returns the user by using the currentUser scope
-
-    static login = async function(credential, password) {
-      const Op = require('sequelize');
+    static async login({credential, password}) {
+      const { Op } = require('sequelize');
       const user = await User.scope('loginUser').findOne({
         where: {
           [Op.or]: {
@@ -39,15 +40,15 @@ module.exports = (sequelize, DataTypes) => {
       });
       // Note that the 'password' argument passed into the user.validatePassword
       // in this conditional is the password value received by the LOGIN STATIC METHOD (passed into validatePassword for comparison)
-      if (user && user.validatePassword(password)) {
-        return await User.scope('currentUser').findByPk(user.id);
+      if(user && user.validatePassword(password)) {
+        return await User.scope('currentUser').findByPk(user.id)
       }
     }
 
     // Static method for sign-up
     // This method accepts an object with a username, email, and password key. The password is hashed using the bcryptjs hashSync method.
     // It then creates a user with the username, email, and hashedPassword. It returns the created user using the currentUser scope
-    static signup = async function(username, email, password) {
+    static async signup({username, email, password}) {
       const hashedPassword = bcrypt.hashSync(password);
       const user = await User.create({
         username,
