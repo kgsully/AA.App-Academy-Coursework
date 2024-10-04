@@ -11,7 +11,29 @@ const express = require('express');
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
 const { User } = require('../../db/models');
 
+// Attach express-validator and handleValidationErrors middleware
+const { check } = require('express-validator');
+const { handleValidationErrors } = require('../../utils/validation');
+
 const router = express.Router();
+
+// Validating Login Request Body - validateLogin middleware
+// The check function from express-validator will be used with the handleValidationErrors to validate the body of a request.
+// The POST /api/session login route will expect the body of the request to have a key of credential with either
+// the username or email of a user and a key of password with the password of the user.
+
+// The validateLogin middleware is composed of the check and handleValidationErrors middleware.
+// It checks to see whether or not req.body.credential and req.body.password are empty. If one of them is empty, then an error will be returned as the response.
+const validateLogin = [
+  check('credential')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Please provide a valid email or username.'),
+  check('password')
+    .exists({ checkFalsy: true})
+    .withMessage('Please provide a password.'),
+  handleValidationErrors  // call the handleValidationErrors middleware after all checks have occured
+];
 
 // Login route:
 // Using an asynchronous route handler, call the login static method from the User model.
@@ -20,6 +42,7 @@ const router = express.Router();
 // NOTE ---> USES validateLogin MIDDLEWARE TO VALIDATE REQUEST BODY. SEE COMMENTS / CODE FOR MORE INFORMATION
 router.post(
     '/',
+    validateLogin,  // invoke the validateLogin middleware prior to handling the route
     async (req, res, next) => {     // if using the express asyncHandler -> asyncHandler(async (req, res, next) => {  // DON'T FORGET THE CLOSING ) if using this syntax!
       const { credential, password } = req.body;
       console.log(password);
@@ -121,6 +144,39 @@ fetch('/api/session', {
 You should get a Login failed error back with an invalid password for the user with that credential.
 
 Commit your code for the login route once you are done testing!
+*/
+
+// ---------------------------
+// Validate Login
+// ---------------------------
+/*
+Test validateLogin by navigating to the http://localhost:5000/hello/world test route and making a fetch request from the browser's DevTools console. Remember, you need to pass in the value of the XSRF-TOKEN cookie as a header in the fetch request because the login route has a POST HTTP verb.
+
+If at any point you don't see the expected behavior while testing, check your backend server logs in the terminal where you ran npm start. Also, check the syntax in the users.js route file as well as the handleValidationErrors middleware.
+
+Try setting the credential user field to an empty string. You should get a Bad Request error back.
+
+fetch('/api/session', {
+  method: 'POST',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+  },
+  body: JSON.stringify({ credential: '', password: 'password' })
+}).then(res => res.json()).then(data => console.log(data));
+
+Remember to replace the <value of XSRF-TOKEN cookie> with the value of the XSRF-TOKEN cookie found in your browser's DevTools. If you don't have the XSRF-TOKEN cookie anymore, access the http://localhost:5000/hello/world route to add the cookie back.
+
+Test the password field by setting it to an empty string. You should get a Bad Request error back with Please provide a password as one of the errors.
+
+fetch('/api/session', {
+  method: 'POST',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+  },
+  body: JSON.stringify({ credential: 'Demo-lition', password: '' })
+}).then(res => res.json()).then(data => console.log(data));
 */
 
 // ---------------------------
