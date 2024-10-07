@@ -33,7 +33,7 @@ const LoginFormPage = () => {
 
     return (
         <div className="login-form-container">
-            <h1>Log In</h1>
+            <h1 className="login-h1">Log In</h1>
             {errors.length > 0 &&
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
