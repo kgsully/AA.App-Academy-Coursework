@@ -29,9 +29,10 @@ Replace the <value of XSRF-TOKEN cookie> with the value of the XSRF-TOKEN cookie
 If you don't have the XSRF-TOKEN cookie anymore, access the http://localhost:8000/api/csrf/restore route to add the cookie back.
 */
 
-router.post('/test', function (req, res) {
-    res.json({message: req.body});
-});
+// // Commented out after testing the custom csrfFetch function in Frontend Phase 0
+// router.post('/test', function (req, res) {
+//     res.json({message: req.body});
+// });
 
 // USER AUTH MIDDLEWARE TESTING ROUTES - COMMENT-IN FOR TESTING PURPOSES
 // // TEST ROUTE - GET /api/set-token-cookie - For testing the setTokenCookie middleware defined in utils

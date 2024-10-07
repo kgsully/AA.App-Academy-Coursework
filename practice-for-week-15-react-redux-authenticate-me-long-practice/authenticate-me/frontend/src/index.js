@@ -8,12 +8,21 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
 
+import { restoreCSRF, csrfFetch } from './store/csrf';
+
 // Import configureStore to attach the Redux store to the React appliaction
 import configureStore from './store';
 
 const store = configureStore();
 
+// If not in the production environment:
+// - Call the restoreCSRF function (which uses csrfFetch) to get the XSRF-TOKEN on the frontend
+// - Attach the custom csrfFetch function onto the window
+// - Set the store onto the window for debugging purposes
 if (process.env.NODE_ENV !== 'production') {
+  restoreCSRF();
+
+  window.csrfFetch = csrfFetch;
   window.store = store;
 }
 
