@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+import * as sessionActions from './store/session';
+
 // BrowserRouter from React Router used for routing and Provider from redux to provide the attached Redux store to the React appliaction
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
@@ -24,6 +26,7 @@ if (process.env.NODE_ENV !== 'production') {
 
   window.csrfFetch = csrfFetch;
   window.store = store;
+  window.sessionActions = sessionActions;
 }
 
 // Root functional component defined to wrap the App functional component in Redux's Provider and ReactRouter DOM's BrowserRouter provider components

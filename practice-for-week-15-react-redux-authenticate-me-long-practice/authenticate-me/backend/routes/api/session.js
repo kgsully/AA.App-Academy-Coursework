@@ -26,14 +26,17 @@ const router = express.Router();
 // It checks to see whether or not req.body.credential and req.body.password are empty. If one of them is empty, then an error will be returned as the response.
 const validateLogin = [
   check('credential')
-    .exists({ checkFalsy: true })
-    .notEmpty()
-    .withMessage('Please provide a valid email or username.'),
+      .exists({ checkFalsy: true })
+      .notEmpty()
+      .withMessage('Please provide a valid email or username.'),
   check('password')
-    .exists({ checkFalsy: true})
-    .withMessage('Please provide a password.'),
+      .exists({ checkFalsy: true })
+      .withMessage('Please provide a password'),
+
   handleValidationErrors  // call the handleValidationErrors middleware after all checks have occured
 ];
+
+
 
 // Login route:
 // Using an asynchronous route handler, call the login static method from the User model.

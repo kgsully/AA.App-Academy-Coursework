@@ -1,10 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { thunk } from 'redux-thunk';
+import sessionReducer from './session';
 
 // Create and define the root reducer function. Use combineReducers to incorporate all reducers into the single root reducer as
 // only 1 reducer is allowed to be passed to redux
 const rootReducer = combineReducers({
-
+    session: sessionReducer
 });
 
 // Initialize an enhancer variable that will be set to different store enhancers depending on if the Node environment is in development or production.

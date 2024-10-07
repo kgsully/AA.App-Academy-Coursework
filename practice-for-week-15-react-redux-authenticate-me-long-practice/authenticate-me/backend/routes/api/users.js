@@ -25,13 +25,13 @@ const router = express.Router();
 // and req.body.password is not empty and has a minimum length of 6. If at least one of the req.body values fail the check, an error will be returned as the response.
 const validateSignup = [
   check('email')
-      .exists({ checkFalsy: true})
+      .exists({ checkFalsy: true })
       .isEmail()
       .withMessage('Please provide a valid email.'),
   check('username')
-      .exists({ checkFalsy: true})
+      .exists({ checkFalsy: true })
       .isLength({ min: 4 })
-      .withMessage('Please provide a valid username with at least 4 characters.'),
+      .withMessage('Please provide a username with at least 4 characters.'),
   check('username')
       .not()
       .isEmail()
@@ -40,7 +40,8 @@ const validateSignup = [
       .exists({ checkFalsy: true })
       .isLength({ min: 6 })
       .withMessage('Password must be 6 characters or more.'),
-  handleValidationErrors  // call the handleValidationErrors middleware after all checks have occured
+
+  handleValidationErrors
 ];
 
 // Signup API route (asynchronous)
