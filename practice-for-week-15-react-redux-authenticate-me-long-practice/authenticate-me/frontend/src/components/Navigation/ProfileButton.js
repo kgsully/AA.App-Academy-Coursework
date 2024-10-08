@@ -1,25 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>React Template</title>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-      crossorigin="anonymous" />
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
-</html>
 
-<!-- Font Awesome Notes -->
-<!--
+
+const ProfileButton = () => {
+    return(
+        <div style={{color: "darkblue", fontSize: "3em"}}>
+            <i className="fas fa-user-circle"></i>
+        </div>
+    );
+}
+
+export default ProfileButton;
+
+/*
+
+Font Awesome Notes:
+
 Follow the instructions here (https://fontawesome.com/start) for setting up Font Awesome.
 The easiest way to connect Font Awesome to your React application is by sharing your email and creating a new kit.
 The kit should let you copy an HTML <script>. Add this script to the <head> of your frontend/public/index.html file.
@@ -42,4 +36,5 @@ const Carrot = () => (
     <i className="fas fa-carrot"></i>
   </div>
 );
--->
+
+*/

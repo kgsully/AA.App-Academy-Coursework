@@ -1,4 +1,6 @@
 /* TODO Add site wide styles */
 body {
     background-color: darkgray;
+    display: flex;
+    justify-content: center;
 }
