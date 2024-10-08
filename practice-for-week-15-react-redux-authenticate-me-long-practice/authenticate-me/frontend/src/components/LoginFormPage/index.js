@@ -7,7 +7,7 @@ import './LoginForm.css';
 
 const LoginFormPage = () => {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);   // subscribe to the session.user slice
+    const sessionUser = useSelector(state => state.session.user);   // subscribe to the session.user slice of state
     const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
@@ -27,7 +27,7 @@ const LoginFormPage = () => {
         return dispatch(sessionActions.login({credential, password}))   // Why is this returned? All other examples just perform the dispatch, login works without the return...
             .catch(async (res) => {     // This is the .catch in promise .then .catch syntax - login thunk is async and therefore a promise
                 const data = await res.json();
-            if (data && data.errors) setErrors(data.errors);
+                if (data && data.errors) setErrors(data.errors);
             });
     }
 
@@ -39,7 +39,7 @@ const LoginFormPage = () => {
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
             }
-            <form className="loginForm" onSubmit={handleSubmit}>
+            <form className="login-Form" onSubmit={handleSubmit}>
                 <p>Username or Email Address</p>
                 <input
                     className="login-input"

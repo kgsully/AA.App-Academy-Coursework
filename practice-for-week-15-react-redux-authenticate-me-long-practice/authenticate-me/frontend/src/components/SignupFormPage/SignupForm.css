@@ -1,7 +1,7 @@
-.login-form-container {
+.signup-form-container {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: white;
     color: darkblue;
+    background-color: white;
     width:fit-content;
     display: flex;
     flex-direction: column;
@@ -10,22 +10,22 @@
     border-radius: 10px;
 }
 
-.login-h1 {
+.signup-h1 {
     margin: .25em 6em;
 }
 
-.login-form-container p {
+.signup-form-container p {
     margin: .25em auto;
     text-align: center;
 }
 
-.login-input {
+.signup-input {
     border: 1px solid darkblue;
     border-radius: 5px;
     color: darkblue;
 }
 
-.btn-login {
+.btn-signup {
     border: none;
     border-radius: 5px;
     background-color: darkblue;

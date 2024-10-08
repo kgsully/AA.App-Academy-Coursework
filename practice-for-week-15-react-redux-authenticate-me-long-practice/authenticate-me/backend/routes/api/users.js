@@ -24,22 +24,25 @@ const router = express.Router();
 // It checks to see if req.body.email exists and is an email, req.body.username is a minimum length of 4 and is not an email,
 // and req.body.password is not empty and has a minimum length of 6. If at least one of the req.body values fail the check, an error will be returned as the response.
 const validateSignup = [
-  check('email')
+  check('email', 'Please provide a valid email.') // message can be specified as the 2nd parameter of the check
       .exists({ checkFalsy: true })
-      .isEmail()
-      .withMessage('Please provide a valid email.'),
-  check('username')
+      .bail() // .bail() will prevent the check from continuing and duplicating error messages
+      .isEmail(),
+      // .withMessage('Please provide a valid email.'),
+  check('username', 'Please provide a username with at least 4 characters.')
       .exists({ checkFalsy: true })
-      .isLength({ min: 4 })
-      .withMessage('Please provide a username with at least 4 characters.'),
-  check('username')
+      .bail()
+      .isLength({ min: 4 }),
+      // .withMessage('Please provide a username with at least 4 characters.'),
+  check('username', 'Username cannot be an email.')
       .not()
       .isEmail()
       .withMessage('Username cannot be an email.'),
-  check('password')
+  check('password', 'Password must be 6 characters or more.')
       .exists({ checkFalsy: true })
-      .isLength({ min: 6 })
-      .withMessage('Password must be 6 characters or more.'),
+      .bail()
+      .isLength({ min: 6 }),
+      // .withMessage('Password must be 6 characters or more.'),
 
   handleValidationErrors
 ];
