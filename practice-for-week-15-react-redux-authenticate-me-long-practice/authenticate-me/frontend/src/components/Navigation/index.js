@@ -1,22 +1,42 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import * as sessionActions from '../../store/session'
 import ProfileButton from './ProfileButton';
+import './Navigation.css';
 
 // Navigation Header
 // The navigation functional component renders an unordered list with a navigation link to the home page.
 // It should only contain navigation links to the login and signup routes when there is no session user and a logout button when there is.
-const Navigation = () => {
+const Navigation = ({isLoaded}) => {
     const sessionUser = useSelector((state) => state.session.user);
-    const dispatch = useDispatch();
+    let sessionLinks;
 
-    const handleLogout = () => {
-        dispatch(sessionActions.logout());
+    if(sessionUser) {
+        sessionLinks = (
+            <ProfileButton user={sessionUser} />
+        );
+    } else {
+        sessionLinks = (
+            <div>
+                <NavLink to="/login">Login</NavLink>
+                <NavLink to="/signup">Sign Up</NavLink>
+            </div>
+        );
     }
 
     return (
+        <div className="navbar">
+            <NavLink to="/">Home</NavLink>
+            {isLoaded && sessionLinks}
+        </div>
+    );
+}
+
+export default Navigation;
+
+// Previous code
+/*
+return (
         <div>
             <ul>
                 <NavLink to="/">Home</NavLink>
@@ -37,6 +57,4 @@ const Navigation = () => {
             </ul>
         </div>
     );
-}
-
-export default Navigation;
+*/

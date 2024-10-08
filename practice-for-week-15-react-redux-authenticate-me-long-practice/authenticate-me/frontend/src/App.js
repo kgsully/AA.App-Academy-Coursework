@@ -20,17 +20,19 @@ function App() {
 
   return isLoaded && (    // This forces isLoaded to be true prior to rendering page elements
     <>
-      <Navigation />
+      <Navigation isLoaded={isLoaded}/>
       <Switch>
-        <Route path="/" exact>
-          <h1>Hello from App</h1>
-        </Route>
-        <Route path="/login">
-          <LoginFormPage />
-        </Route>
-        <Route path="/signup">
-          <SignupFormPage />
-        </Route>
+        <section className="content">
+          <Route path="/" exact>
+            <h1>Home</h1>
+          </Route>
+          <Route path="/login">
+            <LoginFormPage className="login-form"/>
+          </Route>
+          <Route path="/signup">
+            <SignupFormPage className="signup-form"/>
+          </Route>
+        </section>
       </Switch>
     </>
   );
