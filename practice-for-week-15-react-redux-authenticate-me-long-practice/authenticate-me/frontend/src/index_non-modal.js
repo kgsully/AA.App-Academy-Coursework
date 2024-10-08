@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 import * as sessionActions from './store/session';
-import { ModalProvider } from './context/Modal';
 
 // BrowserRouter from React Router used for routing and Provider from redux to provide the attached Redux store to the React appliaction
 import { Provider } from 'react-redux';
@@ -32,16 +31,12 @@ if (process.env.NODE_ENV !== 'production') {
 
 // Root functional component defined to wrap the App functional component in Redux's Provider and ReactRouter DOM's BrowserRouter provider components
 // Ensure the store is passed into the Provider with a key of store
-// FOR MODAL FUNCTIONALITY - All of the function components / elements within the root component are wrapped with the modal provider to provide
-//                           it's React context to the children.
 function Root() {
   return (
     <Provider store={store}>
-      <ModalProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ModalProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   );
 }

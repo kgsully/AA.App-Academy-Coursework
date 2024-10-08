@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 
 // Navigation Header
@@ -18,7 +19,8 @@ const Navigation = ({isLoaded}) => {
     } else {
         sessionLinks = (
             <div>
-                <NavLink to="/login">Login</NavLink>
+                {/* <NavLink to="/login">Login</NavLink> This is a link to the non-modal version of the login page */}
+                <LoginFormModal />
                 <NavLink to="/signup">Sign Up</NavLink>
             </div>
         );
@@ -33,28 +35,3 @@ const Navigation = ({isLoaded}) => {
 }
 
 export default Navigation;
-
-// Previous code
-/*
-return (
-        <div>
-            <ul>
-                <NavLink to="/">Home</NavLink>
-                {sessionUser ? (        // ternary operator to change rendered elements depending on whether there is a session user or not
-                    // session user true
-                    <>
-                        <button onClick={handleLogout}>Logout</button>
-                        <ProfileButton />
-                    </>
-                ) : (
-                    // session user false
-                    <>
-                        <NavLink to="/login">Login</NavLink>
-                        <NavLink to="/signup">Sign Up</NavLink>
-                    </>
-                )
-                }
-            </ul>
-        </div>
-    );
-*/

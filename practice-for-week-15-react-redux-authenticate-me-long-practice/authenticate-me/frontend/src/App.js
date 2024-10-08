@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch, NavLink } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
@@ -21,19 +21,19 @@ function App() {
   return isLoaded && (    // This forces isLoaded to be true prior to rendering page elements
     <>
       <Navigation isLoaded={isLoaded}/>
-      <Switch>
-        <section className="content">
-          <Route path="/" exact>
-            <h1>Home</h1>
-          </Route>
-          <Route path="/login">
-            <LoginFormPage className="login-form"/>
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage className="signup-form"/>
-          </Route>
-        </section>
-      </Switch>
+      {isLoaded && <section className="content">
+        <Switch>
+            <Route path="/" exact>
+              <h1>Home</h1>
+            </Route>
+            {/* <Route path="/login">
+              <LoginFormPage className="login-form"/>
+            </Route> This is necessary if using the non-modal version of the login page*/}
+            <Route path="/signup">
+              <SignupFormPage className="signup-form"/>
+            </Route>
+        </Switch>
+      </section>}
     </>
   );
 }
