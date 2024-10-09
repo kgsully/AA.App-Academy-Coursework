@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import Navigation from "./components/Navigation";
-import LoginFormPage from "./components/LoginFormPage";
+// import LoginFormPage from "./components/LoginFormPage";    // Not used for modal version of login page, required if using the non-modal version
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session"
 

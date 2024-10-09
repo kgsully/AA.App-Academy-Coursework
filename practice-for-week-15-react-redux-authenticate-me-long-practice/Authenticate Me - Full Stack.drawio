@@ -1,13 +1,13 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
   <diagram name="Page-1" id="1tvuOQJT0n1HeKmIc-OV">
-    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="2339" math="0" shadow="0">
+    <mxGraphModel dx="5638" dy="2898" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="2339" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="GpSlVhP3Auss_XkfHNzA-2" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Dependencies&lt;/font&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;bcryptjs &lt;/b&gt;&lt;font face=&quot;Helvetica&quot;&gt;- Password Hashing&lt;/font&gt;&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;cookie-parser&lt;/b&gt;&lt;/code&gt; - parsing cookies from requests&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;cors&lt;/b&gt;&lt;/code&gt; - CORS&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;csurf&lt;/b&gt;&lt;/code&gt; - CSRF protection&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;dotenv&lt;/b&gt;&lt;/code&gt; - load environment variables into Node.js from a &lt;code&gt;.env&lt;/code&gt; file&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;express&lt;/b&gt;&lt;/code&gt; - Express&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;express-async-handler&lt;/b&gt;&lt;/code&gt; - handling &lt;code&gt;async&lt;/code&gt; route handlers&lt;br&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;express-async-errors&lt;/b&gt;&lt;/code&gt; - handling &lt;code&gt;async&lt;/code&gt; route handlers&lt;/li&gt;&lt;li&gt;&lt;b&gt;express-validator&lt;/b&gt;&amp;nbsp;- used to validate the body of requests for routes&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;helmet&lt;/b&gt;&lt;/code&gt; - security middleware&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;jsonwebtoken&lt;/b&gt;&lt;/code&gt; - JWT&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;morgan&lt;/b&gt;&lt;/code&gt; - logging information about server requests/responses&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;per-env&lt;/b&gt;&lt;/code&gt; - use environment variables for starting app differently&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;pg@&quot;&amp;gt;=8.4.1&quot;&lt;/b&gt;&lt;/code&gt; - PostgresQL greater or equal to version 8.4.1&lt;br&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;sequelize@6&lt;/b&gt;&lt;/code&gt;&amp;nbsp;- Sequelize&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;sequelize-cli@6&lt;/b&gt;&lt;/code&gt;&amp;nbsp;- use &lt;code&gt;sequelize&lt;/code&gt; in the command line&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+        <mxCell id="GpSlVhP3Auss_XkfHNzA-2" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Backend Dependencies&lt;/font&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;bcryptjs &lt;/b&gt;&lt;font face=&quot;Helvetica&quot;&gt;- Password Hashing&lt;/font&gt;&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;cookie-parser&lt;/b&gt;&lt;/code&gt; - parsing cookies from requests&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;cors&lt;/b&gt;&lt;/code&gt; - CORS&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;csurf&lt;/b&gt;&lt;/code&gt; - CSRF protection&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;dotenv&lt;/b&gt;&lt;/code&gt; - load environment variables into Node.js from a &lt;code&gt;.env&lt;/code&gt; file&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;express&lt;/b&gt;&lt;/code&gt; - Express&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;express-async-handler&lt;/b&gt;&lt;/code&gt; - handling &lt;code&gt;async&lt;/code&gt; route handlers&lt;br&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;express-async-errors&lt;/b&gt;&lt;/code&gt; - handling &lt;code&gt;async&lt;/code&gt; route handlers&lt;/li&gt;&lt;li&gt;&lt;b&gt;express-validator&lt;/b&gt;&amp;nbsp;- used to validate the body of requests for routes&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;helmet&lt;/b&gt;&lt;/code&gt; - security middleware&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;jsonwebtoken&lt;/b&gt;&lt;/code&gt; - JWT&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;morgan&lt;/b&gt;&lt;/code&gt; - logging information about server requests/responses&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;per-env&lt;/b&gt;&lt;/code&gt; - use environment variables for starting app differently&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;pg@&quot;&amp;gt;=8.4.1&quot;&lt;/b&gt;&lt;/code&gt; - PostgresQL greater or equal to version 8.4.1&lt;br&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;sequelize@6&lt;/b&gt;&lt;/code&gt;&amp;nbsp;- Sequelize&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;sequelize-cli@6&lt;/b&gt;&lt;/code&gt;&amp;nbsp;- use &lt;code&gt;sequelize&lt;/code&gt; in the command line&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="460" y="50" width="410" height="310" as="geometry" />
         </mxCell>
-        <mxCell id="GpSlVhP3Auss_XkfHNzA-3" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Dev Dependencies&lt;/font&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;&lt;code&gt;dotenv-cli&lt;/code&gt; &lt;/b&gt;- use &lt;code&gt;dotenv&lt;/code&gt; in the command line&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;nodemon&lt;/b&gt;&lt;/code&gt; - hot reload server &lt;code&gt;backend&lt;/code&gt; files&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+        <mxCell id="GpSlVhP3Auss_XkfHNzA-3" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Backend Dev Dependencies&lt;/font&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;&lt;code&gt;dotenv-cli&lt;/code&gt; &lt;/b&gt;- use &lt;code&gt;dotenv&lt;/code&gt; in the command line&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;nodemon&lt;/b&gt;&lt;/code&gt; - hot reload server &lt;code&gt;backend&lt;/code&gt; files&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="870" y="50" width="380" height="90" as="geometry" />
         </mxCell>
         <mxCell id="GpSlVhP3Auss_XkfHNzA-4" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Authenticate Me:&lt;/h1&gt;&lt;p&gt;In this multi-part project, you will learn how to put together an entire Express + React application with authentication.&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Backend Phases&lt;/b&gt;&lt;/li&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Phase 0&lt;/b&gt; - Set Up&lt;/li&gt;&lt;li&gt;&lt;b&gt;Phase 1&lt;/b&gt; - API Routes&lt;/li&gt;&lt;li&gt;&lt;b&gt;Phase 2&lt;/b&gt; - Error Handling&lt;/li&gt;&lt;li&gt;&lt;b&gt;Phase 3&lt;/b&gt; - User Authentication&lt;/li&gt;&lt;li&gt;&lt;b&gt;Phase 4&lt;/b&gt; - User Auth Routes&lt;/li&gt;&lt;li&gt;&lt;b&gt;Phase 5&lt;/b&gt; - Validating the Request Body&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;&lt;b&gt;Frontend Phases&lt;/b&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Phase 0&lt;/b&gt;&amp;nbsp;- Set Up&lt;/li&gt;&lt;li&gt;&lt;b&gt;Phase 1&lt;/b&gt;&amp;nbsp;- Login Form Page&lt;/li&gt;&lt;li&gt;&lt;b&gt;Phase 2&lt;/b&gt;&amp;nbsp;- Signup Form Page&lt;/li&gt;&lt;li&gt;&lt;b&gt;Phase 3&lt;/b&gt;&amp;nbsp;- Logout&lt;/li&gt;&lt;li&gt;&lt;b&gt;Bonus&amp;nbsp;&lt;/b&gt;-&amp;nbsp; Make Login Form Page into a Modal&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;br&gt;&lt;li&gt;&lt;b&gt;Deployment to Heroku&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
@@ -229,7 +229,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="GpSlVhP3Auss_XkfHNzA-100" value="require(&#39;./routes&#39;)&lt;div style=&quot;font-size: 9px;&quot;&gt;app.use(routes);&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;" parent="GpSlVhP3Auss_XkfHNzA-41" vertex="1">
-          <mxGeometry x="570" y="920" width="90" height="30" as="geometry" />
+          <mxGeometry x="570" y="910" width="90" height="30" as="geometry" />
         </mxCell>
         <mxCell id="GpSlVhP3Auss_XkfHNzA-105" value="/bin" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="GpSlVhP3Auss_XkfHNzA-41" vertex="1">
           <mxGeometry x="35" y="910" width="460" height="240" as="geometry" />
@@ -439,26 +439,52 @@
             </Array>
           </mxGeometry>
         </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-196" value="" style="endArrow=doubleBlock;startArrow=doubleBlock;html=1;rounded=1;dashed=1;fillColor=#a20025;strokeColor=#6F0000;curved=0;startFill=1;endFill=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="GpSlVhP3Auss_XkfHNzA-41" target="GpSlVhP3Auss_XkfHNzA-101">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="610" y="1100" as="sourcePoint" />
+            <mxPoint x="610" y="1030" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="670" y="1100" />
+              <mxPoint x="670" y="735" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-215" value="" style="endArrow=doubleBlock;startArrow=doubleBlock;html=1;rounded=1;dashed=1;fillColor=#a20025;strokeColor=#6F0000;curved=0;startFill=1;endFill=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="GpSlVhP3Auss_XkfHNzA-41" target="xRNBOfDQ-NbFJoLuyLIO-294">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="610" y="1410" as="sourcePoint" />
+            <mxPoint x="455" y="1020" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="670" y="1410" />
+              <mxPoint x="670" y="1160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-217" value="/frontend/src/store/session.js" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="GpSlVhP3Auss_XkfHNzA-41">
+          <mxGeometry x="490" y="1400" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-218" value="/frontend/src/store/csrf.js" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="GpSlVhP3Auss_XkfHNzA-41">
+          <mxGeometry x="510" y="1090" width="100" height="20" as="geometry" />
+        </mxCell>
         <mxCell id="TN3s48xv0ag6netvd0yR-3" value="config file" style="swimlane;whiteSpace=wrap;html=1;startSize=23;fillColor=#bac8d3;strokeColor=#23445d;" parent="1" vertex="1">
-          <mxGeometry x="1240" y="105" width="170" height="40" as="geometry" />
+          <mxGeometry x="1820" y="105" width="170" height="40" as="geometry" />
         </mxCell>
         <mxCell id="TN3s48xv0ag6netvd0yR-21" value="directory / folder" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
-          <mxGeometry x="1240" y="155" width="170" height="40" as="geometry" />
+          <mxGeometry x="1820" y="155" width="170" height="40" as="geometry" />
         </mxCell>
         <mxCell id="TN3s48xv0ag6netvd0yR-22" value="javascript file" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="1240" y="205" width="170" height="40" as="geometry" />
+          <mxGeometry x="1820" y="205" width="170" height="40" as="geometry" />
         </mxCell>
         <mxCell id="TN3s48xv0ag6netvd0yR-25" value="script" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
-          <mxGeometry x="1240" y="255" width="170" height="40" as="geometry" />
+          <mxGeometry x="1820" y="255" width="170" height="40" as="geometry" />
         </mxCell>
         <mxCell id="TN3s48xv0ag6netvd0yR-29" value="npm config file" style="swimlane;whiteSpace=wrap;html=1;startSize=23;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
-          <mxGeometry x="1240" y="50" width="170" height="40" as="geometry" />
+          <mxGeometry x="1820" y="50" width="170" height="40" as="geometry" />
         </mxCell>
         <mxCell id="TN3s48xv0ag6netvd0yR-30" value="database" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="1420" y="50" width="170" height="40" as="geometry" />
+          <mxGeometry x="2000" y="50" width="170" height="40" as="geometry" />
         </mxCell>
         <mxCell id="TN3s48xv0ag6netvd0yR-32" value="middleware" style="swimlane;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
-          <mxGeometry x="1420" y="105" width="170" height="40" as="geometry" />
+          <mxGeometry x="2000" y="105" width="170" height="40" as="geometry" />
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-195" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1;shape=link;" parent="1" source="xRNBOfDQ-NbFJoLuyLIO-37" target="GpSlVhP3Auss_XkfHNzA-80" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -603,133 +629,133 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-72" value="Model - Validations" style="shape=table;startSize=17;container=1;collapsible=0;childLayout=tableLayout;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="xRNBOfDQ-NbFJoLuyLIO-37" vertex="1">
-          <mxGeometry x="350" y="43.5" width="370" height="122" as="geometry" />
+          <mxGeometry x="340" y="43.5" width="380" height="122" as="geometry" />
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-118" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="xRNBOfDQ-NbFJoLuyLIO-72" vertex="1">
-          <mxGeometry y="17" width="370" height="20" as="geometry" />
+          <mxGeometry y="17" width="380" height="20" as="geometry" />
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-119" value="Column Name" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=#666666;overflow=hidden;fillColor=#f5f5f5;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;fontColor=#333333;" parent="xRNBOfDQ-NbFJoLuyLIO-118" vertex="1">
-          <mxGeometry width="80" height="20" as="geometry">
-            <mxRectangle width="80" height="20" as="alternateBounds" />
+          <mxGeometry width="82" height="20" as="geometry">
+            <mxRectangle width="82" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-120" value="Data Type" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=#666666;overflow=hidden;fillColor=#f5f5f5;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;fontColor=#333333;" parent="xRNBOfDQ-NbFJoLuyLIO-118" vertex="1">
-          <mxGeometry x="80" width="60" height="20" as="geometry">
-            <mxRectangle width="60" height="20" as="alternateBounds" />
+          <mxGeometry x="82" width="62" height="20" as="geometry">
+            <mxRectangle width="62" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-121" value="Validations / Constraints" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=#666666;overflow=hidden;fillColor=#f5f5f5;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;fontColor=#333333;" parent="xRNBOfDQ-NbFJoLuyLIO-118" vertex="1">
-          <mxGeometry x="140" width="230" height="20" as="geometry">
-            <mxRectangle width="230" height="20" as="alternateBounds" />
+          <mxGeometry x="144" width="236" height="20" as="geometry">
+            <mxRectangle width="236" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-77" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="xRNBOfDQ-NbFJoLuyLIO-72" vertex="1">
-          <mxGeometry y="37" width="370" height="29" as="geometry" />
+          <mxGeometry y="37" width="380" height="29" as="geometry" />
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-78" value="username" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;" parent="xRNBOfDQ-NbFJoLuyLIO-77" vertex="1">
-          <mxGeometry width="80" height="29" as="geometry">
-            <mxRectangle width="80" height="29" as="alternateBounds" />
+          <mxGeometry width="82" height="29" as="geometry">
+            <mxRectangle width="82" height="29" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-79" value="string" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;" parent="xRNBOfDQ-NbFJoLuyLIO-77" vertex="1">
-          <mxGeometry x="80" width="60" height="29" as="geometry">
-            <mxRectangle width="60" height="29" as="alternateBounds" />
+          <mxGeometry x="82" width="62" height="29" as="geometry">
+            <mxRectangle width="62" height="29" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-80" value="not null, unique, min 4 characters, max 30 characters, isNotEmail" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;" parent="xRNBOfDQ-NbFJoLuyLIO-77" vertex="1">
-          <mxGeometry x="140" width="230" height="29" as="geometry">
-            <mxRectangle width="230" height="29" as="alternateBounds" />
+          <mxGeometry x="144" width="236" height="29" as="geometry">
+            <mxRectangle width="236" height="29" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-81" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="xRNBOfDQ-NbFJoLuyLIO-72" vertex="1">
-          <mxGeometry y="66" width="370" height="33" as="geometry" />
+          <mxGeometry y="66" width="380" height="33" as="geometry" />
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-82" value="email" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;" parent="xRNBOfDQ-NbFJoLuyLIO-81" vertex="1">
-          <mxGeometry width="80" height="33" as="geometry">
-            <mxRectangle width="80" height="33" as="alternateBounds" />
+          <mxGeometry width="82" height="33" as="geometry">
+            <mxRectangle width="82" height="33" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-83" value="string" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;" parent="xRNBOfDQ-NbFJoLuyLIO-81" vertex="1">
-          <mxGeometry x="80" width="60" height="33" as="geometry">
-            <mxRectangle width="60" height="33" as="alternateBounds" />
+          <mxGeometry x="82" width="62" height="33" as="geometry">
+            <mxRectangle width="62" height="33" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-84" value="not null, unique, min 3 characters, max 256 characters, isEmail" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;" parent="xRNBOfDQ-NbFJoLuyLIO-81" vertex="1">
-          <mxGeometry x="140" width="230" height="33" as="geometry">
-            <mxRectangle width="230" height="33" as="alternateBounds" />
+          <mxGeometry x="144" width="236" height="33" as="geometry">
+            <mxRectangle width="236" height="33" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-85" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="xRNBOfDQ-NbFJoLuyLIO-72" vertex="1">
-          <mxGeometry y="99" width="370" height="23" as="geometry" />
+          <mxGeometry y="99" width="380" height="23" as="geometry" />
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-86" value="hashedPassword" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;" parent="xRNBOfDQ-NbFJoLuyLIO-85" vertex="1">
-          <mxGeometry width="80" height="23" as="geometry">
-            <mxRectangle width="80" height="23" as="alternateBounds" />
+          <mxGeometry width="82" height="23" as="geometry">
+            <mxRectangle width="82" height="23" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-87" value="binary string" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;" parent="xRNBOfDQ-NbFJoLuyLIO-85" vertex="1">
-          <mxGeometry x="80" width="60" height="23" as="geometry">
-            <mxRectangle width="60" height="23" as="alternateBounds" />
+          <mxGeometry x="82" width="62" height="23" as="geometry">
+            <mxRectangle width="62" height="23" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-88" value="not null, min and max 60 characters" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;" parent="xRNBOfDQ-NbFJoLuyLIO-85" vertex="1">
-          <mxGeometry x="140" width="230" height="23" as="geometry">
-            <mxRectangle width="230" height="23" as="alternateBounds" />
+          <mxGeometry x="144" width="236" height="23" as="geometry">
+            <mxRectangle width="236" height="23" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-122" value="Model - Scopes" style="shape=table;startSize=17;container=1;collapsible=0;childLayout=tableLayout;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="xRNBOfDQ-NbFJoLuyLIO-37" vertex="1">
-          <mxGeometry x="350" y="180" width="370" height="172.5" as="geometry" />
+          <mxGeometry x="340" y="180" width="380" height="172.5" as="geometry" />
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-123" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="xRNBOfDQ-NbFJoLuyLIO-122" vertex="1">
-          <mxGeometry y="17" width="370" height="19" as="geometry" />
+          <mxGeometry y="17" width="380" height="19" as="geometry" />
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-124" value="Name" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=#666666;overflow=hidden;fillColor=#f5f5f5;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;fontColor=#333333;" parent="xRNBOfDQ-NbFJoLuyLIO-123" vertex="1">
-          <mxGeometry width="59" height="19" as="geometry">
-            <mxRectangle width="59" height="19" as="alternateBounds" />
+          <mxGeometry width="70" height="19" as="geometry">
+            <mxRectangle width="70" height="19" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-126" value="Details" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=#666666;overflow=hidden;fillColor=#f5f5f5;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;fontColor=#333333;" parent="xRNBOfDQ-NbFJoLuyLIO-123" vertex="1">
-          <mxGeometry x="59" width="311" height="19" as="geometry">
-            <mxRectangle width="311" height="19" as="alternateBounds" />
+          <mxGeometry x="70" width="310" height="19" as="geometry">
+            <mxRectangle width="310" height="19" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-127" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="xRNBOfDQ-NbFJoLuyLIO-122" vertex="1">
-          <mxGeometry y="36" width="370" height="54" as="geometry" />
+          <mxGeometry y="36" width="380" height="54" as="geometry" />
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-128" value="defaultScope" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;" parent="xRNBOfDQ-NbFJoLuyLIO-127" vertex="1">
-          <mxGeometry width="59" height="54" as="geometry">
-            <mxRectangle width="59" height="54" as="alternateBounds" />
+          <mxGeometry width="70" height="54" as="geometry">
+            <mxRectangle width="70" height="54" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-130" value="&lt;div&gt;Used by default when a query is made without specifying a scope.&lt;/div&gt;&lt;b&gt;&amp;nbsp;attributes: {&lt;/b&gt;&lt;div&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; exclude: [ &#39;hashedPassword&#39;, &#39;email&#39;, &#39;createdAt&#39;, &#39;updatedAt&#39; ]&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&amp;nbsp;}&lt;/b&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;align=left;" parent="xRNBOfDQ-NbFJoLuyLIO-127" vertex="1">
-          <mxGeometry x="59" width="311" height="54" as="geometry">
-            <mxRectangle width="311" height="54" as="alternateBounds" />
+          <mxGeometry x="70" width="310" height="54" as="geometry">
+            <mxRectangle width="310" height="54" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-131" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="xRNBOfDQ-NbFJoLuyLIO-122" vertex="1">
-          <mxGeometry y="90" width="370" height="50" as="geometry" />
+          <mxGeometry y="90" width="380" height="50" as="geometry" />
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-132" value="currentUser" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;" parent="xRNBOfDQ-NbFJoLuyLIO-131" vertex="1">
-          <mxGeometry width="59" height="50" as="geometry">
-            <mxRectangle width="59" height="50" as="alternateBounds" />
+          <mxGeometry width="70" height="50" as="geometry">
+            <mxRectangle width="70" height="50" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-134" value="&lt;div&gt;Returns all fields except the password&lt;/div&gt;&lt;b&gt;&amp;nbsp;attributes: {&lt;/b&gt;&lt;div&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; exclude: [ &#39;hashedPassword&#39; ]&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&amp;nbsp;}&lt;/b&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;align=left;" parent="xRNBOfDQ-NbFJoLuyLIO-131" vertex="1">
-          <mxGeometry x="59" width="311" height="50" as="geometry">
-            <mxRectangle width="311" height="50" as="alternateBounds" />
+          <mxGeometry x="70" width="310" height="50" as="geometry">
+            <mxRectangle width="310" height="50" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-135" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="xRNBOfDQ-NbFJoLuyLIO-122" vertex="1">
-          <mxGeometry y="140" width="370" height="33" as="geometry" />
+          <mxGeometry y="140" width="380" height="33" as="geometry" />
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-136" value="loginUser" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;" parent="xRNBOfDQ-NbFJoLuyLIO-135" vertex="1">
-          <mxGeometry width="59" height="33" as="geometry">
-            <mxRectangle width="59" height="33" as="alternateBounds" />
+          <mxGeometry width="70" height="33" as="geometry">
+            <mxRectangle width="70" height="33" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-138" value="Used for queries to verify user login credentials. Returns all fields&lt;div&gt;&lt;b&gt;&amp;nbsp;attributes: {}&lt;/b&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=10;align=left;" parent="xRNBOfDQ-NbFJoLuyLIO-135" vertex="1">
-          <mxGeometry x="59" width="311" height="33" as="geometry">
-            <mxRectangle width="311" height="33" as="alternateBounds" />
+          <mxGeometry x="70" width="310" height="33" as="geometry">
+            <mxRectangle width="310" height="33" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-97" value="Seed Data" style="shape=table;startSize=20;container=1;collapsible=0;childLayout=tableLayout;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="xRNBOfDQ-NbFJoLuyLIO-37" vertex="1">
@@ -926,6 +952,354 @@
         </mxCell>
         <mxCell id="xRNBOfDQ-NbFJoLuyLIO-153" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Logout Flow&lt;/font&gt;&lt;/h1&gt;&lt;ol&gt;&lt;li&gt;The API logout route will be hit with a request.&lt;/li&gt;&lt;br&gt;&lt;li&gt;The API logout handler will remove the JWT cookie set by the login or signup API routes and return a JSON success message.&lt;/li&gt;&lt;/ol&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="1830" y="1430" width="410" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-1" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Frontend Dependencies&lt;/font&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;js-cookie&lt;/b&gt;&lt;/code&gt; - extracts cookies&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;react-redux&lt;/b&gt;&lt;/code&gt; - React components and hooks for Redux&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;react-router-dom@^5&lt;/b&gt;&lt;/code&gt; - routing for React&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;redux&lt;/b&gt;&lt;/code&gt; - Redux&lt;/li&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;redux-thunk&lt;/b&gt;&lt;/code&gt; - add Redux thunk&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="50" width="410" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-2" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Frontend Dev Dependencies&lt;/font&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;&lt;b&gt;redux-logger&lt;/b&gt;&lt;/code&gt; - log Redux actions in the browser&#39;s dev tools console&lt;br&gt;&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="195" width="380" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-3" value="/frontend" style="swimlane;whiteSpace=wrap;html=1;startSize=23;fillColor=#dae8fc;strokeColor=#6c8ebf;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2380" width="2510" height="1710" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-176" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fillColor=#0050ef;strokeColor=#001DBC;curved=0;" edge="1" parent="h0ON9-zBAFF4LZqiPs6g-3" source="h0ON9-zBAFF4LZqiPs6g-141" target="h0ON9-zBAFF4LZqiPs6g-151">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-141" value="index.css" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;gradientColor=#7ea6e0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-3">
+          <mxGeometry x="10" y="220" width="170" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-168" value="This CSS file provides site-wide styling.&lt;div&gt;Automatically generated by &#39;create-react-app&#39;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-141">
+          <mxGeometry x="10" y="30" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-143" value="/public" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-3">
+          <mxGeometry x="1210" y="40" width="310" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-140" value="index.html" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#ffcd28;strokeColor=#d79b00;gradientColor=#ffa500;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-143">
+          <mxGeometry x="11.25" y="30" width="285" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-167" value="Entry HTML page that is serves as a framework for React components to place elements defined by their corresponding JSX onto the DOM. Includes only the basic configuration with DOCTYPE, html language, title, and links. The body simply contains a div with id of root, which is assigned within the JSX to be the top level DOM node into which components will render.&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;This file and it&#39;s contents are automatically generated by &#39;create-react-app&#39;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-140">
+          <mxGeometry x="10" y="30" width="260" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-174" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fillColor=#0050ef;strokeColor=#001DBC;curved=0;" edge="1" parent="h0ON9-zBAFF4LZqiPs6g-3" source="h0ON9-zBAFF4LZqiPs6g-144" target="h0ON9-zBAFF4LZqiPs6g-170">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-144" value="app.js" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-3">
+          <mxGeometry x="720" y="40" width="410" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-173" value="Main application React functional component.&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Provides the top level structure for various page / DOM elements that define the layout and functionality of the page.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Provides routing in the single-page appliaction to selectively render functional components depending upon the URL endpoint (switch / route).&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Allows the user sesison to persist through refreshes by dispatching the restoreUser thunk action from the Redux store (reducer). This fetches the session information from the JWT cookie, then sets the returned / parsed values onto the store. This is accomplished through a useEffect hook invocation that runs upon page load. Content is rendered only after the dispatch is complete and the loaded flag is set to true.&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-144">
+          <mxGeometry x="15" y="30" width="395" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-151" value="index.js / index_non-modal.js" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-3">
+          <mxGeometry x="230" y="40" width="400" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-170" value="Top level entry script.&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Defines the Root level functional component that is directly associated / rendered into the HTML div with id of root.&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Imports the Redux store configuration and invokes the configureStore method.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;If not in the production environment -&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- Calls the restoreCSRF method to get the XSRF-TOKEN &lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;to the frontend (note that this is not required in production as the XSRF-TOKEN is attatched when statically serving the index.html file)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;- Attaches the custom csrfFetch function onto the window&lt;/div&gt;&lt;div&gt;- Sets the store onto the window for debugging purposes&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Wraps the App functional component in Redux&#39;s Provider and ReactRouter DOM&#39;s BrowserRouter provider components. This provides both the Redux store and React&#39;s context(s) to lower level components defined by the App.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;non-modal version does NOT include / wrap the app with the React context provider as React context is not required when the login page is non-modal&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-151">
+          <mxGeometry x="2.5" y="30" width="395" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-153" value="package.json" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-3">
+          <mxGeometry x="10" y="40" width="170" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-154" value="Defines dependencies / installations used by npm.&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Includes scripts for starting on a per-environment basis:&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Provides proxy definition for the development environment&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-153">
+          <mxGeometry x="7.5" y="30" width="155" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-156" value="/src" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-3">
+          <mxGeometry x="20" y="500" width="2470" height="1190" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-112" value="/components" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-156">
+          <mxGeometry x="20" y="40" width="1480" height="940" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-157" value="LoginFormModal / LoginFormPage" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-112">
+          <mxGeometry x="10" y="40" width="650" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-235" value="LoginForm.js / index.js" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-157">
+          <mxGeometry x="10" y="32.5" width="630" height="317.5" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-236" value="Login form functional component&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Renders controlled elements for the user to provide a credential and their password, as well as the submit button.&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Upon submit, dispatches the login thunk action. If errors are returned in the response, catches the errors returned from the promise and conditionally renders them in an unordered list to indicate the problem(s) to the user.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;/LoginForm - Modal&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;index.js - contains the function component to render the&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;login button&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; and conditionally render the modal login form&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; LoginForm.js - contains the function component containing the login&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; form container and elements&lt;/span&gt;&lt;/div&gt;&lt;div&gt;/LoginFormPage - Non-Modal&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; index.js -&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;contains the function component containing the login&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;form container and elements&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;In the non-modal version:&amp;nbsp;&lt;/div&gt;&lt;div&gt;- Subscribed to the Redux session store&lt;/div&gt;&lt;div&gt;- If a session user exists on the store, redirect the browser to the &#39;/&#39; route.&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-235">
+          <mxGeometry x="10" y="25" width="610" height="285" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-241" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;curved=0;fillColor=#0050ef;strokeColor=#001DBC;" edge="1" parent="h0ON9-zBAFF4LZqiPs6g-157" source="h0ON9-zBAFF4LZqiPs6g-237" target="h0ON9-zBAFF4LZqiPs6g-235">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-237" value="index.css" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;gradientColor=#7ea6e0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-157">
+          <mxGeometry x="190" y="380" width="270" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-238" value="This CSS file provides styling for the login form elements" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-237">
+          <mxGeometry x="5.75" y="30" width="258.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-158" value="Navigation" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-112">
+          <mxGeometry x="690" y="40" width="750" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-224" value="index.js" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-158">
+          <mxGeometry x="10" y="32.5" width="420" height="197.5" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-225" value="React functional component responsible for defining the navigation header.&amp;nbsp;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Subscribed to the Redux session store.&lt;/div&gt;&lt;div&gt;Conditionally renders the profile button or login (button for modal, link for non-modal) / signup / logout (non-modal) links depending upon whether there is a session user on the Redux Store.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Conditionally loads the session links portion of the JSX based upon the value of the isLoaded prop which is passed from app.js (true once restoreUser fetch call response is returned)&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-224">
+          <mxGeometry x="3.5" y="25" width="395" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-231" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fillColor=#0050ef;strokeColor=#001DBC;curved=0;" edge="1" parent="h0ON9-zBAFF4LZqiPs6g-158" source="h0ON9-zBAFF4LZqiPs6g-226" target="h0ON9-zBAFF4LZqiPs6g-224">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="195" />
+              <mxPoint x="460" y="131" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-226" value="index.css" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;gradientColor=#7ea6e0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-158">
+          <mxGeometry x="470" y="160" width="270" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-227" value="This CSS file provides styling for the Navigation bar elements" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-226">
+          <mxGeometry x="5.75" y="30" width="258.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-232" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fillColor=#0050ef;strokeColor=#001DBC;curved=0;" edge="1" parent="h0ON9-zBAFF4LZqiPs6g-158" source="h0ON9-zBAFF4LZqiPs6g-229" target="h0ON9-zBAFF4LZqiPs6g-224">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="86" />
+              <mxPoint x="460" y="131" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-229" value="ProfileButton.js" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-158">
+          <mxGeometry x="470" y="32.5" width="270" height="107.5" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-230" value="React functional component responsible for rendering the profile button image from Font Awesome and the drop down menu containing user info and the logout button.&amp;nbsp;&lt;div&gt;Receives the session user as a prop.&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-229">
+          <mxGeometry x="10" y="25" width="250" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-165" value="SignupFormPage" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-112">
+          <mxGeometry x="10" y="530" width="650" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-244" value="index.js" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-165">
+          <mxGeometry x="10" y="30" width="630" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-245" value="Signup form functional component&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Subscribed to the Redux session store.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Renders controlled elements for the user to provide a username, email, password, and password confirmation, as well as the submit button.&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;If a session user exists on the store, redirect the browser to the &#39;/&#39; route.&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Upon submit:&lt;/div&gt;&lt;div&gt;- Performs verification that password and confirm password values are the same. Sets an error to the error array if this check is failed&lt;/div&gt;&lt;div&gt;- Dispatches the signup thunk action. If errors are returned in the response, catches the errors returned from the promise and conditionally renders them in an unordered list to indicate the problem(s) to the user.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-244">
+          <mxGeometry x="10" y="25" width="610" height="215" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-247" value="index.css" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;gradientColor=#7ea6e0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-165">
+          <mxGeometry x="190" y="300" width="270" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-248" value="This CSS file provides styling for the login form elements" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-247">
+          <mxGeometry x="5.75" y="30" width="258.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-246" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;curved=0;fillColor=#0050ef;strokeColor=#001DBC;" edge="1" parent="h0ON9-zBAFF4LZqiPs6g-165" source="h0ON9-zBAFF4LZqiPs6g-247" target="h0ON9-zBAFF4LZqiPs6g-244">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-243" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fillColor=#0050ef;strokeColor=#001DBC;curved=0;" edge="1" parent="h0ON9-zBAFF4LZqiPs6g-112" source="h0ON9-zBAFF4LZqiPs6g-235" target="h0ON9-zBAFF4LZqiPs6g-224">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-253" value="Non-Modal version only" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-112">
+          <mxGeometry x="720" y="420" width="110" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-135" value="/store" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-156">
+          <mxGeometry x="1540" y="40" width="910" height="710" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-178" value="index.js" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-135">
+          <mxGeometry x="10" y="30" width="420" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-179" value="Responsible for configuring and creating the Redux store.&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Creates and defines the root reducer function. combineReducers is used to incorporate all reducers into the single root reducer as only 1 reducer is allowed to be passed to Redux.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Initializes the enhancer variable that is set to different store enhancers depending upon the Node environment (dev, prod, etc). This attaches the Redux thunk middleware, but includes the compose enchancer and the logger when in the development environment.&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-178">
+          <mxGeometry x="3.5" y="25" width="395" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-180" value="csrf.js" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-135">
+          <mxGeometry x="10" y="250" width="420" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-181" value="Contains custom function to wrap fetch requests to the backend that will be used in place of the default fetch method. This is due to the Express backend server being configured to be CSRF protected and as such will only accept requests that have the right CSRF token value in a cookie.&amp;nbsp;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Contains thunk action creator csrfFetch:&lt;/div&gt;&lt;div&gt;- Determines request method and defaults to &#39;GET&#39; if a method is not defined&lt;/div&gt;&lt;div&gt;- Sets the fetch header options to and empty object if no headers are defined&lt;/div&gt;&lt;div&gt;- If the method is not &#39;GET&#39;, applies the XSRF-TOKEN cookie to the fetch header options&lt;/div&gt;&lt;div&gt;- Performs an async fetch call to the passed-in URL using the provided options&amp;nbsp; with the applied XSRF-TOKEN cookie&lt;/div&gt;&lt;div&gt;- Handles errors / returns fetch response&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Contains restoreCSRF method for development:&lt;/div&gt;&lt;div&gt;- Invokes csrfFetch to the /api/csrf/restore backend route to restore the csrf cookies&lt;/div&gt;&lt;div&gt;- NOTE: This is not required in the production environment because the csrf cookies are attached to the response when statically serving the index.html file.&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-180">
+          <mxGeometry x="3.5" y="25" width="406.5" height="325" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-186" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fillColor=#0050ef;strokeColor=#001DBC;curved=0;" edge="1" parent="h0ON9-zBAFF4LZqiPs6g-135" source="h0ON9-zBAFF4LZqiPs6g-183" target="h0ON9-zBAFF4LZqiPs6g-178">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-183" value="session.js" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-135">
+          <mxGeometry x="480" y="30" width="420" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-184" value="Responsible for user session interaction and interaction with the Redux store to provide user session information to the appliaction.&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Contains asynchronous thunk action creators that interact with backend routes:&lt;/div&gt;&lt;div&gt;- Login&amp;nbsp;&lt;/div&gt;&lt;div&gt;- Signup&lt;/div&gt;&lt;div&gt;- Logout&lt;/div&gt;&lt;div&gt;- Restore User (fetches session info from backend and dispatches setUser)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Contains action creators to interact with the reducer:&lt;/div&gt;&lt;div&gt;- setUser (sets user session info to the store upon successful login)&lt;/div&gt;&lt;div&gt;- removeUser (removes user session info from the store upon logout)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Contains the session reducer for setting data into the new state and passing it to the Redux Store.&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-183">
+          <mxGeometry x="3.5" y="25" width="406.5" height="245" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-194" value="&lt;span style=&quot;font-size: 10px;&quot;&gt;GET /api/csrf/restore&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;Any endpoint passed into the URL parameter&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-135">
+          <mxGeometry x="115" y="660" width="210" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-213" value="" style="endArrow=doubleBlock;startArrow=doubleBlock;html=1;rounded=1;dashed=1;fillColor=#a20025;strokeColor=#6F0000;curved=0;startFill=1;endFill=1;" edge="1" parent="h0ON9-zBAFF4LZqiPs6g-135">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="690" y="360" as="sourcePoint" />
+            <mxPoint x="690" y="300" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="690" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-214" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 10px; background-color: initial;&quot;&gt;GET POST DELETE /api/session&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;POST /api/users&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-135">
+          <mxGeometry x="610" y="360" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-192" value="" style="endArrow=doubleBlock;startArrow=doubleBlock;html=1;rounded=1;dashed=1;fillColor=#a20025;strokeColor=#6F0000;curved=0;startFill=1;endFill=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="h0ON9-zBAFF4LZqiPs6g-135" source="h0ON9-zBAFF4LZqiPs6g-194">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="660" as="sourcePoint" />
+            <mxPoint x="220" y="610" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="220" y="650" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-234" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.004;entryY=0.731;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#0050ef;strokeColor=#001DBC;curved=0;" edge="1" parent="h0ON9-zBAFF4LZqiPs6g-135" source="h0ON9-zBAFF4LZqiPs6g-180" target="h0ON9-zBAFF4LZqiPs6g-184">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-134" value="/context" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-156">
+          <mxGeometry x="1540" y="800" width="780" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-221" value="Modal.js" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-134">
+          <mxGeometry x="10" y="30" width="420" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-222" value="Frames modal elements using the React createPortal method.&amp;nbsp;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Creates a React context to be used for the modal -&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;A state variable value for the context provider gets set to a React ref that gets created (and is subsequently assigned to Provider&#39;s sibling &amp;lt;div&amp;gt;).&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;The context is referenced by the portal created by the modal function component as the DOM node upon which the modal should go.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Includes the React context provider function component that is used to wrap React elements in the entry index.js Root() component. A React ref is created that is assigned to the context provider&#39;s sibling &amp;lt;div&amp;gt;. the ref then stores a reference to this &amp;lt;div&amp;gt; as it&#39;s &#39;current&#39; value.&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;This is the location that will be referenced as the DOM node where the React portal will &#39;physically&#39; put the JSX passed into it for rendering.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Contains functional component for the modal element that uses the createPortal method to allow for the rendering of some children into a different part of the DOM. Uses the React context to determine which DOM node to render into. Additionally handles closing the modal with an onClick event handler.&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-221">
+          <mxGeometry x="3.5" y="25" width="406.5" height="305" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-223" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fillColor=#0050ef;strokeColor=#001DBC;curved=0;" edge="1" parent="h0ON9-zBAFF4LZqiPs6g-134" source="h0ON9-zBAFF4LZqiPs6g-219" target="h0ON9-zBAFF4LZqiPs6g-221">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-219" value="index.css" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;gradientColor=#7ea6e0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-134">
+          <mxGeometry x="500" y="30" width="270" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-220" value="This CSS file provides styling for the modal elements. It handles modal size and positioning, as well as background color." style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="h0ON9-zBAFF4LZqiPs6g-219">
+          <mxGeometry x="5.75" y="25" width="258.5" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-251" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fillColor=#60a917;strokeColor=#2D7600;curved=0;" edge="1" parent="h0ON9-zBAFF4LZqiPs6g-156" source="h0ON9-zBAFF4LZqiPs6g-224" target="h0ON9-zBAFF4LZqiPs6g-184">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="930" y="780" />
+              <mxPoint x="2125" y="780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-252" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fillColor=#60a917;strokeColor=#2D7600;curved=0;" edge="1" parent="h0ON9-zBAFF4LZqiPs6g-156" source="h0ON9-zBAFF4LZqiPs6g-235" target="h0ON9-zBAFF4LZqiPs6g-184">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1428.5714285714287" y="640" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="513" y="480" />
+              <mxPoint x="930" y="480" />
+              <mxPoint x="930" y="780" />
+              <mxPoint x="2125" y="780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-256" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fillColor=#60a917;strokeColor=#2D7600;curved=0;" edge="1" parent="h0ON9-zBAFF4LZqiPs6g-156" source="h0ON9-zBAFF4LZqiPs6g-244" target="h0ON9-zBAFF4LZqiPs6g-184">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="930" y="720" />
+              <mxPoint x="930" y="780" />
+              <mxPoint x="2125" y="780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-188" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;curved=0;fillColor=#0050ef;strokeColor=#001DBC;" edge="1" parent="h0ON9-zBAFF4LZqiPs6g-3" source="h0ON9-zBAFF4LZqiPs6g-183" target="h0ON9-zBAFF4LZqiPs6g-151">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2145" y="460" />
+              <mxPoint x="430" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-189" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fillColor=#0050ef;strokeColor=#001DBC;curved=0;" edge="1" parent="h0ON9-zBAFF4LZqiPs6g-3" source="h0ON9-zBAFF4LZqiPs6g-183" target="h0ON9-zBAFF4LZqiPs6g-144">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2355" y="390" />
+              <mxPoint x="925" y="390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-233" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fillColor=#0050ef;strokeColor=#001DBC;curved=0;" edge="1" parent="h0ON9-zBAFF4LZqiPs6g-3" source="h0ON9-zBAFF4LZqiPs6g-158" target="h0ON9-zBAFF4LZqiPs6g-144">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1105" y="390" />
+              <mxPoint x="925" y="390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-240" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fillColor=#0050ef;strokeColor=#001DBC;curved=0;" edge="1" parent="h0ON9-zBAFF4LZqiPs6g-3" source="h0ON9-zBAFF4LZqiPs6g-134" target="h0ON9-zBAFF4LZqiPs6g-151">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1540" y="1485" />
+              <mxPoint x="1540" y="460" />
+              <mxPoint x="430" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-136" value="HTML file" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#ffcd28;strokeColor=#d79b00;gradientColor=#ffa500;" vertex="1" parent="1">
+          <mxGeometry x="2000" y="155" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-137" value="CSS file" style="swimlane;whiteSpace=wrap;html=1;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;gradientColor=#7ea6e0;" vertex="1" parent="1">
+          <mxGeometry x="2000" y="205" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-198" value="" style="endArrow=doubleBlock;startArrow=doubleBlock;html=1;rounded=1;dashed=1;fillColor=#a20025;strokeColor=#6F0000;curved=0;startFill=1;endFill=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2240" y="200" as="sourcePoint" />
+            <mxPoint x="2310" y="200" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-199" value="&lt;span style=&quot;font-size: 10px;&quot;&gt;Fetch Call or Frontend / Backend interaction&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2320" y="190" width="210" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-201" value="&lt;span style=&quot;font-size: 10px;&quot;&gt;require(&#39;&#39;) / import / reference&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2320" y="60" width="210" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-202" value="" style="endArrow=classic;html=1;rounded=0;fillColor=#0050ef;strokeColor=#001DBC;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2240" y="69.82" as="sourcePoint" />
+            <mxPoint x="2310" y="69.82" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-203" value="&lt;span style=&quot;font-size: 10px;&quot;&gt;Shell command&amp;nbsp;&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2320" y="85" width="210" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-204" value="" style="endArrow=classic;html=1;rounded=0;fillColor=#0050ef;strokeColor=#000000;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2240" y="94.82" as="sourcePoint" />
+            <mxPoint x="2310" y="94.82" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-205" value="&lt;span style=&quot;font-size: 10px;&quot;&gt;Environment Configuration&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2320" y="110" width="210" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-206" value="" style="endArrow=classic;html=1;rounded=0;fillColor=#e1d5e7;strokeColor=#9673a6;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2240" y="119.82" as="sourcePoint" />
+            <mxPoint x="2310" y="119.82" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-207" value="&lt;span style=&quot;font-size: 10px;&quot;&gt;Database Interaction / dependency / command&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2320" y="135" width="210" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-208" value="" style="endArrow=classic;html=1;rounded=0;fillColor=#fff2cc;strokeColor=#d6b656;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2240" y="144.82" as="sourcePoint" />
+            <mxPoint x="2310" y="144.82" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-210" value="" style="endArrow=none;html=1;rounded=0;fillColor=#fff2cc;strokeColor=#d6b656;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2240" y="170" as="sourcePoint" />
+            <mxPoint x="2310" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-211" value="" style="endArrow=none;html=1;rounded=0;fillColor=#fff2cc;strokeColor=#d6b656;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2240" y="174.87" as="sourcePoint" />
+            <mxPoint x="2310" y="174.87" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-212" value="&lt;span style=&quot;font-size: 10px;&quot;&gt;Database Definition&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2320" y="165" width="210" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-216" value="" style="endArrow=doubleBlock;startArrow=doubleBlock;html=1;rounded=1;dashed=1;fillColor=#a20025;strokeColor=#6F0000;curved=0;startFill=1;endFill=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="xRNBOfDQ-NbFJoLuyLIO-296">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="650" y="1800" as="sourcePoint" />
+            <mxPoint x="750" y="1560" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="680" y="1800" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-249" value="&lt;span style=&quot;font-size: 10px;&quot;&gt;Redux Store Subscription&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2320" y="215" width="210" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="h0ON9-zBAFF4LZqiPs6g-250" value="" style="endArrow=classic;html=1;rounded=0;fillColor=#60a917;strokeColor=#2D7600;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2240" y="224.82" as="sourcePoint" />
+            <mxPoint x="2310" y="224.82" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
