@@ -106,12 +106,9 @@ def merge_sort(lst):
 
     # Merge the halves together and return
     sortedLst = merge(leftLst, rightLst)
-    # print(leftLst, rightLst)
 
     return sortedLst
-###
-# TODO: FIX ERROR WITH LIST INDICIES
-###
+
 def merge(first_half, second_half):
     # Merge logic goes here
     # Instantiate empty list
@@ -126,22 +123,21 @@ def merge(first_half, second_half):
       # Add the smaller value to the return array
       # Move the pointer to the next value in that array
     while (ptr1 < len(first_half)) or (ptr2 < len(second_half)):
-        print (ptr1, ptr2)
-        val1 = first_half[ptr1]
-        val2 = second_half[ptr2]
-        print (val1, val2)
-        if((not val1) or (val1 < val2)):
+        if(ptr1 < len(first_half)):
+            val1 = first_half[ptr1]
+        if(ptr2 < len(second_half)):
+            val2 = second_half[ptr2]
+
+        if((ptr2 >= len(second_half)) or (ptr1 < len(first_half) and (val1 < val2))):
             retLst.append(val1)
             ptr1 += 1
-        elif((not val2) or (val2 < val1)):
+        elif((ptr1 >= len(first_half)) or (ptr2 < len(second_half) and (val2 < val1))):
             retLst.append(val2)
             ptr2 += 1
     return retLst
 
 
 lst = [5, 2, 38, 91, 16, 427]
-
-# print(merge_sort(lst))
 
 sorted_lst = merge_sort(lst)        # Out of place solution
 print(sorted_lst)
