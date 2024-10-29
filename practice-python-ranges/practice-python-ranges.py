@@ -174,5 +174,4 @@ def rng(lst):
         lst.append(random.randint(1, 100))
     return lst
 
-
 print(rng([]))
