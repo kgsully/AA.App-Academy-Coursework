@@ -220,3 +220,150 @@ def map_to_names(phone_list):
 unique_models = list(get_unique_models(phones))
 print(unique_models)                # iPhone 13 Pro, Galaxy S22+, Pixel 6 (dictionaries)
 print(map_to_names(unique_models))  # iPhone 13 Pro, Galaxy S22+, Pixel 6
+
+# -------------------------------------------------------------------------------------------------------------------
+# Bonus: Averages
+# -------------------------------------------------------------------------------------------------------------------
+
+# It's time to put your knowledge of lists, tuples and dictionaries together. In this exercise, you will complete the basic statistics calculations for
+
+#     Minimum
+#     Maximum
+#     Mean
+#     Median
+#     Mode
+
+# Follow the instructions in the code comments. Be sure to test your work by running your code!
+
+# You will likely need to look at the Python documentation to complete this activity. (Search 'dictionary', go to 'Built-in Types', scroll down to 'Mapping Types - dict'.)
+
+# After Step 1, you should see this in the terminal:
+# ('min', 'max', 'mean', 'median', 'mode')
+# (1, 9, 5.0, None, None)
+# (12, 99, 43.666666666666664, None, None)
+
+# In Step 2, the expected median values are 5 and 35.5. Median is the middle element. When the list has an odd length it's as easy as taking the value at the middle index on the sorted list. When the length is even, it's the average of the two numbers closest to the middle.
+
+# In Step 3, the expected mode values are 1 and 23. Mode is the element which is most repeated.
+
+# BONUS A is really whatever you want to do. It is recommended that you add fringe cases (e.g. a list of a single number like zero or all numbers are the same).
+
+# BONUS B is to revisit the mode function and return nothing if more than one number is repeated the most number of times (like sample1). When successful, this would result in (1, 9, 5.0, 5, None) for the first call to analyze.
+
+print('\n----------------------------------------------------------------------------------')
+print('Bonus: Averages')
+print('----------------------------------------------------------------------------------')
+
+# STEP 1: Complete analyze function to return 5 values
+#    - minimum
+#    - maximum
+#    - mean (a.k.a. average)
+#    - median (center point)
+#    - mode (most repeated)
+def analyze(nums):
+    if nums == []:
+        return None
+
+    minVal = min(nums)
+    maxVal = max(nums)
+    meanVal = sum(nums) / len(nums)
+    medianVal = median(nums)
+    modeVal = mode(nums)
+
+    return (minVal, maxVal, meanVal, medianVal, modeVal)
+
+# STEP 2: Complete median function to return center number
+#         WITHOUT using built-in function
+def median(nums):
+    sortedNums = sorted(nums)
+    middleIdx = len(nums) // 2
+    if len(nums) % 2 > 0:   # odd number of list elements
+        return sortedNums[middleIdx]
+    else:  # even number of list elements - average of 2 center most elements
+        return (sortedNums[middleIdx - 1] + sortedNums[middleIdx]) / 2
+
+# STEP 3: Complete mode function to return most-repeated number
+#         WITHOUT using built-in function
+# BONUS B: Catch special case where more than one value repeats the most
+def mode(nums):
+    counts = dict.fromkeys(nums, 0)     # this method will generate a dictionary with keys defined by the list nums and default value of 0
+    for num in nums:
+        counts[num] += 1
+    modeVal = max(counts, key=lambda x: counts[x])
+
+    # BONUS B - make list of values from counts dict and count how many elements are = to the value for the determined mode
+    #           if there is more than one instance, this means that there is more than 1 value that repeats the most
+    if list(counts.values()).count(counts[modeVal]) > 1:
+        return None
+    return modeVal
+
+
+# DO NOT EDIT - sample data for checking your work
+sample1 = 1,2,3,4,5,6,7,8,9
+sample2 = [37,45,23,65,75,34,23,23,23,65,12,99]
+print(('min', 'max', 'mean', 'median', 'mode'))
+print(analyze(sample1))
+print(analyze(sample2))
+
+# BONUS A: Print more samples as you see fit
+print('\n BONUS A:')
+sample3 = [0]
+sample4 = []
+sample5 = [1, 1, 1, 1, 1]
+print(analyze(sample3))
+print(analyze(sample4))
+print(analyze(sample5))
+
+# -------------------------------------------------------------------------------------------------------------------
+# Bonus: Track The Robot
+# -------------------------------------------------------------------------------------------------------------------
+
+# A robot has been given a list of movement instructions.
+# Each instruction is either left, right, up or down, followed by a distance to move.
+# The robot starts at [0, 0]. You want to calculate where the robot will end up and return its final position as a list.
+#
+# For example, if the robot is given the instructions ["right 10", "up 50", "left 30", "down 10"],
+# it will end up 20 left and 40 up from where it started, so you should return [-20, 40].
+
+print('\n----------------------------------------------------------------------------------')
+print('Bonus: Track The Robot')
+print('----------------------------------------------------------------------------------')
+
+# Write your function, here.
+def track_robot(directions):
+    x = 0
+    y = 0
+    if len(directions) == 0:
+        return [0, 0]
+    for el in directions:
+        [dir, qtyStr] = el.split()
+        qty = int(qtyStr)
+        if dir == 'right':
+            x += qty
+        if dir == 'left':
+            x -= qty
+        if dir == 'up':
+            y += qty
+        if dir == 'down':
+            y -= qty
+
+    return [x, y]
+
+# Better code from the solution:
+# def track_robot(instructions):
+#     totals = {'left': 0, 'right': 0, 'up': 0, 'down': 0}
+#     for step in instructions:
+#         step = step.split()
+#         totals[step[0]] += int(step[1])
+#     return [totals['right'] - totals['left'], totals['up'] - totals['down']]
+
+
+print(track_robot(["right 10", "up 50", "left 30", "down 10"]))
+# Prints [-20, 40]
+
+print(track_robot([]))
+# Prints [0, 0]
+# If there are no instructions, the robot doesn't move.
+
+print(track_robot(["right 100", "right 100", "up 500", "up 10000"]))
+# Prints [200, 10500]
