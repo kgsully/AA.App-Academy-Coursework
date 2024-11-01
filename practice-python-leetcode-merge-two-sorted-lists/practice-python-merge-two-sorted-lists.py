@@ -36,7 +36,6 @@ def mergeTwoLists(list1, list2):
     mergedList = []
     print(f'\nlist 1 len: {len(list1)}   list 2 len: {len(list2)}')
     while (idx1 < len(list1) or idx2 < len(list2)):
-        print(f'TOP:\n idx1: {idx1}  val1: {val1}  idx2: {idx2}   val2: {val2}')
         if idx1 < len(list1):
             val1 = list1[idx1]
         else:
@@ -46,7 +45,6 @@ def mergeTwoLists(list1, list2):
             val2 = list2[idx2]
         else:
             val2 = None
-        print(f'Middle:\n idx1: {idx1}  val1: {val1}  idx2: {idx2}   val2: {val2}')
         if not val1:
             mergedList += [*list2[idx2:]]
             break
@@ -64,13 +62,7 @@ def mergeTwoLists(list1, list2):
             else:
                 mergedList.append(val2)
                 idx2 += 1
-        print(f'BOTTOM:\n idx1: {idx1}  val1: {val1}  idx2: {idx2}   val2: {val2}\n')
     return mergedList
-
-
-
-
-
 
 print(mergeTwoLists([1,2,4], [1,3,4]))
 print(mergeTwoLists([], []))
