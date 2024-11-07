@@ -12,6 +12,7 @@ coverage/
 cypress/plugins
 cypress/screenshots
 cypress/support
+__pycache__/
 
 # production
 /build
