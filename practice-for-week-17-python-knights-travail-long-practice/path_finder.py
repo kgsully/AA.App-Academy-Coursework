@@ -67,7 +67,29 @@ class KnightPathFinder:
 
         return queue
 
+    def find_path(self, end_position):
+        end_pos_node = self._root.depth_search(end_position)
+        if end_pos_node:
+            return self.trace_to_root(end_pos_node)
+        else:
+            return None
 
-# finder = KnightPathFinder((0, 0))
-# finder.build_move_tree()
-# print(finder._root.children)
+    def trace_to_root(self, end_node):
+        if isinstance(end_node, Node):
+            path = []
+            while end_node:
+                path = [end_node.value, *path]
+                end_node = end_node.parent
+            return path
+
+
+finder = KnightPathFinder((0, 0))
+finder.build_move_tree()
+print("")
+print(f'Starting Position: {finder._root.value}  \nEnd Position: (2, 1)  \nPath: {finder.find_path((2, 1))}') # => [(0, 0), (2, 1)]
+print("")
+print(f'Starting Position: {finder._root.value}  \nEnd Position: (3, 3)  \nPath: {finder.find_path((3, 3))}') # => [(0, 0), (2, 1), (3, 3)]
+print("")
+print(f'Starting Position: {finder._root.value}  \nEnd Position: (6, 2)  \nPath: {finder.find_path((6, 2))}') # => [(0, 0), (1, 2), (2, 4), (4, 3), (6, 2)]
+print("")
+print(f'Starting Position: {finder._root.value}  \nEnd Position: (7, 6)  \nPath: {finder.find_path((7, 6))}') # => [(0, 0), (1, 2), (2, 4), (4, 3), (5, 5), (7, 6)]
