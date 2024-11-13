@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Sample Form</title>
+    </head>
+
+    <body>
+        <h1>Sample Form</h1>
+        <!-- form starts here -->
+        <form action="" method="POST" novalidate>
+            {{  form.csrf_token  }}
+            <p>
+                {{  form.name.label  }}
+                {{  form.name(size=32)  }}
+            </p>
+            <p>
+                {{  form.submit()  }}
+            </p>
+        </form>
+        <!-- form ends here -->
+    </body>
+
+</html>
