@@ -1,6 +1,10 @@
 from sqlalchemy import create_engine, text
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, joinedload
 from mappings import Owner, Pony
+import logging
+
+logging.basicConfig()
+# logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO) # Un-comment to enable logging on the SQLAlchemy engine queries
 
 db_url = "postgresql://sqlalchemy_test:password@localhost/sqlalchemy_test"
 engine = create_engine(db_url)
@@ -142,6 +146,58 @@ for pony in ponies:
 # COUNTING RECORDS:
 # Changes the query to contain the COUNT SQL function instead of a column name.
 print(f'\nCounting Records - Pony Query All Method:\n{pony_query.count()}')
+
+
+# ---------------------------------------------------------------------------------------------------------------------------------------
+# QUERYING OBJECTS ACROSS ASSOCIATIONS:
+# ---------------------------------------------------------------------------------------------------------------------------------------
+
+# Use the .join() method of the query object
+hirzai_owners = session.query(Owner) \
+                       .join(Pony) \
+                       .filter(Pony.breed == "Hirzai")
+print('\nQuerying with Join:')
+for owner in hirzai_owners:
+    print(owner.first_name, owner.last_name)
+
+
+# Lazy Loading Objects:
+# With logging enabled, it shows that SQLAlchemy made four queries:
+#     The first query got all of the owners
+#     The second query got the ponies for Joey Harker
+#     The third query got the ponies for Jay Harker
+#     The fourth query got the ponies for Josetta Harker
+# The queries for the ponies were initiated when code accessed the ponies collection on each Owner object. This is known as lazy loading because SQLAlchemy doesn't load the objects until your code accesses them.
+
+print("\nLazy Loading Objects (4 Queries - N+1):")
+for owner in session.query(Owner):
+    print(owner.first_name, owner.last_name)
+    for pony in owner.ponies:
+        print('\t', pony.name)
+
+# Eager Loading Associated Objects
+
+# Use the joinload function from the sqlalchemy.orm sub-package. You pass the joinedload invocation to the options method of the query
+
+owners_and_ponies = session.query(Owner).options(joinedload(Owner.ponies))
+print("\nEager Loading Associated Objects (1 Query)")
+for owner in owners_and_ponies:
+        print(owner.first_name, owner.last_name)
+        for pony in owner.ponies:
+             print("\t", pony.name)
+
+# It's important to note that the join method in the first section of this article does not mean eager loading.
+# Instead, it just allows you to filter across associations. If you want to filter across associations and enable eager loading,
+# you must call both join and options (with joinedload) on your Query object.
+hirzai_owners_and_ponies = session.query(Owner) \
+                                  .join(Pony)  \
+                                  .filter(Pony.breed == "Hirzai") \
+                                  .options(joinedload(Owner.ponies))
+print("\nEager Loading - Querying with Join / joinedload:")
+for owner in hirzai_owners_and_ponies:
+    print(owner.first_name, owner.last_name)
+    for pony in owner.ponies:
+        print("\t", pony.name)
 
 
 session.close()
