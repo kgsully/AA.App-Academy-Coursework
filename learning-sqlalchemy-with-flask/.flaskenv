@@ -1,0 +1,2 @@
+FLASK_APP=pony.py
+FLASK_DEBUG=1
