@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% if title %}
+            <title>{{  title  }}</title>
+        {% else %}
+            <title>Welcome to Order Up!</title>
+        {% endif %}
+    </head>
+    <body>
+        <!-- Flask-Login makes the current_user to the variables available in the templates, as such it doesn't get passed in via render_template -->
+        <!-- current_user.is_anonymous will be True when there is no current logged in user -->
+        {% if not current_user.is_anonymous %}
+        <form method="POST" action="{{  url_for('session.logout')  }}">
+            <button type="submit">Logout</button>
+        </form>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </body>
+</html>
