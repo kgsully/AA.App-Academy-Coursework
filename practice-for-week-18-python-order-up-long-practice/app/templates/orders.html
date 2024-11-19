@@ -1,6 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Order Up!</h1>
+<div class="container">
+    <header>
+        <h1>ASSIGN TABLE</h1>
+        {{  assign_form.tables  }}
+        {{  assign_form.servers  }}
+        {{  assign_form.submit  }}
+    </header>
+    <!-- <div>
+        {{  tables  }}
+    </div>
+    <div>
+        {{  open_tables  }}
+    </div> -->
+</div>
 
 {% endblock %}

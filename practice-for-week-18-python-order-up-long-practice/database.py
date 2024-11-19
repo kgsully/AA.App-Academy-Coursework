@@ -4,7 +4,7 @@ load_dotenv()
 # Regardless of the lint error you receive, load_dotenv must run before running this
 # so that the environment variables are properly loaded.
 from app import app, db
-from app.models import Employee, Menu, MenuItem, MenuItemType, Table
+from app.models import Employee, Menu, MenuItem, MenuItemType, Order, Table
 
 
 with app.app_context():
@@ -13,7 +13,9 @@ with app.app_context():
     db.create_all()
 
     # Handle seed data for "employees" table
-    employee = Employee(name="Margot", employee_number=1234, password="password")
+    employee1 = Employee(name="Margot", employee_number=123, password="password1")
+    employee2 = Employee(name="Steve", employee_number=456, password="password2")
+    employee3 = Employee(name="Laura", employee_number=789, password="password3")
 
 
     # Handle seed data for "menus", "menu_items", and "menu_item_types" tables
@@ -40,9 +42,20 @@ with app.app_context():
     table9 = Table(number=9, capacity=8)
     table10 = Table(number=10, capacity=12)
 
+    # Handle seed data for Order
+    order1 = Order(employee_id=1, table_id=1, finished=False)
+    order2 = Order(employee_id=1, table_id=5, finished=True)
+    order3 = Order(employee_id=2, table_id=9, finished=True)
+
 
     # Add data to sessions before committing
-    db.session.add(employee)
+    db.session.add_all(
+        [
+            employee1,
+            employee2,
+            employee3
+        ]
+    )
     db.session.add(beverages)
     db.session.add(entrees)
     db.session.add(sides)
@@ -63,6 +76,14 @@ with app.app_context():
             table8,
             table9,
             table10
+        ]
+    )
+
+    db.session.add_all(
+        [
+            order1,
+            order2,
+            order3
         ]
     )
 

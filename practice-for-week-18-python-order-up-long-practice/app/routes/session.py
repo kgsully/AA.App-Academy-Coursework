@@ -19,7 +19,7 @@ def login():
             return redirect(url_for(".login"))
         login_user(employee)
         return redirect(url_for("orders.index"))
-    return render_template("login.html", form=form)
+    return render_template("login.html", form=form, title="Login - Order Up!")
 
 @bp.route("/logout", methods=["POST"])
 def logout():
