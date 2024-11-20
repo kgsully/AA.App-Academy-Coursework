@@ -26,6 +26,9 @@ class Employee(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    def get_open_order_qty(self):
+        return sum(1 for order in self.orders if order.finished == False)
+
 
 # Menu has a one-to-many relationship with named items to the MenuItem objects
 # A menu can have many items, but each item is assigned to a particular menu
@@ -63,6 +66,7 @@ class MenuItemType(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), nullable=False)
+    sort_order = db.Column(db.Integer, nullable=False)
 
     menu_item = db.relationship("MenuItem", back_populates="type", cascade="all, delete-orphan")
 

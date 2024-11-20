@@ -4,16 +4,61 @@
 <div class="container">
     <header>
         <h1>ASSIGN TABLE</h1>
-        {{  assign_form.tables  }}
-        {{  assign_form.servers  }}
-        {{  assign_form.submit  }}
-    </header>
-    <!-- <div>
-        {{  tables  }}
-    </div>
-    <div>
-        {{  open_tables  }}
-    </div> -->
-</div>
+        <form action="{{ url_for('orders.assign_table', employee_id=0, table_id=0)}}" id="table-assign-form" method="POST">
+            {{  table_assign_form.csrf_token  }}
+            <select id="open-tables" name="open-tables">
+                <option  value="0" disabled selected>Open Tables</option>
+                {% for id, name in table_assign_form.tables.choices %}
+                    <option value="{{  id  }}">{{  name  }}</option>
+                {% endfor %}
+            </select>
+            <select id="servers" name="servers">
+                <option value="0" disabled selected>Servers</option>
+                {% for id, name in table_assign_form.servers.choices %}
+                    <option value="{{  id  }}">{{  name  }}</option>
+                {% endfor %}
+            </select>
 
+            {{  table_assign_form.assign  }}
+        </form>
+
+    </header>
+    <section class="open-orders">
+        <h2>YOUR OPEN ORDERS</h2>
+        <table>
+            {% for order in open_orders %}
+                <tr>
+                    <td>Table {{  order.table_id  }}</td>
+                    <td>
+                        <form action="{{  url_for('orders.close_table', order_id=order.id)  }}" method="POST">
+                            <button type="submit">CLOSE TABLE</button>
+                        </form>
+                    </td>
+                    <td>
+                        <button form="food-list" formaction="{{  url_for('orders.add_to_order', order_id=order.id, items=0)  }}" method="POST">
+                            ADD TO ORDER
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </section>
+    <section class="menu">
+        <h1>MENU</h1>
+        <form id="food-list" method="POST">
+            {% for type in menu %}
+                <div>
+                    <h2>{{  type.name  }}</h2>
+                    <div>
+                        {% for item in menu[type] %}
+                            <input type="checkbox" id="{{  item.id  }}" name="menu_items" value="{{  item.id  }}">
+                            <label for="{{  item.id  }}">{{  item.name  }}</label>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </form>
+    </section>
+</div>
+<script src="{{  url_for('static', filename='events.js')  }}"></script>
 {% endblock %}

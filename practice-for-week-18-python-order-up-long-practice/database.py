@@ -19,9 +19,9 @@ with app.app_context():
 
 
     # Handle seed data for "menus", "menu_items", and "menu_item_types" tables
-    beverages = MenuItemType(name="Beverages")
-    entrees = MenuItemType(name="Entrees")
-    sides = MenuItemType(name="Sides")
+    beverages = MenuItemType(name="Beverages", sort_order=1)
+    entrees = MenuItemType(name="Entrees", sort_order=2)
+    sides = MenuItemType(name="Sides", sort_order=3)
 
     dinner = Menu(name="Dinner")
 
@@ -46,6 +46,7 @@ with app.app_context():
     order1 = Order(employee_id=1, table_id=1, finished=False)
     order2 = Order(employee_id=1, table_id=5, finished=True)
     order3 = Order(employee_id=2, table_id=9, finished=True)
+    order4 = Order(employee_id=1, table_id=3, finished=False)
 
 
     # Add data to sessions before committing
@@ -83,7 +84,8 @@ with app.app_context():
         [
             order1,
             order2,
-            order3
+            order3,
+            order4
         ]
     )
 

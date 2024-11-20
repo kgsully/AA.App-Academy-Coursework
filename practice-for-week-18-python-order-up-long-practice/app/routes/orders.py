@@ -1,8 +1,7 @@
-from flask import Blueprint, render_template
-from flask_login import login_required
-from sqlalchemy import func
-from ..forms import AssignForm
-from ..models import Employee, Table, Order
+from flask import Blueprint, redirect, render_template, request, url_for
+from flask_login import login_required, current_user
+from ..forms import TableAssignmentForm, MenuItemAssignmentForm
+from ..models import db, Employee, Table, MenuItem, MenuItemType, Order
 
 bp = Blueprint("orders", __name__, url_prefix="")
 
@@ -10,28 +9,86 @@ bp = Blueprint("orders", __name__, url_prefix="")
 @bp.route("/")
 @login_required
 def index():
+    # ---------------------------------------------
+    # Assignment
+    # ---------------------------------------------
     # Get all tables and open orders
     # (if using list comprehension syntax to determine occupied table ids, do not execute the query with .all())
     tables = Table.query.order_by(Table.number).all()
-    open_orders = Order.query.filter(Order.finished == False).all()
+    all_open_orders = Order.query.filter(Order.finished == False).all()
+    # test_tables = Table.query.join(Order).filter(Order.finished == True).all()
+    # print(test_tables)
 
     # Determine occupied tables
-    occupied_table_ids = [order.table_id for order in open_orders]
+    occupied_table_ids = [order.table_id for order in all_open_orders]
     # # A list comprehension can be used in order to execute queries and then loop over the rows returned as it is iterable
-    # occupied_table_ids = [order.table_id for order in open_orders]
+    # occupied_table_ids = [order.table_id for order in all_open_orders]
 
     # Determine open tables
     open_tables = [table for table in tables if table.id not in occupied_table_ids]
 
     servers = Employee.query.order_by(Employee.name).all()
-    print(servers[1].orders)
+    open_order_qtys = [server.get_open_order_qty() for server in servers]
 
     # Generate assignment form
-    assign_form = AssignForm()
-    assign_form.tables.choices = [(table.id, f"Table {table.number}") for table in open_tables]
-    assign_form.servers.choices = [(server.id, f"{server.name} ({len(server.orders)})") for server in servers]
+    table_assign_form = TableAssignmentForm()
+    table_assign_form.tables.choices = [(table.id, f"Table {table.number}") for table in open_tables]
+    table_assign_form.servers.choices = [(server.id, f"{server.name} ({order_qty})") for server, order_qty in zip(servers, open_order_qtys)]
+
+    # ---------------------------------------------
+    # Open Orders
+    # ---------------------------------------------
+    # Get open orders for current user
+    curr_user_open_orders = Order.query.join(Employee).filter(Employee.id == current_user.id, Order.finished == False).all()
+
+    # ---------------------------------------------
+    # Menu
+    # ---------------------------------------------
+    # Get menu item types
+    menu_item_types = MenuItemType.query.order_by(MenuItemType.sort_order).all()
+    menu = {type:MenuItem.query.join(MenuItemType).filter(MenuItem.menu_type_id == type.id).all() for type in menu_item_types}
+
+    menu_items = MenuItem.query.join(MenuItemType).order_by(MenuItemType.name, MenuItem.name).all()
+    # for item in menu_items:
+    #     print(item.name, item.type.name)
+    menu_item_form = MenuItemAssignmentForm()
+    menu_item_form.menu_item_ids.choices = [(item.id, item.name) for item in menu_items]
+
+    return render_template("orders.html",
+                           table_assign_form=table_assign_form,
+                           open_orders=curr_user_open_orders,
+                           menu_item_types=menu_item_types,
+                           menu_item_form=menu_item_form,
+                           menu=menu)
 
 
+@bp.route("/assign_table/<int:table_id>/<int:employee_id>", methods=["POST"])
+@login_required
+def assign_table(table_id, employee_id):
+    new_order = Order(employee_id=employee_id, table_id=table_id, finished=False)
+    db.session.add(new_order)
+    db.session.commit()
 
+    return redirect(url_for('.index'))
 
-    return render_template("orders.html", assign_form=assign_form)
+@bp.route("/close_table/<int:order_id>", methods=["POST"])
+@login_required
+def close_table(order_id):
+    order_to_close = Order.query.get(order_id)
+    order_to_close.finished = True
+
+    db.session.add(order_to_close)
+    db.session.commit()
+
+    return redirect(url_for('.index'))
+
+@bp.route("/add_to_order/<int:order_id>/items", methods=["POST"])
+@login_required
+def add_to_order(order_id):
+    order = Order.query.get(order_id)
+
+    selected_item_ids = request.form.getlist("menu_items")
+
+    print(order, selected_item_ids)
+
+    return redirect(url_for('.index'))
