@@ -34,7 +34,7 @@ def index():
     # Generate assignment form
     table_assign_form = TableAssignmentForm()
     table_assign_form.tables.choices = [(table.id, f"Table {table.number}") for table in open_tables]
-    table_assign_form.servers.choices = [(server.id, f"{server.name} ({order_qty})") for server, order_qty in zip(servers, open_order_qtys)]
+    table_assign_form.servers.choices = [(server.id, f"{server.name} ({order_qty})") for server, order_qty in zip(servers, open_order_qtys) if not server.admin]
 
     # ---------------------------------------------
     # Open Orders
