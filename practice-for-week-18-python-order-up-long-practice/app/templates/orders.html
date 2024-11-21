@@ -28,7 +28,11 @@
         {% endwith %}
     </header>
     <section class="open-orders">
-        <h2>YOUR OPEN ORDERS</h2>
+        {% if current_user.admin %}
+            <h2>ALL OPEN ORDERS</h2>
+        {% else %}
+            <h2>YOUR OPEN ORDERS</h2>
+        {% endif %}
         <div>
             {% for o_id in open_orders %}
             <div>
@@ -59,10 +63,14 @@
             </table>
             {% endfor %}
         </div>
-
     </section>
     <section class="menu">
         <h1>MENU</h1>
+        {% if current_user.admin %}
+            <form action="{{ url_for('orders.edit_menu')}}">
+                <button type="submit">Edit Menu</button>
+            </form>
+        {% endif %}
         <form id="food-list" method="POST">
             {% for type in menu %}
                 <div>

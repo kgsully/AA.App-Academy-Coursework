@@ -13,10 +13,10 @@ with app.app_context():
     db.create_all()
 
     # Handle seed data for "employees" table
-    employee1 = Employee(name="Margot", employee_number=123, password="password1")
-    employee2 = Employee(name="Steve", employee_number=456, password="password2")
-    employee3 = Employee(name="Laura", employee_number=789, password="password3")
-
+    employee1 = Employee(name="Margot", employee_number=123, password="password", admin=False)
+    employee2 = Employee(name="Steve", employee_number=456, password="password", admin=False)
+    employee3 = Employee(name="Laura", employee_number=789, password="password", admin=False)
+    employee4 = Employee(name="Admin", employee_number=999, password="password", admin=True)
 
     # Handle seed data for "menus", "menu_items", and "menu_item_types" tables
     beverages = MenuItemType(name="Beverages", sort_order=1)
@@ -61,7 +61,8 @@ with app.app_context():
         [
             employee1,
             employee2,
-            employee3
+            employee3,
+            employee4
         ]
     )
     db.session.add(beverages)

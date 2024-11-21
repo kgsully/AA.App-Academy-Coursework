@@ -2,13 +2,14 @@ from flask import Flask
 from flask_login import LoginManager
 from .config import Configuration
 from .models import db, Employee
-from .routes import orders, session
+from .routes import orders, session, menu
 
 app = Flask(__name__)
 app.config.from_object(Configuration)
 
 app.register_blueprint(orders.bp)
 app.register_blueprint(session.bp)
+app.register_blueprint(menu.bp)
 
 db.init_app(app)  # Configure the application with SQLAlchemy
 

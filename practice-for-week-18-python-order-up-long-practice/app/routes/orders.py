@@ -40,7 +40,10 @@ def index():
     # Open Orders
     # ---------------------------------------------
     # Get open orders for current user
-    curr_user_open_orders = Order.query.join(Employee).filter(Employee.id == current_user.id, Order.finished == False).all()
+    if current_user.admin:
+        curr_user_open_orders = Order.query.join(Employee).filter(Order.finished == False).all()
+    else:
+        curr_user_open_orders = Order.query.join(Employee).filter(Employee.id == current_user.id, Order.finished == False).all()
 
     curr_user_open_order_details = {}
     for order in curr_user_open_orders:
@@ -49,13 +52,12 @@ def index():
                                                     "total": Decimal(sum([item.price for item in MenuItem.query.join(OrderDetail).filter(OrderDetail.order_id == order.id)])).quantize(Decimal('0.01'))
                                                  }
 
-    print(curr_user_open_order_details)
     # ---------------------------------------------
     # Menu
     # ---------------------------------------------
     # Get menu item types
     menu_item_types = MenuItemType.query.order_by(MenuItemType.sort_order).all()
-    menu = {type.name: MenuItem.query.join(MenuItemType).filter(MenuItem.menu_type_id == type.id).all() for type in menu_item_types}
+    menu = {type.name: MenuItem.query.join(MenuItemType).filter(MenuItem.menu_type_id == type.id).order_by(MenuItem.name).all() for type in menu_item_types}
     menu_items = MenuItem.query.join(MenuItemType).order_by(MenuItemType.name, MenuItem.name).all()
 
     menu_item_form = MenuItemAssignmentForm()
@@ -84,6 +86,7 @@ def assign_table():
 
     return redirect(url_for('.index'))
 
+
 @bp.route("/close_table/<int:order_id>", methods=["POST"])
 @login_required
 def close_table(order_id):
@@ -94,6 +97,7 @@ def close_table(order_id):
     db.session.commit()
 
     return redirect(url_for('.index'))
+
 
 @bp.route("/add_to_order/<int:order_id>/items", methods=["POST"])
 @login_required
@@ -113,6 +117,7 @@ def add_to_order(order_id):
 
     return redirect(url_for('.index'))
 
+
 @bp.route("/remove_from_order/<int:order_detail_id>", methods=["POST"])
 @login_required
 def remove_from_order(order_detail_id):
@@ -122,3 +127,8 @@ def remove_from_order(order_detail_id):
     db.session.commit()
 
     return redirect(url_for('.index'))
+
+@bp.route("/edit_menu")
+@login_required
+def edit_menu():
+    return redirect(url_for('menu.edit_menu'))

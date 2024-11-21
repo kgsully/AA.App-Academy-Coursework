@@ -18,3 +18,9 @@ class TableAssignmentForm(FlaskForm):
 
 class MenuItemAssignmentForm(FlaskForm):
     menu_item_ids = SelectMultipleField("Menu Items", coerce=int)
+
+class MenuItemEditForm(FlaskForm):
+    name = StringField("Item Name", validators=[DataRequired()])
+    price = StringField("Item Name", validators=[DataRequired()])
+    menu_id = SelectField("Menu", validators=[DataRequired()])
+    menu_type_id = SelectField("Category", validators=[DataRequired()])

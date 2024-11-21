@@ -12,6 +12,7 @@ class Employee(db.Model, UserMixin):
     name = db.Column(db.String(100), nullable=False)
     employee_number = db.Column(db.Integer, unique=True, nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
+    admin = db.Column(db.Boolean, nullable=False)
 
     orders = db.relationship("Order", back_populates="employee")
 
