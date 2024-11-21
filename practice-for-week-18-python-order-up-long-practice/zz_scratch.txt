@@ -1,0 +1,42 @@
+<script src="{{  url_for('static', filename='events.js')  }}"></script>
+
+
+/<int:table_id>/<int:employee_id>
+
+
+table_id, employee_id
+
+
+, employee_id=0, table_id=0
+
+
+        <table>
+            {% for order in open_orders %}
+                <tr>
+                    <td>Table {{  order.table_id  }}</td>
+                    <td>
+                        <form action="{{  url_for('orders.close_table', order_id=order.id)  }}" method="POST">
+                            <button type="submit">CLOSE TABLE</button>
+                        </form>
+                    </td>
+                    <td>
+                        <button form="food-list" formaction="{{  url_for('orders.add_to_order', order_id=order.id, items=0)  }}" method="POST">
+                            ADD TO ORDER
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+
+
+<tr>
+                        <td>
+                            {{  detail.menu_item.name  }}
+                        </td>
+                        <td>
+                            <form action="{{  url_for('orders.remove_from_order', order_detail_id=detail.id)}}" method="POST">
+                                <button type="submit">X</button>
+                            </form>
+                        </td>
+                    </tr>

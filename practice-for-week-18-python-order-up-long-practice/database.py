@@ -26,8 +26,15 @@ with app.app_context():
     dinner = Menu(name="Dinner")
 
     fries = MenuItem(name="French fries", price=3.50, type=sides, menu=dinner)
+    tots  = MenuItem(name="Tater Tots", price=2.75, type=sides, menu=dinner)
+
     drp = MenuItem(name="Dr. Pepper", price=1.0, type=beverages, menu=dinner)
+    coke = MenuItem(name="Coca Cola", price=1.0, type=beverages, menu=dinner)
+    iced_tea = MenuItem(name="Iced Tea", price=1.25, type=beverages, menu=dinner)
+
     jambalaya = MenuItem(name="Jambalaya", price=21.98, type=entrees, menu=dinner)
+    chic_kiev = MenuItem(name="Chicken Kiev", price=23.98, type=entrees, menu=dinner)
+    epp = MenuItem(name="Eggplant Parmesean", price=18.65, type=entrees, menu=dinner)
 
 
     # Handle seed data for "tables"
@@ -62,8 +69,13 @@ with app.app_context():
     db.session.add(sides)
     db.session.add(dinner)
     db.session.add(fries)
+    db.session.add(tots)
     db.session.add(drp)
+    db.session.add(coke)
+    db.session.add(iced_tea)
     db.session.add(jambalaya)
+    db.session.add(chic_kiev)
+    db.session.add(epp)
 
     db.session.add_all(
         [

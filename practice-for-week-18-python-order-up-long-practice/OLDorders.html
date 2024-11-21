@@ -30,21 +30,20 @@
     <section class="open-orders">
         <h2>YOUR OPEN ORDERS</h2>
         <div>
-            {% for o_id in open_orders %}
+            {% for order in open_orders %}
             <div>
-                Table {{  open_orders[o_id].order.table_id }}
-                ${{  open_orders[o_id].total  }}
+                Table {{  order.table_id  }}
                 <div>
-                    <form action="{{  url_for('orders.close_table', order_id=open_orders[o_id].order.id)  }}" method="POST">
+                    <form action="{{  url_for('orders.close_table', order_id=order.id)  }}" method="POST">
                         <button type="submit">CLOSE TABLE</button>
                     </form>
-                    <button form="food-list" formaction="{{  url_for('orders.add_to_order', order_id=open_orders[o_id].order.id, items=0)  }}" method="POST">
+                    <button form="food-list" formaction="{{  url_for('orders.add_to_order', order_id=order.id, items=0)  }}" method="POST">
                         ADD TO ORDER
                     </button>
                 </div>
             </div>
             <table>
-                {% for detail in open_orders[o_id].order.order_details %}
+                {% for detail in order.order_details %}
                     <tr>
                         <td>
                             {{  detail.menu_item.name  }}

@@ -1,7 +1,8 @@
-from flask import Blueprint, redirect, render_template, request, url_for
+from decimal import Decimal
+from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import login_required, current_user
 from ..forms import TableAssignmentForm, MenuItemAssignmentForm
-from ..models import db, Employee, Table, MenuItem, MenuItemType, Order
+from ..models import db, Employee, Table, MenuItem, MenuItemType, Order, OrderDetail
 
 bp = Blueprint("orders", __name__, url_prefix="")
 
@@ -41,33 +42,45 @@ def index():
     # Get open orders for current user
     curr_user_open_orders = Order.query.join(Employee).filter(Employee.id == current_user.id, Order.finished == False).all()
 
+    curr_user_open_order_details = {}
+    for order in curr_user_open_orders:
+        curr_user_open_order_details[order.id] = {
+                                                    "order": order,
+                                                    "total": Decimal(sum([item.price for item in MenuItem.query.join(OrderDetail).filter(OrderDetail.order_id == order.id)])).quantize(Decimal('0.01'))
+                                                 }
+
+    print(curr_user_open_order_details)
     # ---------------------------------------------
     # Menu
     # ---------------------------------------------
     # Get menu item types
     menu_item_types = MenuItemType.query.order_by(MenuItemType.sort_order).all()
-    menu = {type:MenuItem.query.join(MenuItemType).filter(MenuItem.menu_type_id == type.id).all() for type in menu_item_types}
-
+    menu = {type.name: MenuItem.query.join(MenuItemType).filter(MenuItem.menu_type_id == type.id).all() for type in menu_item_types}
     menu_items = MenuItem.query.join(MenuItemType).order_by(MenuItemType.name, MenuItem.name).all()
-    # for item in menu_items:
-    #     print(item.name, item.type.name)
+
     menu_item_form = MenuItemAssignmentForm()
     menu_item_form.menu_item_ids.choices = [(item.id, item.name) for item in menu_items]
 
     return render_template("orders.html",
                            table_assign_form=table_assign_form,
-                           open_orders=curr_user_open_orders,
+                           open_orders=curr_user_open_order_details,
                            menu_item_types=menu_item_types,
                            menu_item_form=menu_item_form,
                            menu=menu)
 
 
-@bp.route("/assign_table/<int:table_id>/<int:employee_id>", methods=["POST"])
+@bp.route("/assign_table", methods=["POST"])
 @login_required
-def assign_table(table_id, employee_id):
-    new_order = Order(employee_id=employee_id, table_id=table_id, finished=False)
-    db.session.add(new_order)
-    db.session.commit()
+def assign_table():
+    table_id = request.form.get("tables")
+    employee_id = request.form.get("servers")
+
+    if not table_id or not employee_id:
+        flash("Please select a table and server")
+    else:
+        new_order = Order(employee_id=employee_id, table_id=table_id, finished=False)
+        db.session.add(new_order)
+        db.session.commit()
 
     return redirect(url_for('.index'))
 
@@ -85,10 +98,27 @@ def close_table(order_id):
 @bp.route("/add_to_order/<int:order_id>/items", methods=["POST"])
 @login_required
 def add_to_order(order_id):
-    order = Order.query.get(order_id)
+    # order = Order.query.get(order_id)
 
     selected_item_ids = request.form.getlist("menu_items")
 
-    print(order, selected_item_ids)
+    for item_id in selected_item_ids:
+        added_item = OrderDetail(order_id = order_id, menu_item_id = item_id)
+        db.session.add(added_item)
+
+    # item_prices = [item.price for item in MenuItem.query.filter(MenuItem.id.in_(selected_item_ids))]
+    # print("\nTotal:", Decimal(sum(item_prices)).quantize(Decimal('0.01')))
+
+    db.session.commit()
+
+    return redirect(url_for('.index'))
+
+@bp.route("/remove_from_order/<int:order_detail_id>", methods=["POST"])
+@login_required
+def remove_from_order(order_detail_id):
+    item_to_delete = OrderDetail.query.get(order_detail_id)
+
+    db.session.delete(item_to_delete)
+    db.session.commit()
 
     return redirect(url_for('.index'))
