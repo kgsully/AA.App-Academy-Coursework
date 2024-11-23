@@ -16,7 +16,8 @@ def edit_menu():
 
     return render_template("menu.html",
                            menu_item_types=menu_item_types,
-                           menu=menu)
+                           menu=menu,
+                           title="Edit Menu - Order Up!")
 
 
 @bp.route("/cancel")
@@ -72,6 +73,12 @@ def edit_item(item_id):
         price = float(price)
     except:
         flash("Price must be a number value in $")
+        return redirect(url_for(".edit_menu"))
+
+    try:
+        type = int(type)
+    except:
+        flash("Invalid item type")
         return redirect(url_for(".edit_menu"))
 
     item_to_update.name = name

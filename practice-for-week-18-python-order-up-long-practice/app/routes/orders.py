@@ -68,7 +68,8 @@ def index():
                            open_orders=curr_user_open_order_details,
                            menu_item_types=menu_item_types,
                            menu_item_form=menu_item_form,
-                           menu=menu)
+                           menu=menu,
+                           title="Order Up!")
 
 
 @bp.route("/assign_table", methods=["POST"])
