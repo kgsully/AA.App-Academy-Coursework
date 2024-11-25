@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Package Tracker</title>
+    </head>
+    <body>
+        <h1>Package Tracker</h1>
+        <h2>New Package</h2>
+        <form action="{{  url_for('.new_package')}}" method="POST" >
+            {{  shipping_form.csrf_token  }}
+
+            <div>
+                {{  shipping_form.sender.label  }}
+                {{  shipping_form.sender  }}
+            </div>
+            <div>
+                {{  shipping_form.recipient.label  }}
+                {{  shipping_form.recipient  }}
+            </div>
+            <div>
+                {{  shipping_form.origin.label  }}
+                {{  shipping_form.origin  }}
+            </div>
+            <div>
+                {{  shipping_form.destination.label  }}
+                {{  shipping_form.destination  }}
+            </div>
+            <div>
+                {{  shipping_form.express_req.label  }}
+                {{  shipping_form.express_req  }}
+            </div>
+            <div>
+                {{  shipping_form.add_pkg  }}
+            </div>
+        </form>
+    </body>
+</html>
