@@ -1,0 +1,108 @@
+❯ docker -v
+Docker version 27.3.1, build ce12230
+
+
+❯ docker container run alpine echo "Hello World"
+Unable to find image 'alpine:latest' locally
+latest: Pulling from library/alpine
+da9db072f522: Pull complete
+Digest: sha256:1e42bbe2508154c9126d48c2b8a75420c3544343bf86fd041fb7527e017a4b4a
+Status: Downloaded newer image for alpine:latest
+Hello World
+
+
+❯ docker container run alpine echo "Hello World"
+Hello World
+
+
+❯ docker image ls
+REPOSITORY    TAG       IMAGE ID       CREATED         SIZE
+alpine        latest    63b790fccc90   2 months ago    7.8MB
+hello-world   latest    d2c94e258dcb   19 months ago   13.3kB
+
+
+❯ docker container ls
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+
+❯ docker container ls -a
+CONTAINER ID   IMAGE     COMMAND                CREATED              STATUS                          PORTS     NAMES
+22b4e645ddff   alpine    "echo 'Hello World'"   About a minute ago   Exited (0) About a minute ago             awesome_sammet
+263e274eb355   alpine    "echo 'Hello World'"   About a minute ago   Exited (0) About a minute ago             zen_fermat
+
+
+❯ docker container run centos ping -c 5 127.0.0.1
+Unable to find image 'centos:latest' locally
+latest: Pulling from library/centos
+a1d0c7532777: Pull complete
+Digest: sha256:a27fd8080b517143cbbbab9dfb7c8571c40d67d534bbdee55bd6c473f432b177
+Status: Downloaded newer image for centos:latest
+PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
+64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.052 ms
+64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.041 ms
+64 bytes from 127.0.0.1: icmp_seq=3 ttl=64 time=0.040 ms
+64 bytes from 127.0.0.1: icmp_seq=4 ttl=64 time=0.042 ms
+64 bytes from 127.0.0.1: icmp_seq=5 ttl=64 time=0.040 ms
+
+--- 127.0.0.1 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4118ms
+rtt min/avg/max/mdev = 0.040/0.043/0.052/0.004 ms
+
+
+❯ docker container ls
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+
+❯ docker container ls -a
+CONTAINER ID   IMAGE     COMMAND                 CREATED          STATUS                     PORTS     NAMES
+f42ac4e0d389   centos    "ping -c 5 127.0.0.1"   14 seconds ago   Exited (0) 9 seconds ago             hungry_kilby
+22b4e645ddff   alpine    "echo 'Hello World'"    2 minutes ago    Exited (0) 2 minutes ago             awesome_sammet
+263e274eb355   alpine    "echo 'Hello World'"    2 minutes ago    Exited (0) 2 minutes ago             zen_fermat
+
+
+❯ docker container rm awesome_sammet
+awesome_sammet
+
+
+❯ docker container rm awesome_sammet
+awesome_sammet
+
+
+❯ docker container rm hungry_kilby
+hungry_kilby
+
+
+❯ docker container ls
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+
+❯ docker container ls -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+
+❯ docker image ls
+REPOSITORY    TAG       IMAGE ID       CREATED         SIZE
+alpine        latest    63b790fccc90   2 months ago    7.8MB
+hello-world   latest    d2c94e258dcb   19 months ago   13.3kB
+centos        latest    5d0da3dc9764   3 years ago     231MB
+
+
+❯ docker image rm alpine
+Untagged: alpine:latest
+Untagged: alpine@sha256:1e42bbe2508154c9126d48c2b8a75420c3544343bf86fd041fb7527e017a4b4a
+Deleted: sha256:63b790fccc9078ab8bb913d94a5d869e19fca9b77712b315da3fa45bb8f14636
+Deleted: sha256:75654b8eeebd3beae97271a102f57cdeb794cc91e442648544963a7e951e9558
+
+
+❯ docker image rm hello-world
+Untagged: hello-world:latest
+Untagged: hello-world@sha256:1408fec50309afee38f3535383f5b09419e6dc0925bc69891e79d84cc4cdcec6
+Deleted: sha256:d2c94e258dcb3c5ac2798d32e1249e42ef01cba4841c2234249495f87264ac5a
+Deleted: sha256:ac28800ec8bb38d5c35b49d45a6ac4777544941199075dff8c4eb63e093aa81e
+
+
+❯ docker image rm centos
+Untagged: centos:latest
+Untagged: centos@sha256:a27fd8080b517143cbbbab9dfb7c8571c40d67d534bbdee55bd6c473f432b177
+Deleted: sha256:5d0da3dc976460b72c77d94c8a1ad043720b0416bfc16c52c45d4847e53fadb6
+Deleted: sha256:74ddd0ec08fa43d09f32636ba91a0a3053b02cb4627c35051aff89f853606b59
