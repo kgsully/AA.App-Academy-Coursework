@@ -1,0 +1,658 @@
+1. Run one container with nginx
+
+    ❯ docker container run -detach -p 80:80 --name nginx nginx
+        Unable to find image 'nginx:latest' locally
+        latest: Pulling from library/nginx
+        2d429b9e73a6: Pull complete
+        20c8b3871098: Pull complete
+        06da587a7970: Pull complete
+        f7895e95e2d4: Pull complete
+        7b25f3e99685: Pull complete
+        dffc1412b7c8: Pull complete
+        d550bb6d1800: Pull complete
+        Digest: sha256:0c86dddac19f2ce4fd716ac58c0fd87bf69bfd4edabfd6971fb885bafd12a00b
+        Status: Downloaded newer image for nginx:latest
+        796f1dc500ec2e2a61ef88f083f3ef232b13f2dcd954986394d178933daa295d
+
+
+    ❯ docker container ls
+        CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                               NAMES
+        796f1dc500ec   nginx     "/docker-entrypoint.…"   11 seconds ago   Up 10 seconds   0.0.0.0:80->80/tcp, :::80->80/tcp   nginx
+
+2. Run one container with httpd
+
+    ❯ docker container run --detach -p 8080:80 --name httpd httpd
+        Unable to find image 'httpd:latest' locally
+        latest: Pulling from library/httpd
+        2d429b9e73a6: Already exists
+        d675ed392a91: Pull complete
+        4f4fb700ef54: Pull complete
+        3ed0d9182dde: Pull complete
+        0062038102c9: Pull complete
+        334a67c7f78b: Pull complete
+        Digest: sha256:6bdbdf5ac16ac3d6ef543a693fd5dfafae2428b4b0cdc52a480166603a069136
+        Status: Downloaded newer image for httpd:latest
+        8ecce73391a3109c06073e69aed8758bbc829b7e0caa21deb1c50af35fbe54c0
+
+    ❯ docker container run --detach -p 8080:80 --name httpd httpd
+        Unable to find image 'httpd:latest' locally
+        latest: Pulling from library/httpd
+        2d429b9e73a6: Already exists
+        d675ed392a91: Pull complete
+        4f4fb700ef54: Pull complete
+        3ed0d9182dde: Pull complete
+        0062038102c9: Pull complete
+        334a67c7f78b: Pull complete
+        Digest: sha256:6bdbdf5ac16ac3d6ef543a693fd5dfafae2428b4b0cdc52a480166603a069136
+        Status: Downloaded newer image for httpd:latest
+        8ecce73391a3109c06073e69aed8758bbc829b7e0caa21deb1c50af35fbe54c0
+
+3. Run one container with mysql with environment variable for password
+
+    ❯ docker container run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password --name mysql mysql
+        Unable to find image 'mysql:latest' locally
+        latest: Pulling from library/mysql
+        2c0a233485c3: Pull complete
+        cb5a6a8519b2: Pull complete
+        570d30cf82c5: Pull complete
+        a841bff36f3c: Pull complete
+        80ba30c57782: Pull complete
+        5e49e1f26961: Pull complete
+        ced670fc7f1c: Pull complete
+        0b9dc7ad7f03: Pull complete
+        cd0d5df9937b: Pull complete
+        1f87d67b89c6: Pull complete
+        Digest: sha256:0255b469f0135a0236d672d60e3154ae2f4538b146744966d96440318cc822c6
+        Status: Downloaded newer image for mysql:latest
+        19cecbd1a324d1fb94935a2cb91bd950f84004b2f385e8a9dd63cd91d47a1ddd
+
+    ❯ docker container ls
+        CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                                                  NAMES
+        19cecbd1a324   mysql     "docker-entrypoint.s…"   20 seconds ago   Up 19 seconds   0.0.0.0:3306->3306/tcp, :::3306->3306/tcp, 33060/tcp   mysql
+        8ecce73391a3   httpd     "httpd-foreground"       5 minutes ago    Up 5 minutes    0.0.0.0:8080->80/tcp, [::]:8080->80/tcp                httpd
+        796f1dc500ec   nginx     "/docker-entrypoint.…"   9 minutes ago    Up 9 minutes    0.0.0.0:80->80/tcp, :::80->80/tcp                      nginx
+
+4. Inspect mysql container to verify environment variable:
+
+    ❯ docker container inspect mysql
+        EXCERPT FROM OUTPUT -->
+        "Env": [
+                "MYSQL_ROOT_PASSWORD=password",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "GOSU_VERSION=1.17",
+                "MYSQL_MAJOR=innovation",
+                "MYSQL_VERSION=9.1.0-1.el9",
+                "MYSQL_SHELL_VERSION=9.1.0-1.el9"
+            ],
+
+5. Verify nginx container operation
+
+    ❯ curl localhost:80
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <title>Welcome to nginx!</title>
+        <style>
+        html { color-scheme: light dark; }
+        body { width: 35em; margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif; }
+        </style>
+        </head>
+        <body>
+        <h1>Welcome to nginx!</h1>
+        <p>If you see this page, the nginx web server is successfully installed and
+        working. Further configuration is required.</p>
+
+        <p>For online documentation and support please refer to
+        <a href="http://nginx.org/">nginx.org</a>.<br/>
+        Commercial support is available at
+        <a href="http://nginx.com/">nginx.com</a>.</p>
+
+        <p><em>Thank you for using nginx.</em></p>
+        </body>
+        </html>
+
+6. Verify httpd container operation
+
+    ❯ curl localhost:8080
+        <html><body><h1>It works!</h1></body></html>
+
+7. Stop and remove containers
+
+    ❯ docker container stop mysql
+        mysql
+
+    ❯ docker container stop httpd
+        httpd
+
+    ❯ docker container stop nginx
+        nginx
+
+    ❯ docker container rm mysql
+        mysql
+
+    ❯ docker container rm httpd
+        httpd
+
+    ❯ docker container rm nginx
+        nginx
+
+    ❯ docker image rm nginx
+        Untagged: nginx:latest
+        Untagged: nginx@sha256:0c86dddac19f2ce4fd716ac58c0fd87bf69bfd4edabfd6971fb885bafd12a00b
+        Deleted: sha256:1ee494ebb83f2db5eebcc6cc1698c5091ad2e3f3341d44778bccfed3f8a28a43
+        Deleted: sha256:05f1422637e6596cdaff4a3ea77eea2d06652e9a36a6e85e4c88f4a6783db6cd
+        Deleted: sha256:aefc0beb891c07f82a5bec1301e3a1bfe8e08f27118313d167a606c2d768285b
+        Deleted: sha256:8006a840595ef554203de033c3b0291cfcc5ee9f194e8cc52b659f1b564d8efa
+        Deleted: sha256:15338037da38cef194cbdc29a4a6257ff2d41bd868891edee66714f828f48bd3
+        Deleted: sha256:13271298fdeb33a352a69704aa4b798b06501d6dd0e5ad4529075b4edbdb7e8f
+        Deleted: sha256:20e7b0616008dbafb4b049243f1c514a4df65536b02c19fbbb75a5c9f70784e4
+
+    ❯ docker image rm mysql
+        dockUntagged: mysql:latest
+        Untagged: mysql@sha256:0255b469f0135a0236d672d60e3154ae2f4538b146744966d96440318cc822c6
+        Deleted: sha256:56a8c14e14044b8ec7ffb4dd165c8dbe10d4c6ba3d9e754f0c906f52a0b5b4fb
+        Deleted: sha256:cf9d5439dc527ea3cc20cc0f0634fe72432b19fefb1e986e3969c130da246589
+        Deleted: sha256:305ceb1bf1d386ccd7ece5ce7943b919c6ba0a9ae4e17cb3369ed7bb2735b104
+        Deleted: sha256:99e3ee82bdd93baf2623bf0bc9b9d226397e0a4f6dd36708b4cd9d69e9a1ec62
+        Deleted: sha256:4a0ca5d521869874815338f3bdbbe85466717751f415e5d9c316ec91e9b12b2b
+        Deleted: sha256:5e82211d9e1c91982da9c38d751affe81b6af3c517e0a2b08ba496756ff75b78
+        Deleted: sha256:8a2a95fa60bf2fd15ac47ec79dee7b45fadf3b63df375d9322588449ba1d793b
+        Deleted: sha256:3937438480f5b07bfd7280eeeee381af8dcc0aa752fbaa8a79d2544408b6cb30
+        Deleted: sha256:7891c186f13861339eb12d5975e8c61cab262ecdca93e929fcfe17250c5121b6
+        Deleted: sha256:317936c50e1cf348540ee99c29bc49e01f5711384956958cafcb1d1c50e13fe7
+        Deleted: sha256:7600fdef234bf101e8f4027a1c27c783cf1e502e2de00f676d99aeaf1d6cc5ef
+
+    ❯ docker image rm httpd
+        Untagged: httpd:latest
+        Untagged: httpd@sha256:6bdbdf5ac16ac3d6ef543a693fd5dfafae2428b4b0cdc52a480166603a069136
+        Deleted: sha256:dad6ca1caf78e98e22e8e5a406ab4a3427cedfff254c7fcc9dc3b2ca922c642b
+        Deleted: sha256:092628e738116611e1bda846f338ba9bef1cc2a033dcc436b44b4dacead40078
+        Deleted: sha256:456ff357a71a1c90c94e4495325203fa902f8382cac26c0a03714dce602dcd99
+        Deleted: sha256:14d87f17c8b8cdb6546161cf49ff82631b15543e54b678c2dee4f7888456f5f7
+        Deleted: sha256:565135b3f0ec83dab78e23227d394efd5739080a312269f96b184740e562cb06
+        Deleted: sha256:559984f97411f386dcbe5f41ffc76ef63f5af393a69c3834317da70eb4d16f48
+        Deleted: sha256:c3548211b8264f8bfa47a6727043a64f1791b82ac965a284a7ea187e971a95e2
+
+8. Run nginx container and interact with container console
+
+    ❯ docker container run -it --name web nginx bash
+        Unable to find image 'nginx:latest' locally
+        latest: Pulling from library/nginx
+        2d429b9e73a6: Pull complete
+        20c8b3871098: Pull complete
+        06da587a7970: Pull complete
+        f7895e95e2d4: Pull complete
+        7b25f3e99685: Pull complete
+        dffc1412b7c8: Pull complete
+        d550bb6d1800: Pull complete
+        Digest: sha256:0c86dddac19f2ce4fd716ac58c0fd87bf69bfd4edabfd6971fb885bafd12a00b
+        Status: Downloaded newer image for nginx:latest
+        root@a5f2d8b5a04a:/#
+
+9. Verify nginx container has stopped when console is exited
+
+    ❯ docker container ls
+        CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+    ❯ docker container ls -a
+        CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS                      PORTS     NAMES
+        a5f2d8b5a04a   nginx     "/docker-entrypoint.…"   2 minutes ago   Exited (0) 30 seconds ago             web
+
+10. Restart stopped container, enter console, exit, verify container is still running
+
+    ❯ docker container start web
+        web
+
+    ❯ docker container ls
+        CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS     NAMES
+        a5f2d8b5a04a   nginx     "/docker-entrypoint.…"   2 minutes ago   Up 3 seconds   80/tcp    web
+
+    ❯ docker container exec -it web bash
+        root@a5f2d8b5a04a:/# exit
+        exit
+
+    ❯ docker container ls
+        CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS          PORTS     NAMES
+        a5f2d8b5a04a   nginx     "/docker-entrypoint.…"   3 minutes ago   Up 19 seconds   80/tcp    web
+
+11. Run ubuntu container using the allocate tty option (-t) so that it doesn't immediately stop after execution (allowing interaction)
+
+    ❯ docker container run --name ubuntu -d -t ubuntu
+        Unable to find image 'ubuntu:latest' locally
+        latest: Pulling from library/ubuntu
+        afad30e59d72: Pull complete
+        Digest: sha256:278628f08d4979fb9af9ead44277dbc9c92c2465922310916ad0c46ec9999295
+        Status: Downloaded newer image for ubuntu:latest
+        c8103cf93f81b0acfeebf9f2b8bb7e7e82f978f9b99e4815513ebb22830f214d
+
+    ❯ docker exec -it ubuntu bash
+        root@c8103cf93f81:/#
+
+12. Try installing something into the container - first update apt-get, then install curl and test curl
+
+    root@c8103cf93f81:/# apt-get update
+        << Successful output >>
+
+    root@c8103cf93f81:/# apt-get install -y curl
+        << Successful output >>
+
+    root@c8103cf93f81:/# curl parrot.live
+                .,,,,,,,,,.
+                .ckKxodooxOOdcc.
+            .cclooc'....';;cool.
+            .loc;;;;clllllc;;;;;:;,.
+        .c:'.,okd;;cdo:::::cl,..oc
+        .:o;';okkx;';;,';::;'....,:,.
+        co..ckkkkkddkc,cclll;.,c:,:o:.
+        co..ckkkkkkkk:,cllll;.:kkd,.':c.
+        .,:;.,okkkkkkkk:,cclll;.ckkkdl;;o:.
+        cNo..ckkkkkkkkko,.;loc,.ckkkkkc..oc
+        ,dd;.:kkkkkkkkkx;..;:,.'lkkkkko,.:,
+        ;:.ckkkkkkkkkkc.....;ldkkkkkk:.,'
+        ,dc..'okkkkkkkkkxoc;;cxkkkkkkkkc..,;,.
+        kNo..':lllllldkkkkkkkkkkkkkkkkkdcc,.;l.
+        KOc,c;''''''';lldkkkkkkkkkkkkkkkkkc..;lc.
+        xx:':;;;;,.,,...,;;cllllllllllllllc;'.;od,
+        cNo.....................................oc
+
+13. Exit the ubuntu container shell and stop it
+
+    ❯ docker container ls
+        CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS          PORTS     NAMES
+        c8103cf93f81   ubuntu    "/bin/bash"   10 minutes ago   Up 10 minutes             ubuntu
+
+    ❯ docker container stop ubuntu
+        ubuntu
+
+14. Create another container from the ubuntu image and try to use the curl command. Expected - does not run
+    ❯ docker container run -it --name notliketheother ubuntu bash
+        root@a8e1f74b2f7d:/# curl parrot.live
+            bash: curl: command not found
+        root@a8e1f74b2f7d:/#
+
+15. Install wget into ubuntu container
+    root@c8103cf93f81:/# apt-get install wget
+        Reading package lists... Done
+        Building dependency tree... Done
+        Reading state information... Done
+        The following NEW packages will be installed:
+        wget
+        0 upgraded, 1 newly installed, 0 to remove and 3 not upgraded.
+        Need to get 334 kB of archives.
+        After this operation, 938 kB of additional disk space will be used.
+        Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 wget amd64 1.21.4-1ubuntu4.1 [334 kB]
+        Fetched 334 kB in 0s (736 kB/s)
+        debconf: delaying package configuration, since apt-utils is not installed
+        Selecting previously unselected package wget.
+        (Reading database ... 5012 files and directories currently installed.)
+        Preparing to unpack .../wget_1.21.4-1ubuntu4.1_amd64.deb ...
+        Unpacking wget (1.21.4-1ubuntu4.1) ...
+        Setting up wget (1.21.4-1ubuntu4.1) ...
+
+16. Run shell script in ubuntu container
+    root@c8103cf93f81:/home# while :
+        > do
+        > wget -qO- https://swapi.dev/api/people/?search=r2
+        > printf '\n'
+        > sleep 5s
+        > done
+        {"count":1,"next":null,"previous":null,"results":[{"name":"R2-D2","height":"96","mass":"32","hair_color":"n/a","skin_color":"white, blue","eye_color":"red","birth_year":"33BBY","gender":"n/a","homeworld":"https://swapi.dev/api/planets/8/","films":["https://swapi.dev/api/films/1/","https://swapi.dev/api/films/2/","https://swapi.dev/api/films/3/","https://swapi.dev/api/films/4/","https://swapi.dev/api/films/5/","https://swapi.dev/api/films/6/"],"species":["https://swapi.dev/api/species/2/"],"vehicles":[],"starships":[],"created":"2014-12-10T15:11:50.376000Z","edited":"2014-12-20T21:17:50.311000Z","url":"https://swapi.dev/api/people/3/"}]}
+    root@c8103cf93f81:/home# exit
+        exit
+
+17. Run an alpine linux container, then execute the character generation script (one line, -c flag used)
+    ❯ docker container run -d -t --name alpine alpine
+        Unable to find image 'alpine:latest' locally
+        latest: Pulling from library/alpine
+        da9db072f522: Pull complete
+        Digest: sha256:1e42bbe2508154c9126d48c2b8a75420c3544343bf86fd041fb7527e017a4b4a
+        Status: Downloaded newer image for alpine:latest
+        c39c0b7609ad96ebf7a86f50a737c421d4d8ecc3c1bd949b4c4bee335e89e64a
+
+    ❯ docker container ls
+        CONTAINER ID   IMAGE     COMMAND     CREATED          STATUS          PORTS     NAMES
+        c39c0b7609ad   alpine    "/bin/sh"   29 seconds ago   Up 29 seconds             alpine
+
+    ❯ docker exec -i alpine /bin/sh -c "while :; do wget -qO- https://swapi.dev/api/people/?search=r2; printf '\n'; sleep 5s; done"
+        {"count":1,"next":null,"previous":null,"results":[{"name":"R2-D2","height":"96","mass":"32","hair_color":"n/a","skin_color":"white, blue","eye_color":"red","birth_year":"33BBY","gender":"n/a","homeworld":"https://swapi.dev/api/planets/8/","films":["https://swapi.dev/api/films/1/","https://swapi.dev/api/films/2/","https://swapi.dev/api/films/3/","https://swapi.dev/api/films/4/","https://swapi.dev/api/films/5/","https://swapi.dev/api/films/6/"],"species":["https://swapi.dev/api/species/2/"],"vehicles":[],"starships":[],"created":"2014-12-10T15:11:50.376000Z","edited":"2014-12-20T21:17:50.311000Z","url":"https://swapi.dev/api/people/3/"}]}
+
+    ❯ docker container ls
+        CONTAINER ID   IMAGE     COMMAND     CREATED         STATUS         PORTS     NAMES
+        c39c0b7609ad   alpine    "/bin/sh"   2 minutes ago   Up 2 minutes             alpine
+
+18. Check container logs
+
+    ❯ docker container logs alpine
+        / #
+        / #
+        / #
+        / #
+        / #
+        / #
+        / #
+        / #
+        / #
+        / #
+        / #
+        / #
+        / #
+        / #
+        ^[[76;5R^[[76;5R^[[76;5R^[[76;5R^[[76;5R^[[76;5R^[[76;5R^[[76;5R^[[76;5R^[[76;5R^[[76;5R^[[76;5R^[[76;5R^[[76;5R6;5R6;5R6;5R6;5R6;5R6;5R6;5R6;5R6;5R6;5R6;5R6;5R6;5R6;5R
+
+19. Stop and remove container
+
+    ❯ docker container stop alpine
+        alpine
+
+    ❯ docker container rm alpine
+        alpine
+
+20. Create docker network in preparation for round-robin DNS exercise
+
+    ❯ docker network ls
+        NETWORK ID     NAME      DRIVER    SCOPE
+        8e96de9b499c   bridge    bridge    local
+        63c545dcf7be   host      host      local
+        46b7180fd91e   none      null      local
+
+    ❯ docker network create --driver bridge testnetwork
+        02edb75212cf3fc26798ef7e6db54bb183b0e6e16a85fe556ee37479723016b2
+
+    ❯ docker network ls
+        NETWORK ID     NAME          DRIVER    SCOPE
+        8e96de9b499c   bridge        bridge    local
+        63c545dcf7be   host          host      local
+        46b7180fd91e   none          null      local
+        02edb75212cf   testnetwork   bridge    local
+
+21. Create 2 containers from the elasticsearch image, assign them both to respond to the same alias
+
+    ❯ docker container run -d --name elasticsearch1 --net testnetwork --net-alias elastic elasticsearch:2
+        Unable to find image 'elasticsearch:2' locally
+        2: Pulling from library/elasticsearch
+        05d1a5232b46: Pull complete
+        5cee356eda6b: Pull complete
+        89d3385f0fd3: Pull complete
+        65dd87f6620b: Pull complete
+        78a183a01190: Pull complete
+        1a4499c85f97: Pull complete
+        2c9d39b4bfc1: Pull complete
+        1b1cec2222c9: Pull complete
+        59ff4ce9df68: Pull complete
+        1976bc3ee432: Pull complete
+        a27899b7a5b5: Pull complete
+        b0fc7d2c927a: Pull complete
+        6d94b96bbcd0: Pull complete
+        6f5bf40725fd: Pull complete
+        2bf2a528ae9a: Pull complete
+        Digest: sha256:41ed3a1a16b63de740767944d5405843db00e55058626c22838f23b413aa4a39
+        Status: Downloaded newer image for elasticsearch:2
+        00a69fbd55db72c09f547720b78711e073e470fb61e1a187812b79a23fc91e66
+
+    ❯ docker container run -d --name elasticsearch2 --net testnetwork --net-alias elastic elasticsearch:2
+        a49166f519599aff5811fa9dcadc6f9fbd0752d56137d21542a523f02a3394d3
+
+    ❯ docker container ls
+        CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS                NAMES
+        a49166f51959   elasticsearch:2   "/docker-entrypoint.…"   34 seconds ago   Up 34 seconds   9200/tcp, 9300/tcp   elasticsearch2
+        00a69fbd55db   elasticsearch:2   "/docker-entrypoint.…"   41 seconds ago   Up 40 seconds   9200/tcp, 9300/tcp   elasticsearch1
+
+    ❯ docker inspect elasticsearch1
+        .
+        .
+        .
+        "Networks": {
+                "testnetwork": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "elastic"
+                    ],
+        .
+        .
+        .
+
+22. Use nslookup in the alpine container to check that elasticsearch containers are set up properly
+
+    ❯ docker exec alpine nslookup elastic.testnetwork
+        Server:		127.0.0.11
+        Address:	127.0.0.11:53
+
+        Non-authoritative answer:
+
+        Non-authoritative answer:
+        Name:	elastic.testnetwork
+        Address: 172.18.0.3
+        Name:	elastic.testnetwork
+        Address: 172.18.0.2
+
+23. Create centos container on network to allow use of curl
+
+    ❯ docker container run -d --name centos --net testnetwork centos curl elastic.testnetwork:9200
+        267300e7ef1c03e6cfe80352eb1305c66409d771616ac11bdbeaa9fecc195702
+
+    ❯ docker container ls -a
+        CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS                      PORTS                NAMES
+        267300e7ef1c   centos            "curl elastic.testne…"   46 seconds ago   Exited (0) 31 seconds ago                        centos
+        1987fd33a5a5   alpine            "/bin/sh"                2 hours ago      Up 2 hours                                       alpine
+        a49166f51959   elasticsearch:2   "/docker-entrypoint.…"   2 hours ago      Up 2 hours                  9200/tcp, 9300/tcp   elasticsearch2
+        00a69fbd55db   elasticsearch:2   "/docker-entrypoint.…"   2 hours ago      Up 2 hours                  9200/tcp, 9300/tcp   elasticsearch1
+
+    ❯ docker container start -a centos
+        % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                        Dload  Upload   Total   Spent    Left  Speed
+        100   360  100   360    0     0  90000      0 --:--:-- --:--:-- --:--:-- 90000
+        {
+        "name" : "Thanos",
+        "cluster_name" : "elasticsearch",
+        "cluster_uuid" : "piLq9jeHRTqGQFFa64lnQA",
+        "version" : {
+            "number" : "2.4.6",
+            "build_hash" : "5376dca9f70f3abef96a77f4bb22720ace8240fd",
+            "build_timestamp" : "2017-07-18T12:17:44Z",
+            "build_snapshot" : false,
+            "lucene_version" : "5.5.4"
+        },
+        "tagline" : "You Know, for Search"
+        }
+
+        ❯ docker container start -a centos
+        % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                        Dload  Upload   Total   Spent    Left  Speed
+        100   359  100   359    0     0  71800      0 --:--:-- --:--:-- --:--:-- 71800
+        {
+        "name" : "Letha",
+        "cluster_name" : "elasticsearch",
+        "cluster_uuid" : "tgAZs7EpQ-2rKxc5k6mzvw",
+        "version" : {
+            "number" : "2.4.6",
+            "build_hash" : "5376dca9f70f3abef96a77f4bb22720ace8240fd",
+            "build_timestamp" : "2017-07-18T12:17:44Z",
+            "build_snapshot" : false,
+            "lucene_version" : "5.5.4"
+        },
+        "tagline" : "You Know, for Search"
+        }
+
+24. Explore bind mounts: create an nginx container
+
+    ❯ docker container run -d --name DogsRGood nginx
+        f0e898bf06a423d0eaa478ec06dd7d090af34dc4e4160719eebbd3ff05f6b0a1
+
+    ❯ docker container ls
+        CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS     NAMES
+        f0e898bf06a4   nginx     "/docker-entrypoint.…"   5 seconds ago   Up 4 seconds   80/tcp    DogsRGood
+
+    ❯ docker exec -it DogsRGood bash
+        root@f0e898bf06a4:/#
+
+    root@f0e898bf06a4:/# ls
+        bin   dev		   docker-entrypoint.sh  home  lib64  mnt  proc  run   srv  tmp  var
+        boot  docker-entrypoint.d  etc			 lib   media  opt  root  sbin  sys  usr
+
+    root@f0e898bf06a4:/# exit
+        exit
+
+25. Create a directory on host filesystem and create a file for use within the exercise
+    (within the home directory)
+    ❯ mkdir rad
+
+    ❯ touch rad/randomrad.txt
+
+    ❯ echo "hello world" >> rad/randomrad.txt
+
+    ❯ cat rad/randomrad.txt
+        hello world
+
+26. Create nginx container with bind mount to newly created directory
+
+    ❯ docker container run -d --name DogsRGood --mount type=bind,source=/home/ken/rad,target=/rad nginx
+        1d2fedaeed78e275a953eeefb446fb286fc836b0de7e24892894c9e99eb2cce4
+
+27. Within container console, navigate to and view file from host operating system
+
+    ❯ docker exec -it DogsRGood bash
+
+    root@1d2fedaeed78:/# ls
+        bin   dev		   docker-entrypoint.sh  home  lib64  mnt  proc  root  sbin  sys  usr
+        boot  docker-entrypoint.d  etc			 lib   media  opt  rad	 run   srv   tmp  var
+
+    root@1d2fedaeed78:/# cd rad
+
+    root@1d2fedaeed78:/rad# ls
+        randomrad.txt
+
+    root@1d2fedaeed78:/rad# cat randomrad.txt
+    hello world
+
+28. Change the file within the container console, exit the container, check the file on the host
+
+    root@1d2fedaeed78:/rad# echo "hello localhost" >> randomrad.txt
+    root@1d2fedaeed78:/rad# exit
+        exit
+
+    ❯ cat /home/ken/rad/randomrad.txt
+        hello world
+        hello localhost
+
+29. Remove the file from the host, see that it is removed within the container
+
+    ❯ rm /home/ken/rad/randomrad.txt
+
+    ❯ docker exec -it DogsRGood bash
+    root@1d2fedaeed78:/# cd /rad
+    root@1d2fedaeed78:/rad# ls
+    root@1d2fedaeed78:/rad#
+
+30. Explore Docker Volumes - Find volume of older postgres image (v9.6.1) from dockerhub. Create container with named volume using 9.6.1
+    From DockerHub --> for postgres 9.6.1 VOLUME [/var/lib/postgresql/data]
+
+    ❯ docker volume create psql-data
+        psql-data
+
+    ❯ docker volume ls
+        DRIVER    VOLUME NAME
+        local     psql-data
+
+    ❯ docker run -d --name postgres --mount source=psql-data,target=/var/lib/postgresql/data postgres:9.6.1
+        Unable to find image 'postgres:9.6.1' locally
+        .
+        .
+        .
+        Status: Downloaded newer image for postgres:9.6.1
+        5858157d5ab3e8649150f103cc213c59677139335e85ba9e1447a44273721d2f
+
+    ❯ docker container ls
+        CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS      NAMES
+        5858157d5ab3   postgres:9.6.1   "/docker-entrypoint.…"   12 seconds ago   Up 12 seconds   5432/tcp   postgres
+
+    ❯ docker container logs postgres
+        .
+        .
+        .
+        PostgreSQL init process complete; ready for start up.
+        .
+        .
+        .
+
+    ❯ docker volume inspect psql-data
+        [
+            {
+                "CreatedAt": "2024-11-27T12:59:10-07:00",
+                "Driver": "local",
+                "Labels": null,
+                "Mountpoint": "/var/lib/docker/volumes/psql-data/_data",
+                "Name": "psql-data",
+                "Options": null,
+                "Scope": "local"
+            }
+        ]
+
+31. Add some data to the postgres container deb
+
+    ❯ docker container exec -it postgres psql -U postgres
+        psql (9.6.1)
+        Type "help" for help.
+
+        postgres=# CREATE TABLE cats
+                   (
+                   id SERIAL PRIMARY KEY,
+                   name VARCHAR (255) NOT NULL
+                   );
+        CREATE TABLE
+        postgres=# INSERT INTO
+                   cats (name)
+                   VALUES
+                   ('Jet');
+        INSERT 0 1
+        postgres=# SELECT * FROM cats;
+            id | name
+            ----+------
+            1 | Jet
+            (1 row)
+
+        postgres=# \q
+
+        ❯ docker container stop postgres
+            postgres
+
+        ❯ docker volume ls
+            DRIVER    VOLUME NAME
+            local     psql-data
+
+32. Remove postgres container, create a new one with a different version, connect to volume, see data is still there
+
+    ❯ docker container rm postgres
+        postgres
+
+    ❯ docker container ls -a
+        CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+    ❯ docker container run -d --name postgres2 --mount source=psql-data,target=/var/lib/postgresql/data postgres:9.6.2
+        Unable to find image 'postgres:9.6.2' locally
+        9.6.2: Pulling from library/postgres
+        ...
+        Status: Downloaded newer image for postgres:9.6.2
+        32bf325b16d8d125e57bc95aeb10092bd24073ced284582a917171802e11dd83
+
+    ❯ docker container ls
+        CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS      NAMES
+        32bf325b16d8   postgres:9.6.2   "docker-entrypoint.s…"   11 seconds ago   Up 11 seconds   5432/tcp   postgres2
+
+    ❯ docker exec -it postgres2 psql -U postgres
+        psql (9.6.2)
+        Type "help" for help.
+
+        postgres=# \dt
+                    List of relations
+            Schema | Name | Type  |  Owner
+            --------+------+-------+----------
+            public | cats | table | postgres
+            (1 row)
+
+        postgres=# SELECT * FROM cats;
+            id | name
+            ----+------
+            1 | Jet
+            (1 row)
