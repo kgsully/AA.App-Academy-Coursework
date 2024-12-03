@@ -1,0 +1,22 @@
+# version: '3'
+
+services:
+
+  drupal:
+    build:
+      dockerfile: ./Dockerfile
+    container_name: custom-drupal
+    ports:
+      - 8080:80
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:9.6
+    volumes:
+      - drupal-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=password
+
+volumes:
+  drupal-data:
