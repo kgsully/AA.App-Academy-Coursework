@@ -1,0 +1,49 @@
+# version: '3'  # Note that docker compose states that this is deprecated and it should be removed
+
+services:
+
+  vote:
+    image: dockersamples/examplevotingapp_vote:before
+    networks:
+      - frontend
+    ports:
+        - 5000:80
+
+
+  redis:
+    image: redis:3.2
+    networks:
+      - frontend
+
+  worker:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+
+  db:
+    image: postgres:9.4
+    networks:
+      - backend
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust  # not recommended as it allows anybody to connect, however it is used for the purposes of this example
+    volumes:
+      - db:/var/lib/postgresql/data
+
+  result:
+    image: dockersamples/examplevotingapp_result:before
+    networks:
+      - backend
+    ports:
+        - 5001:80
+
+networks:
+
+  frontend:
+    driver: bridge
+
+  backend:
+    driver: bridge
+
+volumes:
+  db:
