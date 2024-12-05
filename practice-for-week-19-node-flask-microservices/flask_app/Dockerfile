@@ -4,8 +4,6 @@ EXPOSE 5000
 
 WORKDIR /app
 
-# COPY . .
-
 COPY ./requirements.txt ./
 
 COPY ./entrypoint.sh ./entrypoint.sh
