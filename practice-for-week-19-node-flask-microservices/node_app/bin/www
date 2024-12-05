@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
-// const { port } = require('../config');
-const port = 8080;  // manually setting to 8080 as for some reason the port environment variable gets set to 5432 when requiring from ../config...
+const { port } = require('../config');
 
 const app = require('../app');
 const db = require('../db/models');

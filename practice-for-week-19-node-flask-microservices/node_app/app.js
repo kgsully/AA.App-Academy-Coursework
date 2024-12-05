@@ -10,8 +10,7 @@ const app = express();
 app.set('view engine', 'pug');
 app.use(morgan('dev'));
 app.use(cookieParser());
-// app.use(express.urlencoded());
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded());
 app.use(routes);
 
 // Catch unhandled requests and forward to error handler.
